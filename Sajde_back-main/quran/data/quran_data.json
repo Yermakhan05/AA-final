@@ -1,0 +1,228 @@
+{
+  "surahs": [
+    {
+      "number": 56,
+      "name": "аль-Уақи'а",
+      "verses": [
+        {
+          "number": 1,
+          "arabicText": "إِذَا وَقَعَتِ الْوَاقِعَةُ",
+          "transliteration": "izā wāqa'at al-wāqi'a",
+          "translation": "Когда наступит Великое событие...",
+          "highlights": {
+            "وَقَعَ": "#4CD3A5",
+            "وَاقِعَ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 2,
+          "arabicText": "لَيْسَ لِوَقْعَتِهَا كَاذِبَةٌ",
+          "transliteration": "laysā liwaq'atiha kāzibah",
+          "translation": "Никто не может отрицать ее наступление.",
+          "highlights": {
+            "وَقْعَ": "#4CD3A5",
+            "كَاذِبَ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 3,
+          "arabicText": "خَافِضَةٌ رَافِعَةٌ",
+          "transliteration": "khāfiḍah rāfi'ah",
+          "translation": "Одни люди будут понижены, другие вознесены.",
+          "highlights": {
+            "خَافِضَةٌ": "#4CD3A5",
+            "رَافِعَةٌ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 4,
+          "arabicText": "إِذَا رُجَّتِ الْأَرْضُ رَجًّا",
+          "transliteration": "izzā rujjatil arḍu rajjā",
+          "translation": "Когда земля будет потрясена с потрясением,",
+          "highlights": {
+            "رُجَّت": "#4CD3A5",
+            "أَرْضُ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 5,
+          "arabicText": "وَبُسَّتِ الْجِبَالُ بَسًّا",
+          "transliteration": "wabus satil jibālū bassā",
+          "translation": "И горы будут разрушены с разрушением,",
+          "highlights": {
+            "بُسَّت": "#4CD3A5",
+            "جِبَالُ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 6,
+          "arabicText": "فَصَارَتْ هَبَاءً مَّنبَثًّا",
+          "transliteration": "faṣārat habā'an manbatha",
+          "translation": "И они станут прахом, разлетающимся.",
+          "highlights": {
+            "هَبَاءً": "#4CD3A5",
+            "مَّنبَثًّا": "#4CD3A5"
+          }
+        },
+        {
+          "number": 7,
+          "arabicText": "وَأَنْتُمْ أَزْوَاجٌ ثَلَاثَةٌ",
+          "transliteration": "wa antum azwājun thalāthah",
+          "translation": "И вы будете разделены на три группы.",
+          "highlights": {
+            "أَزْوَاجٌ": "#4CD3A5",
+            "ثَلَاثَةٌ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 8,
+          "arabicText": "فَأَصْحَابُ الْمَيْمَنَةِ مَا أَصْحَابُ الْمَيْمَنَةِ",
+          "transliteration": "fa-aṣḥābul maymanati mā aṣḥābul maymanah",
+          "translation": "А обитатели правой стороны — кто они, обитатели правой стороны?",
+          "highlights": {
+            "أَصْحَابُ": "#4CD3A5",
+            "الْمَيْمَنَةِ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 9,
+          "arabicText": "وَأَصْحَابُ الْمَشْئَمَةِ مَا أَصْحَابُ الْمَشْئَمَةِ",
+          "transliteration": "wa aṣḥābul mash'amatim mā aṣḥābul mash'amah",
+          "translation": "А обитатели левой стороны — кто они, обитатели левой стороны?",
+          "highlights": {
+            "أَصْحَابُ": "#4CD3A5",
+            "الْمَشْئَمَةِ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 10,
+          "arabicText": "وَالسَّابِقُونَ السَّابِقُونَ",
+          "transliteration": "wa as-sābiqūn as-sābiqūn",
+          "translation": "А впереди идущие — те, кто впереди.",
+          "highlights": {
+            "السَّابِقُونَ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 11,
+          "arabicText": "أُو۟لَـٰٓئِكَ الْمُقَرَّبُونَ",
+          "transliteration": "ulā'ika al-muqarrabūn",
+          "translation": "Они будут ближними.",
+          "highlights": {
+            "الْمُقَرَّبُونَ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 12,
+          "arabicText": "فِي جَنَّاتِ النَّعِيمِ",
+          "transliteration": "fī janātin na'īm",
+          "translation": "В садах блаженства,",
+          "highlights": {
+            "جَنَّاتِ": "#4CD3A5",
+            "النَّعِيمِ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 13,
+          "arabicText": "ثُلَّةٌۭ مِّنَ ٱلْأَوَّلِينَ",
+          "transliteration": "thullatun mina al-awwalīn",
+          "translation": "Множество из первых.",
+          "highlights": {
+            "ثُلَّةٌ": "#4CD3A5",
+            "أَوَّلِينَ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 14,
+          "arabicText": "وَقَلِيلٌۭ مِّنَ ٱلْءَاخِرِينَ",
+          "transliteration": "wa qalīlun mina al-ākhirīn",
+          "translation": "И немногие из последних.",
+          "highlights": {
+            "قَلِيلٌ": "#4CD3A5",
+            "ءَاخِرِينَ": "#4CD3A5"
+          }
+        }
+      ]
+    },
+    {
+      "number": 1,
+      "name": "аль-Фатиха",
+      "verses": [
+        {
+          "number": 1,
+          "arabicText": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+          "transliteration": "bismi -llāhi r-raḥmāni r-raḥīm",
+          "translation": "Во имя Аллаха, Милостивого, Милосердного.",
+          "highlights": {
+            "اللَّهِ": "#4CD3A5",
+            "الرَّحْمَٰنِ": "#4CD3A5",
+            "الرَّحِيمِ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 2,
+          "arabicText": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+          "transliteration": "al-ḥamdu lillāhi rabbi l-ʿālamīn",
+          "translation": "Хвала Аллаху, Господу миров,",
+          "highlights": {
+            "الْحَمْدُ": "#4CD3A5",
+            "اللَّهِ": "#4CD3A5",
+            "رَبِّ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 3,
+          "arabicText": "الرَّحْمَٰنِ الرَّحِيمِ",
+          "transliteration": "ar-raḥmāni r-raḥīm",
+          "translation": "Милостивому, Милосердному,",
+          "highlights": {
+            "الرَّحْمَٰنِ": "#4CD3A5",
+            "الرَّحِيمِ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 4,
+          "arabicText": "مَالِكِ يَوْمِ الدِّينِ",
+          "transliteration": "māliki yawmi d-dīn",
+          "translation": "Властелину Дня воздаяния.",
+          "highlights": {
+            "مَالِكِ": "#4CD3A5",
+            "الدِّينِ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 5,
+          "arabicText": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+          "transliteration": "iyyāka naʿbudu wa-iyyāka nastaʿīn",
+          "translation": "Тебе одному мы поклоняемся и Тебя одного молим о помощи.",
+          "highlights": {
+            "نَعْبُدُ": "#4CD3A5",
+            "نَسْتَعِينُ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 6,
+          "arabicText": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
+          "transliteration": "ihdina ṣ-ṣirāṭa l-mustaqīm",
+          "translation": "Веди нас прямым путём —",
+          "highlights": {
+            "الصِّرَاطَ": "#4CD3A5",
+            "الْمُسْتَقِيمَ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 7,
+          "arabicText": "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+          "transliteration": "ṣirāṭa l-laḏīna anʿamta ʿalayhim ġayri l-maġḍūbi ʿalayhim wa-lā ḍ-ḍāllīn",
+          "translation": "путём тех, кого Ты облагодетельствовал, не тех, кто вызвал гнев, и не заблудших.",
+          "highlights": {
+            "الَّذِينَ": "#4CD3A5",
+            "أَنْعَمْتَ": "#4CD3A5",
+            "الْمَغْضُوبِ": "#4CD3A5",
+            "الضَّالِّينَ": "#4CD3A5"
+          }
+        }
+      ]
+    }
+  ]
+}

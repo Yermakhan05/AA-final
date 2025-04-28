@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.QuranFragment">
+
+    <!-- Основной экран с сурами и аятами -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1E1E1E">
+
+        <!-- Кнопка меню (слева вверху) -->
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_menu"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#FFFFFF"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Заголовок суры -->
+        <LinearLayout
+            android:id="@+id/surahHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#2D2D2D"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@id/menuButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/surahTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="56. әл-Уақи'а"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/surahInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Меккелік • 96 Аят"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/paraInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Пара 27 • ¼ Hizb 54"
+                android:textColor="#4CD3A5"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- RecyclerView для аятов -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/surahHeader"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Боковая панель с сурaми -->
+    <ListView
+        android:id="@+id/surahListView"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:background="#2D2D2D"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        android:layout_gravity="start" />
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Ramadan Start",
+    "description": "Начало месяца поста Рамадан",
+    "hijri": "1 Ramadan 1446",
+    "gregorian": "2025-03-01"
+  },
+  {
+    "title": "Eid al-Fitr",
+    "description": "Праздник разговения",
+    "hijri": "1 Shawwal 1446",
+    "gregorian": "2025-04-01"
+  },
+  {
+    "title": "Hajj Season Begins",
+    "description": "Начало паломничества",
+    "hijri": "8 Dhu al-Hijjah 1446",
+    "gregorian": "2025-06-04"
+  },
+  {
+    "title": "Eid al-Adha",
+    "description": "Праздник жертвоприношения",
+    "hijri": "10 Dhu al-Hijjah 1446",
+    "gregorian": "2025-06-06"
+  },
+  {
+    "title": "Islamic New Year",
+    "description": "Начало нового хиджра-года",
+    "hijri": "1 Muharram 1447",
+    "gregorian": "2025-07-07"
+  }
+]

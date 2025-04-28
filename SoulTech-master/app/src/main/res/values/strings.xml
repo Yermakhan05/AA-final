@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">My Faith</string>
+    <string-array name="quotes">
+        <item>Quote 1 text here.</item>
+        <item>Another inspiring quote.</item>
+        <item>A third quote.</item>
+    </string-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="google_maps_api_key" translatable="false">AIzaSyBU-hVdtGr6qD3220iOhHOMH1VYvj8cnb8</string>
+    <string name="settings">Settings</string>
+    <string name="account">Account</string>
+    <string name="notification">Notification</string>
+    <string name="privacy_security"><![CDATA[Privacy & Security]]></string>
+    <string name="help_support"><![CDATA[Help & Support]]></string>
+    <string name="app_settings">App settings</string>
+    <string name="change_language">Change Language</string>
+    <string name="change_wallpaper">Change Wallpaper</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="edit">Edit</string>
+    <string name="number">Number</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account_sign_in">Already have an account? Sign in</string>
+    <string name="email_or_number">Email or Number</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign up</string>
+    <string name="events">Events</string>
+    <string name="communities">Communities</string>
+    <string name="progress">Progress</string>
+    <string name="map">Map</string>
+    <string name="log_out">Log Out</string>
+    <string name="home_page">Home Page</string>
+    <string name="role">Role:</string>
+    <string name="phone_number" translatable="false">+1234567890</string>
+    <string name="bio" translatable="false">Hello, I\'m using MyFaith!</string>
+    <string name="profile_picture" translatable="false">Profile Picture</string>
+    <string name="books">Books</string>
+    <string name="zikr">Zikr</string>
+    <string name="compass">Compass</string>
+    <string name="quote">Quote</string>
+    <string name="quran">Quran</string>
+    <string name="fajr">Fajr</string>
+    <string name="dhuhr">Dhuhr</string>
+    <string name="asr">Asr</string>
+    <string name="maghrib">Maghrib</string>
+    <string name="isha">Isha</string>
+    <string name="loading">Loading</string>
+    <string name="no_quote_available">No quote available</string>
+    <string name="error">Error</string>
+    <string name="save">Save</string>
+    <string name="signUp">Sign Up</string>
+    <string name="signIn">Sign In</string>
+
+</resources>

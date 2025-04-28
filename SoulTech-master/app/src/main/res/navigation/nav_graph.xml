@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:label=""
+        android:name="com.example.myfaith.fragment.HomeFragment"
+        tools:layout="@layout/home_page_fragment"/>
+
+    <fragment
+        android:id="@+id/compassFragment"
+        android:name="com.example.myfaith.fragment.CompassFragment"
+        android:label=""
+        tools:layout="@layout/fragment_compass" />
+
+    <fragment
+        android:id="@+id/quranFragment"
+        android:label=""
+        android:name="com.example.myfaith.fragment.QuranFragment"
+        tools:layout="@layout/fragment_quran" />
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/surahFragment"-->
+    <!--        android:name="com.example.myfaith.SurahFragment"-->
+    <!--        android:label="Surah"-->
+    <!--        tools:layout="@layout/surah_fragment" />-->
+
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:label=""
+        android:name="com.example.myfaith.fragment.MapsFragment"
+        tools:layout="@layout/fragment_maps" />
+
+    <fragment
+        android:id="@+id/booksFragment"
+        android:label=""
+        android:name="com.example.myfaith.fragment.BooksFragment"
+        tools:layout="@layout/books_fragment" />
+
+    <fragment
+        android:id="@+id/quoteFragment"
+        android:label=""
+        android:name="com.example.myfaith.fragment.QuoteFragment"
+        tools:layout="@layout/quote_fragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:label=""
+        android:name="com.example.myfaith.fragment.ProfileFragment"
+        tools:layout="@layout/profile_fragment" />
+
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:label=""
+        android:name="com.example.myfaith.fragment.NotificationFragment"
+        tools:layout="@layout/notification_fragment" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:label=""
+        android:name="com.example.myfaith.fragment.SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/app_settings"
+        android:label=""
+        android:name="com.example.myfaith.fragment.AppSettingsFragment"
+        tools:layout="@layout/fragment_app_settings" />
+
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.example.myfaith.fragment.EventsFragment"
+        tools:layout="@layout/fragment_events" />
+    <fragment
+        android:id="@+id/zikrFragment"
+        android:name="com.example.myfaith.fragment.ZikrFragment"
+        tools:layout="@layout/activity_zikr" />
+</navigation>

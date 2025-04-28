@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">My Faith</string>
+    <string-array name="quotes">
+        <item>Текст первой цитаты.</item>
+        <item>Вдохновляющая цитата.</item>
+        <item>Третья цитата.</item>
+    </string-array>
+    <string name="hello_blank_fragment">Привет, пустой фрагмент</string>
+    <string name="settings">Настройки</string>
+    <string name="account">Аккаунт</string>
+    <string name="notification">Уведомления</string>
+    <string name="privacy_security">Конфиденциальность и безопасность</string>
+    <string name="help_support">Помощь и поддержка</string>
+    <string name="app_settings">Настройки приложения</string>
+    <string name="change_language">Изменить язык</string>
+    <string name="change_wallpaper">Изменить обои</string>
+    <string name="name">Имя</string>
+    <string name="email">Электронная почта</string>
+    <string name="username">Имя пользователя</string>
+    <string name="edit">Редактировать</string>
+    <string name="number">Номер</string>
+    <string name="password">Пароль</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="already_have_an_account_sign_in">Уже есть аккаунт? Войти</string>
+    <string name="email_or_number">Эл. почта или номер</string>
+    <string name="login">Вход</string>
+    <string name="don_t_have_an_account_sign_up">Нет аккаунта? Зарегистрируйтесь</string>
+    <string name="events">События</string>
+    <string name="communities">Сообщества</string>
+    <string name="progress">Прогресс</string>
+    <string name="map">Карта</string>
+    <string name="log_out">Выйти</string>
+    <string name="home_page">Домашняя страница</string>
+    <string name="role"><Ро></Ро>ль:</string>
+    <string name="books">Книги</string>
+    <string name="zikr">Зикир</string>
+    <string name="compass">Компасс</string>
+    <string name="quote">Цитата</string>
+    <string name="quran">Куран</string>
+    <string name="fajr">Фаджр</string>
+    <string name="dhuhr">Зухр</string>
+    <string name="asr">Аср</string>
+    <string name="maghrib">Магриб</string>
+    <string name="isha">Иша</string>
+    <string name="loading">Загружается</string>
+    <string name="no_quote_available">Нет доступных цитат</string>
+    <string name="error">Ошибка</string>
+    <string name="save">Сохранить</string>
+    <string name="signIn">Войти</string>
+    <string name="signUp">Зарегистрируйся</string>
+
+</resources>

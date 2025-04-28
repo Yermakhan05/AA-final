@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/zikr_green"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            android:textColor="@color/left_panel"
+            android:textSize="44sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/settings_icon"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/account_settings"
+            android:layout_width="200dp"
+            android:layout_height="56dp"
+            android:textSize="20sp"
+            android:textColor="@color/left_panel"
+            android:text="@string/account"
+            android:maxLines="1"
+            android:gravity="center"
+            android:ellipsize="end"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/rounded_background"/>
+
+        <TextView
+            android:id="@+id/notification_settings"
+            android:layout_width="200dp"
+            android:layout_height="56dp"
+            android:textSize="20sp"
+            android:textColor="@color/left_panel"
+            android:text="@string/notification"
+            android:maxLines="1"
+            android:gravity="center"
+            android:ellipsize="end"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/rounded_background"/>
+
+        <TextView
+            android:id="@+id/privacy_settings"
+            android:layout_width="200dp"
+            android:layout_height="56dp"
+            android:textSize="20sp"
+            android:textColor="@color/left_panel"
+            android:text="@string/privacy_security"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/rounded_background"/>
+
+        <TextView
+            android:id="@+id/support_settings"
+            android:layout_width="200dp"
+            android:layout_height="56dp"
+            android:textSize="20sp"
+            android:textColor="@color/left_panel"
+            android:text="@string/help_support"
+            android:maxLines="1"
+            android:gravity="center"
+            android:ellipsize="end"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/rounded_background"/>
+        <TextView
+            android:id="@+id/app_settings"
+            android:layout_width="200dp"
+            android:layout_height="56dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/left_panel"
+            android:text="@string/app_settings"
+            android:maxLines="1"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/rounded_background"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+</LinearLayout>

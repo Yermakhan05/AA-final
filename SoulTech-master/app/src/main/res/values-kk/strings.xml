@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">My Faith</string>
+    <string name="google_maps_api_key" translatable="false">AIzaSyBU-hVdtGr6qD3220iOhHOMH1VYvj8cnb8</string>
+    <string-array name="quotes">
+        <item>Бірінші нақыл сөздің мәтіні.</item>
+        <item>Шабыттандыратын нақыл сөз.</item>
+        <item>Үшінші нақыл сөз.</item>
+    </string-array>
+    <string name="hello_blank_fragment">Сәлем, бос фрагмент</string>
+    <string name="settings">Параметрлер</string>
+    <string name="account">Аккаунт</string>
+    <string name="notification">Хабарламалар</string>
+    <string name="privacy_security">Құпиялылық және қауіпсіздік</string>
+    <string name="help_support">Көмек және қолдау</string>
+    <string name="app_settings">Қосымша параметрлері</string>
+    <string name="change_language">Тілді өзгерту</string>
+    <string name="change_wallpaper">Қабырға суретін өзгерту</string>
+    <string name="name">Аты</string>
+    <string name="email">Электрондық пошта</string>
+    <string name="username">Пайдаланушы аты</string>
+    <string name="edit">Өзгерту</string>
+    <string name="number">Нөмір</string>
+    <string name="password">Құпиясөз</string>
+    <string name="register">Тіркелу</string>
+    <string name="already_have_an_account_sign_in">Аккаунтыңыз бар ма? Кіру</string>
+    <string name="email_or_number">Пошта немесе нөмір</string>
+    <string name="login">Кіру</string>
+    <string name="don_t_have_an_account_sign_up">Аккаунтыңыз жоқ па? Тіркеліңіз</string>
+    <string name="events">Іс-шаралар</string>
+    <string name="communities">Қауымдастықтар</string>
+    <string name="progress">Жетістіктер</string>
+    <string name="map">Карта</string>
+    <string name="log_out">Шығу</string>
+    <string name="home_page">Басты бет</string>
+    <string name="role">Рөль:</string>
+    <string name="books">Кітаптар</string>
+    <string name="zikr">Зікір</string>
+    <string name="compass">Компасс</string>
+    <string name="quote">Дәйекісөз</string>
+    <string name="quran">Құран</string>
+    <string name="fajr">Таң</string>
+    <string name="dhuhr">Бесін</string>
+    <string name="asr">Екінті</string>
+    <string name="maghrib">Ақшам</string>
+    <string name="isha">Құптан</string>
+    <string name="loading">Жазылып жатры</string>
+    <string name="no_quote_available">Дәйексөз қолжетімді</string>
+    <string name="error">Қате</string>
+    <string name="save">Сақтау</string>
+    <string name="signIn">Кіру</string>
+    <string name="signUp">Тіркел</string>
+</resources>

@@ -1,0 +1,159 @@
+{
+  "surahs": [
+    {
+      "number": 1,
+      "name": "әл-Фатиха",
+      "type": "Меккелік",
+      "verses": [
+        {
+          "number": 1,
+          "arabicText": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+          "transliteration": "Bismillāhi r-raḥmāni r-raḥīm",
+          "translation": "Аса қамқор, ерекше мейірімді Алланың атымен.",
+          "highlights": {
+            "اللَّهِ": "#4CD3A5",
+            "الرَّحْمَٰنِ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 2,
+          "arabicText": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+          "transliteration": "Al-ḥamdu lillāhi rabbi l-‘ālamīn",
+          "translation": "Әлемдердің Раббысы – Аллаға мадақ.",
+          "highlights": {
+            "اللَّهِ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 3,
+          "arabicText": "الرَّحْمَٰنِ الرَّحِيمِ",
+          "transliteration": "Ar-raḥmāni r-raḥīm",
+          "translation": "Аса қамқор, ерекше мейірімді.",
+          "highlights": {
+            "الرَّحْمَٰنِ": "#4CD3A5",
+            "الرَّحِيمِ": "#4CD3A5"
+          }
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "name": "әл-Бақара",
+      "type": "Мединалық",
+      "verses": [
+        {
+          "number": 1,
+          "arabicText": "الم",
+          "transliteration": "Alif-Lām-Mīm",
+          "translation": "Алиф, Лам, Мим.",
+          "highlights": {
+            "الم": "#4CD3A5"
+          }
+        },
+        {
+          "number": 2,
+          "arabicText": "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۖ فِيهِ",
+          "transliteration": "Dhālika l-kitābu lā rayba fīh",
+          "translation": "Бұл — күмән жоқ Кітап.",
+          "highlights": {
+            "الْكِتَابُ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 3,
+          "arabicText": "هُدًى لِّلْمُتَّقِينَ",
+          "transliteration": "Hudan lil-muttaqīn",
+          "translation": "Тақуалар үшін тура жол көрсеткіші.",
+          "highlights": {
+            "لِّلْمُتَّقِينَ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 4,
+          "arabicText": "الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ",
+          "transliteration": "Alladhīna yu’minūna bil-ghayb",
+          "translation": "Олар ғайыпқа иман келтіреді.",
+          "highlights": {
+            "يُؤْمِنُونَ": "#4CD3A5"
+          }
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "name": "Әли Имран",
+      "type": "Мединалық",
+      "verses": [
+        {
+          "number": 1,
+          "arabicText": "الم",
+          "transliteration": "Alif-Lām-Mīm",
+          "translation": "Алиф, Лам, Мим.",
+          "highlights": {
+            "الم": "#4CD3A5"
+          }
+        },
+        {
+          "number": 2,
+          "arabicText": "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",
+          "transliteration": "Allāhu lā ilāha illā huwa l-ḥayyu l-qayyūm",
+          "translation": "Алладан басқа құдай жоқ, Ол – тірі, мәңгі тіреуші.",
+          "highlights": {
+            "اللَّهُ": "#4CD3A5",
+            "الْقَيُّومُ": "#4CD3A5"
+          }
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "name": "ан-Ниса",
+      "type": "Мединалық",
+      "verses": [
+        {
+          "number": 1,
+          "arabicText": "يَا أَيُّهَا النَّاسُ",
+          "transliteration": "Yā ayyuhā an-nās",
+          "translation": "Ей, адамдар!",
+          "highlights": {
+            "النَّاسُ": "#4CD3A5"
+          }
+        },
+        {
+          "number": 2,
+          "arabicText": "اتَّقُوا رَبَّكُمُ",
+          "transliteration": "Ittaqū rabbakum",
+          "translation": "Раббыларыңнан қорқыңдар!",
+          "highlights": {
+            "رَبَّكُمُ": "#4CD3A5"
+          }
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "name": "әл-Мәида",
+      "type": "Мединалық",
+      "verses": [
+        {
+          "number": 1,
+          "arabicText": "يَا أَيُّهَا الَّذِينَ آمَنُوا",
+          "transliteration": "Yā ayyuhā al-laḏīna āmanū",
+          "translation": "Ей, иман келтіргендер!",
+          "highlights": {
+            "آمَنُوا": "#4CD3A5"
+          }
+        },
+        {
+          "number": 2,
+          "arabicText": "أَوْفُوا بِالْعُقُودِ",
+          "transliteration": "Awfū bil-‘uqūd",
+          "translation": "Уәделеріңді орындаңдар!",
+          "highlights": {
+            "بِالْعُقُودِ": "#4CD3A5"
+          }
+        }
+      ]
+    }
+  ]
+}
