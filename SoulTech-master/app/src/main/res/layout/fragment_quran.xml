@@ -89,4 +89,20 @@
         android:divider="@android:color/darker_gray"
         android:dividerHeight="1dp"
         android:layout_gravity="start" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/errorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:text="Ошибка загрузки данных" />
+
 </androidx.drawerlayout.widget.DrawerLayout>
