@@ -20,7 +20,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 import com.google.android.material.snackbar.Snackbar
 import kotlin.math.roundToInt
 import android.location.Geocoder

@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 
 class NotificationHelper(private val context: Context) {
 

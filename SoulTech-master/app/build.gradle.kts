@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mynavigationapp"
+    namespace = "com.example.myfaith"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.mynavigationapp"
+        applicationId = "com.example.myfaith"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -64,6 +64,17 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.places)
     implementation(libs.androidx.espresso.core)
+    implementation ("androidx.core:core-ktx:1.9.0")
+    implementation ("androidx.appcompat:appcompat:1.6.1")
+    implementation ("com.google.android.material:material:1.8.0")
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.5.3")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+    testImplementation ("junit:junit:4.13.2")
+    androidTestImplementation ("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

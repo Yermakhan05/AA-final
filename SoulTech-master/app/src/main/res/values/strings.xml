@@ -53,4 +53,16 @@
     <string name="signUp">Sign Up</string>
     <string name="signIn">Sign In</string>
 
+
+    <string name="hadith_title">Хадисы</string>
+    <string name="daily_hadith">Ежедневные хадисы</string>
+    <string name="favorite">Избранное</string>
+    <string name="favorites">Избранные</string>
+    <string name="back">Назад</string>
+    <string name="view_hadith">Просмотреть хадисы</string>
+    <string name="favorite_hadiths_count">Избранные хадисы: %d</string>
+    <string name="no_favorites">У вас пока нет избранных хадисов</string>
+
+
+
 </resources>

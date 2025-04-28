@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.mynavigationapp.R
-import com.example.mynavigationapp.databinding.FragmentSettingsBinding
+import com.example.myfaith.R
+import com.example.myfaith.databinding.FragmentSettingsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SettingsFragment : Fragment() {

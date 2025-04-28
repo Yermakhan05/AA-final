@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfaith.entity.Holiday
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 
 
 

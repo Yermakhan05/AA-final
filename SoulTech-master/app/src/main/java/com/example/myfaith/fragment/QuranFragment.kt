@@ -14,7 +14,7 @@ import com.example.myfaith.adapter.QuranAdapter
 import com.example.myfaith.adapter.SurahListAdapter
 import com.example.myfaith.entity.QuranData
 import com.example.myfaith.entity.Surah
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import java.io.BufferedReader

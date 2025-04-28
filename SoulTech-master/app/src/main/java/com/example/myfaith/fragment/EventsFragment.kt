@@ -5,7 +5,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myfaith.adapter.HolidayAdapter
-import com.example.mynavigationapp.databinding.FragmentEventsBinding
+import com.example.myfaith.databinding.FragmentEventsBinding
 import com.example.myfaith.entity.Holiday
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

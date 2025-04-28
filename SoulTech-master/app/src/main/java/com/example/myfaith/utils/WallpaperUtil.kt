@@ -3,7 +3,7 @@ package com.example.myfaith.utils
 import android.content.Context
 import android.view.View
 import androidx.core.content.ContextCompat
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 
 object WallpaperUtil {
     fun applyBackground(view: View, context: Context) {

@@ -12,5 +12,8 @@
     <color name="zikr_green">#6FAD82</color>
     <color name="bottom_nav_icon_color">@color/bottom_nav_icon_selector</color>
     <color name="bottom_nav_text_color">@color/bottom_nav_text_selector</color>
-
+    <color name="dark_blue">#0F1A2A</color>
+    <color name="dark_gray">#1E2A3A</color>
+    <color name="light_gray">#8A8D91</color>
+    <color name="accent_green">#4CAF50</color>
 </resources>
