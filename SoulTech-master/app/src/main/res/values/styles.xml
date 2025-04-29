@@ -1,15 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="BottomNavigationStyle" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="itemIconSize">44dp</item>
-        <item name="itemTextAppearanceInactive">@style/BottomNavText</item>
-        <item name="itemTextAppearanceActive">@style/BottomNavText</item>
-        <item name="itemBackground">@drawable/bottom_nav_item_background</item>
+    <!-- Bottom Navigation Style for Icon-Only Navigation -->
+    <style name="BottomNavigationStyle">
+        <!-- Make sure text is hidden -->
+        <item name="labelVisibilityMode">unlabeled</item>
+
+        <!-- Transparent background for each item -->
+        <item name="itemBackground">@android:color/transparent</item>
+
+        <!-- Icon tint selector for selected/unselected states -->
+        <item name="itemIconTint">@color/bottom_nav_icon_selector</item>
+
+        <!-- Ripple effect when touched -->
+        <item name="itemRippleColor">@color/ripple_color</item>
+
+        <!-- Increase icon size -->
+        <item name="itemIconSize">36dp</item>
+
+
+        <!-- Disable horizontal translation for fixed position -->
+        <item name="itemHorizontalTranslationEnabled">false</item>
+
+        <!-- Add elevation for shadow -->
+        <item name="elevation">8dp</item>
+        <item name="itemActiveIndicatorStyle">@style/App.ActiveIndicator</item>
+    </style>
+    <style name="App.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#4DFFFFFF</item>
+        <item name="android:width">56dp</item>
+        <item name="android:height">32dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
 
-    <style name="BottomNavText">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/left_panel</item>
+    <!-- Shape appearance for rounded corners -->
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
     </style>
-
 </resources>

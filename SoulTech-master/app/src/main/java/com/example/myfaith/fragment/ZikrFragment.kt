@@ -46,6 +46,6 @@ class ZikrFragment : Fragment() {
     }
     override fun onResume() {
         super.onResume()
-        activity?.findViewById<BottomNavigationView>(R.id.bottom_nav_view)?.visibility = View.GONE
+//        activity?.findViewById<BottomNavigationView>(R.id.bottom_nav_view)?.visibility = View.GONE
     }
 }

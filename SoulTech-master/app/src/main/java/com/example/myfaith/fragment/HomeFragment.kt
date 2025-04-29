@@ -56,15 +56,15 @@ class HomeFragment : Fragment() {
         namazStorage = NamazTimeStorage(requireContext())
 
         quranButton.setOnClickListener {
-            findNavController().navigate(R.id.quranFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_quranFragment)
         }
 
         quoteButton.setOnClickListener {
-            findNavController().navigate(R.id.quoteFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_quoteFragment)
         }
 
         zikrButton.setOnClickListener {
-            findNavController().navigate(R.id.zikrFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_zikrFragment)
         }
 
         booksButton.setOnClickListener {
@@ -72,7 +72,7 @@ class HomeFragment : Fragment() {
         }
 
         compassButton.setOnClickListener {
-            findNavController().navigate(R.id.compassFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_compassFragment)
         }
         val savedDate = namazStorage.getSavedDate()
         val currentDate = LocalDate.now().toString()

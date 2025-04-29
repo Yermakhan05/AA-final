@@ -43,7 +43,7 @@ class SettingsFragment : Fragment() {
         }
 
         binding.appSettings.setOnClickListener {
-            findNavController().navigate(R.id.app_settings)
+            findNavController().navigate(R.id.action_settingsFragment_to_app_settings)
         }
     }
     override fun onResume() {
