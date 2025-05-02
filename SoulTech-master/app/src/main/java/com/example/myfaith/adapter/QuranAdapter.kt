@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 import com.example.myfaith.entity.Verse
 
 class QuranAdapter(private val verses: List<Verse>) : RecyclerView.Adapter<QuranAdapter.QuranViewHolder>() {

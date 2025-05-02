@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfaith.entity.Notification
 import com.example.myfaith.adapter.NotificationAdapter
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 
 class NotificationFragment : Fragment() {
 

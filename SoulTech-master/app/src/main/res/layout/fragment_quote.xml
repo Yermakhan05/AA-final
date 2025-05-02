@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_blue"
+    android:paddingBottom="80dp"
+    tools:context=".fragment.QuoteFragment">
+
+<ImageButton
+android:id="@+id/backButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="16dp"
+android:layout_marginTop="16dp"
+android:background="?attr/selectableItemBackgroundBorderless"
+android:contentDescription="@string/back"
+android:padding="8dp"
+android:src="@drawable/ic_back"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+app:tint="@color/white" />
+
+<TextView
+android:id="@+id/titleTextView"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="16dp"
+android:text="@string/hadith_title"
+android:textColor="@color/white"
+android:textSize="20sp"
+android:textStyle="bold"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent" />
+
+<TextView
+android:id="@+id/quoteTextView"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:layout_marginStart="32dp"
+android:layout_marginEnd="32dp"
+android:gravity="center"
+android:textColor="@color/white"
+android:textSize="24sp"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+tools:text="Есть две награды, которые многие не ценят. Это – здоровье и свободное время." />
+
+<TextView
+android:id="@+id/quoteSourceView"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="16dp"
+android:textColor="@color/light_gray"
+android:textSize="16sp"
+app:layout_constraintEnd_toEndOf="@+id/quoteTextView"
+app:layout_constraintStart_toStartOf="@+id/quoteTextView"
+app:layout_constraintTop_toBottomOf="@+id/quoteTextView"
+tools:text="Бухари" />
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginBottom="32dp"
+android:gravity="center"
+android:orientation="horizontal"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent">
+
+<Button
+    android:id="@+id/nextQuoteButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/rounded_button_bg"
+    android:drawableStart="@drawable/ic_daily"
+    android:drawablePadding="8dp"
+    android:padding="12dp"
+    android:text="@string/daily_hadith"
+    android:textColor="@color/white" />
+
+<ImageButton
+    android:id="@+id/favoriteButton"
+    android:layout_width="56dp"
+    android:layout_height="56dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/circle_button_bg"
+    android:contentDescription="@string/favorite"
+    android:src="@drawable/ic_favorite_outline"
+    app:tint="@color/white" />
+
+<Button
+    android:id="@+id/favoritesButton"
+    android:layout_width="56dp"
+    android:layout_height="56dp"
+    android:layout_marginStart="8dp"
+    android:background="@drawable/circle_button_bg"
+    android:contentDescription="@string/favorites"
+    android:padding="12dp"
+    android:drawableStart="@drawable/ic_favorites"
+    app:tint="@color/white" />
+
+</LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

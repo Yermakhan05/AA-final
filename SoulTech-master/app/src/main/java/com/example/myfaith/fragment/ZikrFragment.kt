@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ZikrFragment : Fragment() {

@@ -3,7 +3,7 @@ import com.example.myfaith.entity.Notification
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 import android.view.LayoutInflater
 import android.view.View
 

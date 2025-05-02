@@ -14,7 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myfaith.datasource.ApiSource
 import com.example.myfaith.entity.response.RegistrationResponse
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

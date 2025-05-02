@@ -22,8 +22,8 @@ import com.example.myfaith.datasource.ApiSource
 import com.example.myfaith.receiver.NamazAlarmReceiver
 import com.example.myfaith.utils.LocationHelper
 import com.example.myfaith.utils.NamazTimeStorage
-import com.example.mynavigationapp.R
-import com.example.mynavigationapp.databinding.HomePageFragmentBinding
+import com.example.myfaith.R
+import com.example.myfaith.databinding.HomePageFragmentBinding
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.LocalTime
@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
         }
 
         booksButton.setOnClickListener {
-//            findNavController().navigate(R.id.booksFragment)
+            findNavController().navigate(R.id.booksFragment)
         }
 
         compassButton.setOnClickListener {
