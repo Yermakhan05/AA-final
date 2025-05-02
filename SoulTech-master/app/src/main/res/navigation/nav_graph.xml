@@ -36,13 +36,16 @@
         android:id="@+id/quranFragment"
         android:label=""
         android:name="com.example.myfaith.fragment.QuranFragment"
-        tools:layout="@layout/fragment_quran" />
+        tools:layout="@layout/fragment_quran" >
 
-<!--        <fragment-->
-<!--            android:id="@+id/surahFragment"-->
-<!--            android:name="com.example.myfaith.SurahFragment"-->
-<!--            android:label="Surah"-->
-<!--            tools:layout="@layout/surah_fragment" />-->
+        <argument
+            android:name="surahId"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+        <deepLink
+            app:uri="https://myfaith.kz/quran/{surahId}" />
+    </fragment>
 
     <fragment
         android:id="@+id/mapsFragment"

@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mynavigationapp"
+    namespace = "com.example.myfaith"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.mynavigationapp"
+        applicationId = "com.example.myfaith"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.work.runtime)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)

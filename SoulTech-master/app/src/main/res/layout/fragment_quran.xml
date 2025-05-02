@@ -116,5 +116,4 @@
         android:layout_gravity="center"
         android:visibility="gone"
         android:text="Ошибка загрузки данных" />
-
 </androidx.drawerlayout.widget.DrawerLayout>

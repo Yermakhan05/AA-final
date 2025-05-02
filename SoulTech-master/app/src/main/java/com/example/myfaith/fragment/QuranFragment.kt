@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfaith.adapter.QuranAdapter
@@ -70,8 +71,12 @@ class QuranFragment : Fragment() {
             activity?.findViewById<Toolbar>(R.id.toolbar)?.visibility = View.GONE
         }
 
-        savedInstanceState?.let {
-            selectedSurahIndex = it.getInt("selected_surah_index", 0)
+
+        val args: QuranFragmentArgs by navArgs()
+        selectedSurahIndex = if (args.surahId != 0) {
+            args.surahId - 1
+        } else {
+            savedInstanceState?.getInt("selected_surah_index", 0) ?: 0
         }
 
         loadQuranData()

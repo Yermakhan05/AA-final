@@ -2,14 +2,30 @@ package com.example.myfaith
 
 import android.app.Application
 import android.content.Context
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.example.myfaith.datasource.ApiSource
 import com.example.myfaith.utils.LocaleHelper
+import java.util.concurrent.TimeUnit
 
 class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
         ApiSource.init(applicationContext)
+        val workManager = WorkManager.getInstance(applicationContext)
+
+        val dailyRequest = PeriodicWorkRequestBuilder<NamazUpdateWorker>(1, TimeUnit.DAYS)
+            .setInitialDelay(1, TimeUnit.HOURS)
+            .addTag("namaz_daily_update")
+            .build()
+
+        workManager.enqueueUniquePeriodicWork(
+            "NamazTimeUpdate",
+            ExistingPeriodicWorkPolicy.KEEP,
+            dailyRequest
+        )
     }
     override fun attachBaseContext(base: Context?) {
         val lang = base?.getSharedPreferences("settings", Context.MODE_PRIVATE)

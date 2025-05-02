@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.provider.AlarmClock
 import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
@@ -118,7 +119,6 @@ class HomeFragment : Fragment() {
                     "Isha" -> binding.isha.setTextColor(Color.GREEN)
                 }
 
-                // Save next prayer details
                 namazStorage.saveNextPrayer(entry.key, entry.value.toString())
 
                 scheduleNamazNotification(entry.key, entry.value)
@@ -208,6 +208,15 @@ class HomeFragment : Fragment() {
         } else {
             locationHelper.requestLocationPermission(requireActivity(), LOCATION_PERMISSION_REQUEST_CODE)
         }
+        val alarmButton = view.findViewById<Button>(R.id.set_alarm_button)
+        alarmButton.setOnClickListener {
+            setAlarmWithAlarmManager(requireContext(), 11, 20)
+        }
+
+
+        val time = LocalTime.now().plusMinutes(1)
+
+//        scheduleNamazNotification("Test Prayer", time)
 
         return view
     }
@@ -219,6 +228,13 @@ class HomeFragment : Fragment() {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1002
         private const val REQUEST_CODE_SCHEDULE_EXACT_ALARM = 1001
 
+
+    }
+    private fun setAlarmWithAlarmManager(context: Context, hour: Int, minute: Int) {
+        val intent = Intent(AlarmClock.ACTION_SET_ALARM)
+        startActivity(intent)
+
+        Toast.makeText(context, "Будильник установлен", Toast.LENGTH_SHORT).show()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
