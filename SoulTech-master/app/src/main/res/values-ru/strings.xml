@@ -75,4 +75,6 @@
     <string name="view_hadith">Просмотреть хадисы</string>
     <string name="favorite_hadiths_count">Избранные хадисы: %d</string>
     <string name="no_favorites">У вас пока нет избранных хадисов</string>
+    <string name="book_cover">Обложка книги</string>
+
 </resources>

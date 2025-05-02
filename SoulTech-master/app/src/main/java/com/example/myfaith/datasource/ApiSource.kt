@@ -5,7 +5,6 @@ import android.content.Context
 import com.example.myfaith.api.LoginApi
 import com.example.myfaith.api.NamazTimeApi
 import com.example.myfaith.api.ProfileApi
-import com.example.myfaith.api.QuoteApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -51,7 +50,5 @@ object ApiSource {
     val profileApi: ProfileApi by lazy {
         authRetrofit.create(ProfileApi:: class.java)
     }
-    val quoteApi: QuoteApi by lazy {
-        authRetrofit.create(QuoteApi:: class.java)
-    }
+
 }

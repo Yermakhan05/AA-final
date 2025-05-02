@@ -1,68 +1,70 @@
 package com.example.myfaith.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.myfaith.entity.Quote
+import com.example.myfaith.network.RetrofitClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class QuoteViewModel : ViewModel() {
 
-    private val quotes = mutableListOf(
-        Quote(
-            "Есть две награды, которые многие не ценят. Это – здоровье и свободное время.",
-            "Бухари",
-            false
-        ),
-        Quote(
-            "В Судный день каждым будет с тем, кого любил.",
-            "Бухари",
-            false
-        ),
-        Quote(
-            "Игнорирование мирского (незаинтересованность) – успокаивает сердце и тело и д...",
-            "Муснади-Шихаб",
-            false
-        ),
-        Quote(
-            "Поистине, Аллах не смотрит на ваш внешний вид и ваше имущество, но Он смотрит на ваши сердца и ваши дела.",
-            "Муслим",
-            false
-        ),
-        Quote(
-            "Тот, кто верит в Аллаха и в Последний день, пусть говорит благое или молчит.",
-            "Бухари и Муслим",
-            false
-        )
-    )
+    private val _quotes = MutableLiveData<List<Quote>>()
+    val quotes: LiveData<List<Quote>> get() = _quotes
 
     private var currentQuoteIndex = 0
 
+    init {
+        fetchQuotesFromApi()
+    }
+
+    private fun fetchQuotesFromApi() {
+        RetrofitClient.instance.getHadiths().enqueue(object : Callback<List<Quote>> {
+            override fun onResponse(call: Call<List<Quote>>, response: Response<List<Quote>>) {
+                if (response.isSuccessful && response.body() != null) {
+                    _quotes.value = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<List<Quote>>, t: Throwable) {
+                t.printStackTrace()
+            }
+        })
+    }
+
     fun getCurrentQuote(): Quote? {
-        return if (quotes.isNotEmpty()) quotes[currentQuoteIndex] else null
+        return _quotes.value?.getOrNull(currentQuoteIndex)
     }
 
     fun moveToNextQuote() {
-        if (quotes.isNotEmpty()) {
-            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.size
+        val quotesList = _quotes.value ?: return
+        if (quotesList.isNotEmpty()) {
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotesList.size
         }
     }
 
     fun toggleFavorite(quote: Quote): Boolean {
-        val index = quotes.indexOf(quote)
+        val quotesList = _quotes.value?.toMutableList() ?: return false
+        val index = quotesList.indexOf(quote)
         if (index != -1) {
-            quotes[index] = quote.copy(isFavorite = !quote.isFavorite)
-            return quotes[index].isFavorite
+            quotesList[index] = quote.copy(isFavorite = !quote.isFavorite)
+            _quotes.value = quotesList
+            return quotesList[index].isFavorite
         }
         return false
     }
 
     fun getFavoriteQuotes(): List<Quote> {
-        return quotes.filter { it.isFavorite }
+        return _quotes.value?.filter { it.isFavorite } ?: emptyList()
     }
 
     fun setCurrentQuoteIndex(favoriteIndex: Int) {
         val favoriteQuotes = getFavoriteQuotes()
         if (favoriteIndex < favoriteQuotes.size) {
             val quote = favoriteQuotes[favoriteIndex]
-            currentQuoteIndex = quotes.indexOf(quote)
+            currentQuoteIndex = _quotes.value?.indexOf(quote) ?: 0
         }
     }
 }

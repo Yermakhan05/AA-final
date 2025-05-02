@@ -20,7 +20,7 @@ class QuoteFragment : Fragment() {
     private lateinit var quoteSourceView: TextView
     private lateinit var favoriteButton: ImageButton
     private lateinit var nextQuoteButton: Button
-    private lateinit var favoritesButton: Button    // ← ИСПРАВИЛ ЗДЕСЬ
+    private lateinit var favoritesButton: Button
     private lateinit var backButton: ImageButton
 
     override fun onCreateView(
@@ -33,7 +33,7 @@ class QuoteFragment : Fragment() {
         quoteSourceView = view.findViewById(R.id.quoteSourceView)
         favoriteButton = view.findViewById(R.id.favoriteButton)
         nextQuoteButton = view.findViewById(R.id.nextQuoteButton)
-        favoritesButton = view.findViewById(R.id.favoritesButton) // ← ИСПРАВИЛ ТИП
+        favoritesButton = view.findViewById(R.id.favoritesButton)
         backButton = view.findViewById(R.id.backButton)
 
         return view
@@ -44,10 +44,12 @@ class QuoteFragment : Fragment() {
 
         quoteViewModel = ViewModelProvider(requireActivity())[QuoteViewModel::class.java]
 
-        // Display initial quote
-        displayCurrentQuote()
+        // Подписываемся на загрузку данных
+        quoteViewModel.quotes.observe(viewLifecycleOwner) {
+            displayCurrentQuote()
+        }
 
-        // Set up favorite button click listener
+        // Favorite button
         favoriteButton.setOnClickListener {
             val currentQuote = quoteViewModel.getCurrentQuote()
             if (currentQuote != null) {
@@ -56,18 +58,18 @@ class QuoteFragment : Fragment() {
             }
         }
 
-        // Set up next quote button click listener
+        // Next Quote button
         favoritesButton.setOnClickListener {
             quoteViewModel.moveToNextQuote()
             displayCurrentQuote()
         }
 
-        // Set up favorites button click listener
+        // Favorites list button
         nextQuoteButton.setOnClickListener {
             findNavController().navigate(R.id.action_quoteFragment_to_favoritesFragment)
         }
 
-        // Set up back button click listener
+        // Back button
         backButton.setOnClickListener {
             findNavController().navigateUp()
         }

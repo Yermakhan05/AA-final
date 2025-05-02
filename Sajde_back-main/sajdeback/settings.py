@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 
     # Applications
     'users',
+    'hadiths',
     'quran'
 ]
 

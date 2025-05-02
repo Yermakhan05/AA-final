@@ -52,6 +52,7 @@
     <string name="save">Save</string>
     <string name="signUp">Sign Up</string>
     <string name="signIn">Sign In</string>
+    <string name="book_cover">Обложка книги</string>
 
 
     <string name="hadith_title">Хадисы</string>

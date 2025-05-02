@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
         }
 
         booksButton.setOnClickListener {
-//            findNavController().navigate(R.id.booksFragment)
+            findNavController().navigate(R.id.booksFragment)
         }
 
         compassButton.setOnClickListener {
