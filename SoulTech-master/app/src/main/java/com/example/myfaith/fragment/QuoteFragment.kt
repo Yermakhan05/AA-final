@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.myfaith.datasource.ApiSource
 import com.example.myfaith.entity.response.QuoteResponse
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 import kotlinx.coroutines.launch
 import retrofit2.Response
 

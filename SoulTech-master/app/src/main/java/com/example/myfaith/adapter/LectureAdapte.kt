@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 import com.example.myfaith.models.Lecture
 
 class LectureAdapter(

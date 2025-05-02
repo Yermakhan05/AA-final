@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mynavigationapp"
+    namespace = "com.example.myfaith"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.mynavigationapp"
+        applicationId = "com.example.myfaith"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

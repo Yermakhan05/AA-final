@@ -10,8 +10,8 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.myfaith.utils.LocaleHelper
-import com.example.mynavigationapp.R
-import com.example.mynavigationapp.databinding.FragmentAppSettingsBinding
+import com.example.myfaith.R
+import com.example.myfaith.databinding.FragmentAppSettingsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AppSettingsFragment : Fragment() {

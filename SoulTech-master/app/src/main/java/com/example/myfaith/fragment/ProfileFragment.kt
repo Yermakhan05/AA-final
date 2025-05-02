@@ -18,8 +18,8 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.myfaith.datasource.ApiSource
 import com.example.myfaith.entity.response.ProfileResponse
-import com.example.mynavigationapp.R
-import com.example.mynavigationapp.databinding.ProfileFragmentBinding
+import com.example.myfaith.R
+import com.example.myfaith.databinding.ProfileFragmentBinding
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody

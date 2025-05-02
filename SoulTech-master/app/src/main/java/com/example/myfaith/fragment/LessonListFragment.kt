@@ -10,9 +10,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mynavigationapp.R
 import com.example.myfaith.adapter.LectureAdapter
 import com.example.myfaith.models.Lecture
+import com.example.myfaith.R
 import com.google.firebase.firestore.FirebaseFirestore
 
 class LessonListFragment : Fragment() {
@@ -33,7 +33,7 @@ class LessonListFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerViewLectures)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
+0
         lectureAdapter = LectureAdapter(lectures) { lecture ->
             val videoIntent = Intent(Intent.ACTION_VIEW, Uri.parse(lecture.videoUrl))
             startActivity(videoIntent)

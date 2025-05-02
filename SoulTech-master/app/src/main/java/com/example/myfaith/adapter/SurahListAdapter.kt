@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.myfaith.entity.Surah
-import com.example.mynavigationapp.R
+import com.example.myfaith.R
 
 class SurahListAdapter(
     private val context: Context,
