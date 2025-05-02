@@ -31,6 +31,10 @@
 
             android:name="com.example.myfaith.activity.MainActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.example.myfaith.activity.ZikrActivity"
@@ -39,10 +43,7 @@
         <activity
             android:name="com.example.myfaith.activity.LoginActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name="com.example.myfaith.activity.RegistrationActivity"

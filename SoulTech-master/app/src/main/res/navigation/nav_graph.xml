@@ -35,9 +35,9 @@
         tools:layout="@layout/fragment_maps" />
 
     <fragment
-        android:id="@+id/booksFragment"
+        android:id="@+id/LessonsListFragment"
         android:label=""
-        android:name="com.example.myfaith.fragment.BooksFragment"
+        android:name="com.example.myfaith.fragment.LessonListFragment"
         tools:layout="@layout/books_fragment" />
 
     <fragment

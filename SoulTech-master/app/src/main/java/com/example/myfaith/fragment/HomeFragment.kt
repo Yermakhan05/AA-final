@@ -39,46 +39,29 @@ class HomeFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
-
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = HomePageFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
 
         locationHelper = LocationHelper(requireContext())
+        namazStorage = NamazTimeStorage(requireContext())
 
         val quranButton = view.findViewById<Button>(R.id.quran_button)
         val quoteButton = view.findViewById<Button>(R.id.quote_button)
         val zikrButton = view.findViewById<Button>(R.id.zikr_button)
-        val booksButton = view.findViewById<Button>(R.id.books_button)
         val compassButton = view.findViewById<Button>(R.id.compass_button)
-        namazStorage = NamazTimeStorage(requireContext())
 
-        quranButton.setOnClickListener {
-            findNavController().navigate(R.id.quranFragment)
-        }
+        quranButton.setOnClickListener { findNavController().navigate(R.id.quranFragment) }
+        quoteButton.setOnClickListener { findNavController().navigate(R.id.quoteFragment) }
+        zikrButton.setOnClickListener { findNavController().navigate(R.id.zikrFragment) }
+        compassButton.setOnClickListener { findNavController().navigate(R.id.compassFragment) }
 
-        quoteButton.setOnClickListener {
-            findNavController().navigate(R.id.quoteFragment)
-        }
-
-        zikrButton.setOnClickListener {
-            findNavController().navigate(R.id.zikrFragment)
-        }
-
-        booksButton.setOnClickListener {
-//            findNavController().navigate(R.id.booksFragment)
-        }
-
-        compassButton.setOnClickListener {
-            findNavController().navigate(R.id.compassFragment)
-        }
         val savedDate = namazStorage.getSavedDate()
         val currentDate = LocalDate.now().toString()
 
         if (savedDate == currentDate) {
-            // Load from local
             val times = namazStorage.getTimes()
             binding.fajr.text = "${getString(R.string.fajr)}\n${times["fajr"]}"
             binding.dhuhr.text = "${getString(R.string.dhuhr)}\n${times["dhuhr"]}"
@@ -86,29 +69,16 @@ class HomeFragment : Fragment() {
             binding.maghrib.text = "${getString(R.string.maghrib)}\n${times["maghrib"]}"
             binding.isha.text = "${getString(R.string.isha)}\n${times["isha"]}"
 
-            val (nextPrayerName, nextPrayerTime) = namazStorage.getNextPrayer()
-
-            Log.d("NextPrayer", "Next: $nextPrayerName at $nextPrayerTime")
             val currentTime = LocalTime.now()
-
-            val fajrTime = LocalTime.parse(times["fajr"])
-            val dhuhrTime = LocalTime.parse(times["dhuhr"])
-            val asrTime = LocalTime.parse(times["asr"])
-            val maghribTime = LocalTime.parse(times["maghrib"])
-            val ishaTime = LocalTime.parse(times["isha"])
-
             val timeMap = mapOf(
-                "Fajr" to fajrTime,
-                "Dhuhr" to dhuhrTime,
-                "Asr" to asrTime,
-                "Maghrib" to maghribTime,
-                "Isha" to ishaTime
+                "Fajr" to LocalTime.parse(times["fajr"]),
+                "Dhuhr" to LocalTime.parse(times["dhuhr"]),
+                "Asr" to LocalTime.parse(times["asr"]),
+                "Maghrib" to LocalTime.parse(times["maghrib"]),
+                "Isha" to LocalTime.parse(times["isha"])
             )
 
-            // Find the next prayer time after the current time
             val nextPrayer = timeMap.filterValues { it.isAfter(currentTime) }.minByOrNull { it.value }
-
-            // If the next prayer has changed, update the color and save it again
             nextPrayer?.let { entry ->
                 when (entry.key) {
                     "Fajr" -> binding.fajr.setTextColor(Color.GREEN)
@@ -117,18 +87,10 @@ class HomeFragment : Fragment() {
                     "Maghrib" -> binding.maghrib.setTextColor(Color.GREEN)
                     "Isha" -> binding.isha.setTextColor(Color.GREEN)
                 }
-
-                // Save next prayer details
                 namazStorage.saveNextPrayer(entry.key, entry.value.toString())
-
                 scheduleNamazNotification(entry.key, entry.value)
-
             }
-
-
-
-        }
-        else if (locationHelper.hasLocationPermission()) {
+        } else if (locationHelper.hasLocationPermission()) {
             locationHelper.getCurrentLocation { location ->
                 location?.let {
                     val latitude = it.latitude
@@ -141,36 +103,24 @@ class HomeFragment : Fragment() {
                                 val namazTimes = response.body()
                                 namazTimes?.let { times ->
                                     binding.fajr.text = "${getString(R.string.fajr)}\n${times.Fajr}"
-//                                    binding.nextEvent.text = "${getString(R.string.sun)}\n${times.Sun}"
                                     binding.dhuhr.text = "${getString(R.string.dhuhr)}\n${times.Dhuhr}"
                                     binding.asr.text = "${getString(R.string.asr)}\n${times.Asr}"
                                     binding.maghrib.text = "${getString(R.string.maghrib)}\n${times.Maghrib}"
                                     binding.isha.text = "${getString(R.string.isha)}\n${times.Isha}"
 
-                                    val fajrTime = LocalTime.parse(times.Fajr)
-                                    val dhuhrTime = LocalTime.parse(times.Dhuhr)
-                                    val asrTime = LocalTime.parse(times.Asr)
-                                    val maghribTime = LocalTime.parse(times.Maghrib)
-                                    val ishaTime = LocalTime.parse(times.Isha)
-
-                                    val currentTime = LocalTime.now()
-
                                     val timeMap = mapOf(
-                                        binding.fajr to fajrTime,
-                                        binding.dhuhr to dhuhrTime,
-                                        binding.asr to asrTime,
-                                        binding.maghrib to maghribTime,
-                                        binding.isha to ishaTime
+                                        binding.fajr to LocalTime.parse(times.Fajr),
+                                        binding.dhuhr to LocalTime.parse(times.Dhuhr),
+                                        binding.asr to LocalTime.parse(times.Asr),
+                                        binding.maghrib to LocalTime.parse(times.Maghrib),
+                                        binding.isha to LocalTime.parse(times.Isha)
                                     )
 
-                                    // Find the next upcoming prayer
-                                    val nextPrayer = timeMap
-                                        .filterValues { it.isAfter(currentTime) }
-                                        .minByOrNull { it.value }
+                                    val currentTime = LocalTime.now()
+                                    val nextPrayer = timeMap.filterValues { it.isAfter(currentTime) }.minByOrNull { it.value }
 
                                     nextPrayer?.let { entry ->
                                         entry.key.setTextColor(Color.GREEN)
-
                                         val prayerName = when (entry.key) {
                                             binding.fajr -> "Fajr"
                                             binding.dhuhr -> "Dhuhr"
@@ -179,31 +129,27 @@ class HomeFragment : Fragment() {
                                             binding.isha -> "Isha"
                                             else -> ""
                                         }
-
                                         namazStorage.saveNextPrayer(prayerName, entry.value.toString())
                                         scheduleNamazNotification(prayerName, entry.value)
                                     }
 
-                                    val fajr = times.Fajr
-                                    val dhuhr = times.Dhuhr
-                                    val asr = times.Asr
-                                    val maghrib = times.Maghrib
-                                    val isha = times.Isha
-                                    namazStorage.saveTimes(fajr, dhuhr, asr, maghrib, isha, currentDate)
-
+                                    namazStorage.saveTimes(
+                                        times.Fajr, times.Dhuhr, times.Asr, times.Maghrib, times.Isha, currentDate
+                                    )
                                 }
                             } else {
-                                Toast.makeText(requireContext(), "Failed to load Namaz times", Toast.LENGTH_SHORT).show()
-                                Log.e("NamazTime", "API response error: ${response.code()}")
+                                Toast.makeText(requireContext(), "Ошибка загрузки времени намаза", Toast.LENGTH_SHORT).show()
+                                Log.e("NamazTime", "Response error: ${response.code()}")
                             }
                         } catch (e: Exception) {
-                            Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Ошибка: ${e.message}", Toast.LENGTH_SHORT).show()
                             Log.e("NamazTime", "Exception: ${e.message}", e)
                         }
                     }
-                } ?:
-                Toast.makeText(requireContext(), "Unable to get location.", Toast.LENGTH_SHORT).show()
-                Log.e("Location", "Location is null")
+                } ?: run {
+                    Toast.makeText(requireContext(), "Не удалось получить местоположение.", Toast.LENGTH_SHORT).show()
+                    Log.e("Location", "Location is null")
+                }
             }
         } else {
             locationHelper.requestLocationPermission(requireActivity(), LOCATION_PERMISSION_REQUEST_CODE)
@@ -211,23 +157,22 @@ class HomeFragment : Fragment() {
 
         return view
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1002
         private const val REQUEST_CODE_SCHEDULE_EXACT_ALARM = 1001
-
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun scheduleNamazNotification(prayerName: String, time: LocalTime) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (!isExactAlarmPermissionGranted()) {
-                requestExactAlarmPermission()
-                return
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !isExactAlarmPermissionGranted()) {
+            requestExactAlarmPermission()
+            return
         }
 
         val alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -263,25 +208,22 @@ class HomeFragment : Fragment() {
             } catch (e: Exception) {
                 false
             }
-        } else {
-            true
-        }
+        } else true
     }
-
 
     private fun requestExactAlarmPermission() {
         val intent = Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
         startActivityForResult(intent, REQUEST_CODE_SCHEDULE_EXACT_ALARM)
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_SCHEDULE_EXACT_ALARM) {
             if (isExactAlarmPermissionGranted()) {
-                Toast.makeText(requireContext(), "Permission granted to schedule exact alarm", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Разрешение получено", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(requireContext(), "Permission not granted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Разрешение не получено", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
 }
