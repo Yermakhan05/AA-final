@@ -1,21 +1,32 @@
 [versions]
-agp = "8.6.1"
-kotlin = "2.1.0"
-coreKtx = "1.16.0"
+kotlin = "1.9.24"
+agp = "8.5.0"
+
+coreKtx = "1.13.1"
+appcompat = "1.7.0"
+material = "1.12.0"
+activity = "1.9.1"
+constraintlayout = "2.1.4"
+navigation = "2.8.6"
+
+compose = "1.6.4"
+material3Android = "1.3.2"
+
+media3CommonKtx = "1.6.1"
+coil = "2.4.0"
+
+playServicesMaps = "19.2.0"
+places = "4.2.0"
+
+room = "2.6.1"
+work = "2.9.0"
+
+
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-appcompat = "1.7.0"
-material = "1.12.0"
-activity = "1.10.1"
-constraintlayout = "2.2.1"
-navigation = "2.8.9"
-media3CommonKtx = "1.6.1"
-playServicesMaps = "19.2.0"
-places = "4.2.0"
-ksp = "1.9.0-1.0.13"
-room = "2.7.1"
-work = "2.9.0"
+
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,9 +44,12 @@ play-services-maps = { group = "com.google.android.gms", name = "play-services-m
 places = { group = "com.google.android.libraries.places", name = "places", version.ref = "places" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room"}
 work-runtime = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "work"}
+compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
+compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose" }
+compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
+androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-

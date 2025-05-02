@@ -9,8 +9,7 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="30dp">
+        android:layout_height="match_parent">
 
         <fragment
             android:id="@+id/nav_host_fragment"
@@ -18,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
-            android:layout_marginTop="8dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:navGraph="@navigation/nav_graph" />
 
@@ -42,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="25dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"

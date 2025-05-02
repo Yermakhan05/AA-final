@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import coil.load
 import com.example.myfaith.R
 import com.example.myfaith.entity.sampleBooks
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BookDetailFragment : Fragment() {
 
@@ -41,6 +42,7 @@ class BookDetailFragment : Fragment() {
 
         val bookId = args.bookId
         val book = sampleBooks.find { it.id == bookId }
+        activity?.findViewById<BottomNavigationView>(R.id.bottom_nav_view)?.visibility = View.GONE
 
         book?.let {
             coverImageView.load(it.coverUrl)
