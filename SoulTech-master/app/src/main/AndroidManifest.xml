@@ -12,11 +12,14 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
 
     <uses-feature android:name="android.hardware.sensor.accelerometer" />
     <uses-feature android:name="android.hardware.sensor.compass" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -28,31 +31,57 @@
         android:theme="@style/Theme.MyFaith"
         tools:targetApi="31">
         <activity
+            android:name=".activity.MainActivity"
+            android:exported="true">
 
-            android:name="com.example.myfaith.activity.MainActivity"
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="myfaith.kz"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+<!--        <activity-->
+<!--            android:name="com.example.myfaith.activity.ZikrActivity"-->
+<!--            android:exported="false">-->
+<!--        </activity>-->
+        <activity
+            android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.example.myfaith.activity.ZikrActivity"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name="com.example.myfaith.activity.LoginActivity"
-            android:exported="true">
 
         </activity>
         <activity
-            android:name="com.example.myfaith.activity.RegistrationActivity"
+            android:name=".activity.RegistrationActivity"
             android:exported="false">
         </activity>
+        <service
+            android:name=".AzanService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+
+        <receiver android:name=".receiver.NamazAlarmReceiver" />
+        <receiver android:name=".receiver.StopAzanReceiver" />
+        <receiver android:name=".receiver.AzanWidgetProvider" android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/azan_widget_info" />
+        </receiver>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBU-hVdtGr6qD3220iOhHOMH1VYvj8cnb8" />
-        <receiver android:name="com.example.myfaith.receiver.NamazAlarmReceiver" />
 
     </application>
 

@@ -1,13 +1,17 @@
 package com.example.myfaith.activity
 
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -16,10 +20,15 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import com.example.myfaith.NamazUpdateWorker
 import com.example.myfaith.utils.LocaleHelper
 import com.example.myfaith.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import java.time.LocalTime
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -39,9 +48,14 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_nav_view)
 
+        val testRequest = OneTimeWorkRequestBuilder<NamazUpdateWorker>().build()
+        WorkManager.getInstance(this).enqueue(testRequest)
+
         val navController = findNavController(R.id.nav_host_fragment)
 
         setSupportActionBar(toolbar)
+
+        createNotificationChannel()
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -123,6 +137,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                "azan_channel",
+                "Azan Notifications",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "Канал для проигрывания азана"
+            }
+
+            val manager = getSystemService(NotificationManager::class.java)
+            manager.createNotificationChannel(channel)
+        }
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
@@ -137,5 +165,4 @@ class MainActivity : AppCompatActivity() {
         val context = LocaleHelper.setLocale(newBase, lang)
         super.attachBaseContext(context)
     }
-
 }

@@ -3,5 +3,9 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.13 (Sajde_back)" />
   </component>
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13" project-jdk-type="Python SDK" />
+=======
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13 virtualenv at ~/Desktop/AA-final/Sajde_back-main/venv" project-jdk-type="Python SDK" />
+>>>>>>> 48d230749ce3632ea4f3e46cdd04bb49f4232959
 </project>

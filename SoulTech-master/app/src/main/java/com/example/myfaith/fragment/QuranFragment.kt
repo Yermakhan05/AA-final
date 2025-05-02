@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfaith.adapter.QuranAdapter
 import com.example.myfaith.adapter.SurahListAdapter
@@ -31,8 +32,11 @@ class QuranFragment : Fragment() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var surahListView: ListView
     private lateinit var menuButton: ImageButton
+    private lateinit var progressBar: ProgressBar
+    private lateinit var errorText: TextView
 
     private lateinit var allSurahs: List<Surah>
+    private var selectedSurahIndex: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,21 +56,35 @@ class QuranFragment : Fragment() {
         drawerLayout = view.findViewById(R.id.drawer_layout)
         surahListView = view.findViewById(R.id.surahListView)
         menuButton = view.findViewById(R.id.menuButton)
-
         recyclerView = view.findViewById(R.id.recyclerView)
         surahTitle = view.findViewById(R.id.surahTitle)
         surahInfo = view.findViewById(R.id.surahInfo)
         paraInfo = view.findViewById(R.id.paraInfo)
+        progressBar = view.findViewById(R.id.progressBar)
+        errorText = view.findViewById(R.id.errorText)
+
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // Обработка открытия бокового меню
         menuButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
+            activity?.findViewById<Toolbar>(R.id.toolbar)?.visibility = View.GONE
+        }
+
+
+        val args: QuranFragmentArgs by navArgs()
+        selectedSurahIndex = if (args.surahId != 0) {
+            args.surahId - 1
+        } else {
+            savedInstanceState?.getInt("selected_surah_index", 0) ?: 0
         }
 
         loadQuranData()
     }
 
     private fun loadQuranData() {
+        progressBar.visibility = View.VISIBLE
+        errorText.visibility = View.GONE
         try {
             val inputStream = context?.assets?.open("quran_data.json")
             val reader = BufferedReader(InputStreamReader(inputStream))
@@ -77,33 +95,52 @@ class QuranFragment : Fragment() {
             allSurahs = quranData.surahs
 
             if (allSurahs.isNotEmpty()) {
-                displaySurah(allSurahs[0]) // первая сура по умолчанию
-
-                // Список сур в боковом меню
-                val listAdapter = SurahListAdapter(requireContext(), allSurahs) { selectedSurah ->
-                    displaySurah(selectedSurah)
-                    drawerLayout.closeDrawer(GravityCompat.START)
-                }
-
-                surahListView.adapter = listAdapter
+                setupSurahListView()
+                displaySurah(allSurahs[selectedSurahIndex])
+            } else {
+                showError("Нет данных о Коране")
             }
 
         } catch (e: Exception) {
             e.printStackTrace()
+            showError("Ошибка загрузки данных")
+        } finally {
+            progressBar.visibility = View.GONE
         }
     }
 
+    private fun setupSurahListView() {
+        val listAdapter = SurahListAdapter(requireContext(), allSurahs) { selectedSurah ->
+            selectedSurahIndex = allSurahs.indexOf(selectedSurah)
+            displaySurah(selectedSurah)
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }
+        surahListView.adapter = listAdapter
+    }
+
     private fun displaySurah(surah: Surah) {
+        activity?.findViewById<Toolbar>(R.id.toolbar)?.visibility = View.VISIBLE
         updateSurahHeader(surah)
         adapter = QuranAdapter(surah.verses)
         recyclerView.adapter = adapter
+        recyclerView.scrollToPosition(0) // скроллим вверх к первому аяту
     }
 
     private fun updateSurahHeader(surah: Surah) {
         surahTitle.text = "${surah.number}. ${surah.name}"
         surahInfo.text = "${surah.type} • ${surah.verses.size} Аят"
-        paraInfo.text = "Пара 27 • ¼ Hizb 54" // Можешь обновить из JSON позже
+        paraInfo.text = "Пара 27 • ¼ Hizb 54"
     }
 
+    private fun showError(message: String) {
+        errorText.text = message
+        errorText.visibility = View.VISIBLE
+    }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("selected_surah_index", selectedSurahIndex)
+
+        //new commit
+    }
 }

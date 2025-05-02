@@ -22,6 +22,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('prayer/', include('prayer.urls')),
     path('qurans/', include('quran.urls')),
+    path('', include('hadiths.urls')),
 
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

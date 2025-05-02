@@ -226,5 +226,10 @@
                     android:background="@drawable/rounded_background"/>
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:id="@+id/set_alarm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Поставить будильник на следующий намаз" />
     </LinearLayout>
 </FrameLayout>
