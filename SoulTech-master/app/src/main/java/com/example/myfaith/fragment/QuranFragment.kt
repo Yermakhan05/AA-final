@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -66,6 +67,7 @@ class QuranFragment : Fragment() {
         // Обработка открытия бокового меню
         menuButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
+            activity?.findViewById<Toolbar>(R.id.toolbar)?.visibility = View.GONE
         }
 
         savedInstanceState?.let {
@@ -112,6 +114,7 @@ class QuranFragment : Fragment() {
     }
 
     private fun displaySurah(surah: Surah) {
+        activity?.findViewById<Toolbar>(R.id.toolbar)?.visibility = View.VISIBLE
         updateSurahHeader(surah)
         adapter = QuranAdapter(surah.verses)
         recyclerView.adapter = adapter
@@ -121,7 +124,7 @@ class QuranFragment : Fragment() {
     private fun updateSurahHeader(surah: Surah) {
         surahTitle.text = "${surah.number}. ${surah.name}"
         surahInfo.text = "${surah.type} • ${surah.verses.size} Аят"
-        paraInfo.text = "Пара 27 • ¼ Hizb 54" // TODO: Обновить реальными данными
+        paraInfo.text = "Пара 27 • ¼ Hizb 54"
     }
 
     private fun showError(message: String) {

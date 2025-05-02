@@ -32,6 +32,8 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:gravity="center"
+            android:background="@color/white"
+            android:padding="10dp"
             android:layout_marginTop="16dp"
             android:enabled="false" />
 
@@ -41,6 +43,8 @@
             android:layout_height="wrap_content"
             android:text="@string/phone_number"
             android:gravity="center"
+            android:background="@color/white"
+            android:padding="10dp"
             android:layout_marginTop="8dp"
             android:enabled="false" />
 
@@ -50,6 +54,8 @@
             android:layout_height="wrap_content"
             android:text="@string/bio"
             android:gravity="center"
+            android:background="@color/white"
+            android:padding="10dp"
             android:layout_marginTop="8dp"
             android:enabled="false" />
 

@@ -13,18 +13,30 @@
         android:layout_height="match_parent"
         android:background="#1E1E1E">
 
-        <!-- Кнопка меню (слева вверху) -->
-        <ImageButton
-            android:id="@+id/menuButton"
-            android:layout_width="wrap_content"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#2D2D2D"
+            app:layout_constraintBottom_toTopOf="@+id/menu_quran" />
+
+        <LinearLayout
+            android:id="@+id/menu_quran"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:tint="#FFFFFF"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/surahHeader">
+            <ImageButton
+                android:id="@+id/menuButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:tint="#FFFFFF" />
+        </LinearLayout>
 
         <!-- Заголовок суры -->
         <LinearLayout
@@ -34,7 +46,7 @@
             android:orientation="vertical"
             android:background="#2D2D2D"
             android:padding="16dp"
-            app:layout_constraintTop_toBottomOf="@id/menuButton"
+            app:layout_constraintTop_toBottomOf="@id/menu_quran"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 

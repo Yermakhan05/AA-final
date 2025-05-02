@@ -18,7 +18,7 @@ class GetPrayerTimeView(APIView):
         if not all([latitude, longitude, date]):
             return Response({'error': 'latitude, longitude, and date are required'}, status=400)
 
-        url = "http://api.aladhan.com/v1/timings"
+        url = "https://api.aladhan.com/v1/timings"
         params = {
             'latitude': latitude,
             'longitude': longitude,
