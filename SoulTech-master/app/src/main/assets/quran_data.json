@@ -4,7 +4,7 @@
       "number": 1,
       "name": "әл-Фатиха",
       "type": "Меккелік",
-      "verses": [
+      "verses":[
         {
           "number": 1,
           "arabicText": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
@@ -45,7 +45,7 @@
           "number": 1,
           "arabicText": "الم",
           "transliteration": "Alif-Lām-Mīm",
-          "translation": "Алиф, Лам, Мим.",
+          "translation": "Әлиф, Ләм, Мим.",
           "highlights": {
             "الم": "#4CD3A5"
           }
@@ -88,7 +88,7 @@
           "number": 1,
           "arabicText": "الم",
           "transliteration": "Alif-Lām-Mīm",
-          "translation": "Алиф, Лам, Мим.",
+          "translation": "Әлиф, Ләм, Мим.",
           "highlights": {
             "الم": "#4CD3A5"
           }

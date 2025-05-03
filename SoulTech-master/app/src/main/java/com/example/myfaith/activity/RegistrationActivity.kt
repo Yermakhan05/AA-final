@@ -57,21 +57,17 @@ class RegistrationActivity : AppCompatActivity() {
         signInTextView.text = spannable
 
         registerButton.setOnClickListener {
-            val email = emailField.text.toString().trim()
-            val number = numberField.text.toString().trim()
-            val fullName = nameField.text.toString().trim()
-            val username = usernameField.text.toString().trim()
-            val password = passwordField.text.toString().trim()
+            // Temporarily skip registration
+            val intent = Intent(this@RegistrationActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
 
-            if (email.isEmpty() || number.isEmpty() || fullName.isEmpty() || username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
+            /*
+            val email = emailField.text.toString()
+            val number = numberField.text.toString()
+            val fullName = nameField.text.toString()
+            val username = usernameField.text.toString()
+            val password = passwordField.text.toString()
 
             ApiSource.registration.registerUser(
                 email,
@@ -85,9 +81,6 @@ class RegistrationActivity : AppCompatActivity() {
                         response: Response<RegistrationResponse>
                     ) {
                         if (response.body() != null) {
-//                            val token = response.body()!!.token
-//                            val prefs = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
-//                            prefs.edit().putString("auth_token", token).apply()
                             val user = response.body()!!
 
                             Toast.makeText(this@RegistrationActivity, "Registration successful! Please log in.", Toast.LENGTH_SHORT).show()
@@ -118,8 +111,8 @@ class RegistrationActivity : AppCompatActivity() {
                         ).show()
                     }
                 })
+            */
         }
-
 
         loginButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)

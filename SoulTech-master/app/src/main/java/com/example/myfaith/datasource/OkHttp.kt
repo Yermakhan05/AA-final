@@ -6,6 +6,8 @@ import okhttp3.Response
 
 class AuthInterceptor(private val context: Context) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
+        // Temporarily disabled authentication
+        /*
         val sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("auth_token", null)
 
@@ -16,7 +18,7 @@ class AuthInterceptor(private val context: Context) : Interceptor {
         } else {
             chain.request()
         }
-
-        return chain.proceed(newRequest)
+        */
+        return chain.proceed(chain.request())
     }
 }

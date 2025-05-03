@@ -1,0 +1,1576 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1016416 bytes. Error detail: Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   This process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (arena.cpp:191), pid=14012, tid=3312
+#
+# JRE version: OpenJDK Runtime Environment (17.0.11) (build 17.0.11+0--11852314)
+# Java VM: OpenJDK 64-Bit Server VM (17.0.11+0--11852314, mixed mode, tiered, compressed oops, compressed class ptrs, parallel gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:MaxPermSize=1024m -XX:+HeapDumpOnOutOfMemoryError -XX:+UseParallelGC --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED -Xmx4096m -Dfile.encoding=UTF-8 -Duser.country=RU -Duser.language=ru -Duser.variant -javaagent:C:\Users\HUAWEI\Desktop\AA-final\SoulTech-master\.gradle\wrapper\dists\gradle-8.7-bin\bhs2wmbdwecv87pi65oeuq5iu\gradle-8.7\lib\agents\gradle-instrumentation-agent-8.7.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.7
+
+Host: 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz, 8 cores, 7G,  Windows 11 , 64 bit Build 22621 (10.0.22621.5124)
+Time: Sat May  3 04:17:35 2025  Windows 11 , 64 bit Build 22621 (10.0.22621.5124) elapsed time: 81.041002 seconds (0d 0h 1m 21s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000017d7ce867f0):  JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=3312, stack(0x0000004874700000,0x0000004874800000)]
+
+
+Current CompileTask:
+C2:  81041 25298 % !   4       java.util.jar.Attributes::read @ 214 (494 bytes)
+
+Stack: [0x0000004874700000,0x0000004874800000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x687bb9]
+V  [jvm.dll+0x84142a]
+V  [jvm.dll+0x8430ae]
+V  [jvm.dll+0x843713]
+V  [jvm.dll+0x24a35f]
+V  [jvm.dll+0xac544]
+V  [jvm.dll+0xacb8c]
+V  [jvm.dll+0x369c37]
+V  [jvm.dll+0x33416a]
+V  [jvm.dll+0x33360a]
+V  [jvm.dll+0x21bed1]
+V  [jvm.dll+0x21b311]
+V  [jvm.dll+0x1a63ed]
+V  [jvm.dll+0x22b1ee]
+V  [jvm.dll+0x229375]
+V  [jvm.dll+0x7f5647]
+V  [jvm.dll+0x7efa4a]
+V  [jvm.dll+0x686a35]
+C  [ucrtbase.dll+0x29333]
+C  [KERNEL32.DLL+0x1259d]
+C  [ntdll.dll+0x5af38]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x0000017d00b76630, length=64, elements={
+0x0000017d5c75d020, 0x0000017d77e37030, 0x0000017d77e37dc0, 0x0000017d7ce814d0,
+0x0000017d7ce81da0, 0x0000017d7ce82870, 0x0000017d7ce83340, 0x0000017d7ce867f0,
+0x0000017d7ce89110, 0x0000017d7ce95340, 0x0000017d5c7c1db0, 0x0000017d7d109410,
+0x0000017d7f790040, 0x0000017d000982d0, 0x0000017d7f7dc0e0, 0x0000017d7f6d5bb0,
+0x0000017d0066b000, 0x0000017d007381a0, 0x0000017d007390d0, 0x0000017d007386b0,
+0x0000017d0073a000, 0x0000017d0073b440, 0x0000017d0073a510, 0x0000017d03236dc0,
+0x0000017d03234030, 0x0000017d03234f60, 0x0000017d03231cc0, 0x0000017d032321d0,
+0x0000017d03235980, 0x0000017d03234540, 0x0000017d032326e0, 0x0000017d03cc1300,
+0x0000017d0073af30, 0x0000017d03cc4ab0, 0x0000017d03cc2740, 0x0000017d03cc3160,
+0x0000017d03cbe570, 0x0000017d03cc54d0, 0x0000017d03cc4090, 0x0000017d03cc45a0,
+0x0000017d03cbf9b0, 0x0000017d03cbf4a0, 0x0000017d03cbef90, 0x0000017d03cbfec0,
+0x0000017d03cc03d0, 0x0000017d03cc0df0, 0x0000017d03cc1d20, 0x0000017d03cc2230,
+0x0000017d04ed92b0, 0x0000017d04ed8890, 0x0000017d04ed7960, 0x0000017d0edaa470,
+0x0000017d0eda9a50, 0x0000017d0edaf570, 0x0000017d0eda9540, 0x0000017d0eda8100,
+0x0000017d0eda9030, 0x0000017d0edad200, 0x0000017d0eda9f60, 0x0000017d0edaa980,
+0x0000017d04ed7e70, 0x0000017d0aa2bed0, 0x0000017d0e401b80, 0x0000017d0aa2c3e0
+}
+
+Java Threads: ( => current thread )
+  0x0000017d5c75d020 JavaThread "main" [_thread_blocked, id=11480, stack(0x0000004873e00000,0x0000004873f00000)]
+  0x0000017d77e37030 JavaThread "Reference Handler" daemon [_thread_blocked, id=10708, stack(0x0000004874100000,0x0000004874200000)]
+  0x0000017d77e37dc0 JavaThread "Finalizer" daemon [_thread_blocked, id=13236, stack(0x0000004874200000,0x0000004874300000)]
+  0x0000017d7ce814d0 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=3680, stack(0x0000004874300000,0x0000004874400000)]
+  0x0000017d7ce81da0 JavaThread "Attach Listener" daemon [_thread_blocked, id=3192, stack(0x0000004874400000,0x0000004874500000)]
+  0x0000017d7ce82870 JavaThread "Service Thread" daemon [_thread_blocked, id=7316, stack(0x0000004874500000,0x0000004874600000)]
+  0x0000017d7ce83340 JavaThread "Monitor Deflation Thread" daemon [_thread_blocked, id=2056, stack(0x0000004874600000,0x0000004874700000)]
+=>0x0000017d7ce867f0 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=3312, stack(0x0000004874700000,0x0000004874800000)]
+  0x0000017d7ce89110 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=10024, stack(0x0000004874800000,0x0000004874900000)]
+  0x0000017d7ce95340 JavaThread "Sweeper thread" daemon [_thread_blocked, id=11356, stack(0x0000004874900000,0x0000004874a00000)]
+  0x0000017d5c7c1db0 JavaThread "Common-Cleaner" daemon [_thread_blocked, id=3280, stack(0x0000004874a00000,0x0000004874b00000)]
+  0x0000017d7d109410 JavaThread "Notification Thread" daemon [_thread_blocked, id=11772, stack(0x0000004874b00000,0x0000004874c00000)]
+  0x0000017d7f790040 JavaThread "Daemon health stats" [_thread_blocked, id=7688, stack(0x0000004875200000,0x0000004875300000)]
+  0x0000017d000982d0 JavaThread "Incoming local TCP Connector on port 58154" [_thread_in_native, id=4500, stack(0x0000004875300000,0x0000004875400000)]
+  0x0000017d7f7dc0e0 JavaThread "Daemon periodic checks" [_thread_blocked, id=9084, stack(0x0000004875400000,0x0000004875500000)]
+  0x0000017d7f6d5bb0 JavaThread "Daemon" [_thread_blocked, id=10868, stack(0x0000004875800000,0x0000004875900000)]
+  0x0000017d0066b000 JavaThread "Daemon worker" [_thread_in_native, id=7344, stack(0x0000004875b00000,0x0000004875c00000)]
+  0x0000017d007381a0 JavaThread "Cache worker for journal cache (C:\Users\HUAWEI\Desktop\AA-final\SoulTech-master\.gradle\caches\journal-1)" [_thread_blocked, id=3564, stack(0x0000004875f00000,0x0000004876000000)]
+  0x0000017d007390d0 JavaThread "File lock request listener" [_thread_in_native, id=5332, stack(0x0000004876000000,0x0000004876100000)]
+  0x0000017d007386b0 JavaThread "Cache worker for file hash cache (C:\Users\HUAWEI\Desktop\AA-final\SoulTech-master\.gradle\caches\8.7\fileHashes)" [_thread_blocked, id=8224, stack(0x0000004876100000,0x0000004876200000)]
+  0x0000017d0073a000 JavaThread "File watcher server" daemon [_thread_in_native, id=2476, stack(0x0000004876400000,0x0000004876500000)]
+  0x0000017d0073b440 JavaThread "File watcher consumer" daemon [_thread_blocked, id=13192, stack(0x0000004876500000,0x0000004876600000)]
+  0x0000017d0073a510 JavaThread "jar transforms" [_thread_blocked, id=3540, stack(0x0000004876600000,0x0000004876700000)]
+  0x0000017d03236dc0 JavaThread "jar transforms Thread 2" [_thread_blocked, id=1412, stack(0x0000004876700000,0x0000004876800000)]
+  0x0000017d03234030 JavaThread "jar transforms Thread 3" [_thread_blocked, id=1516, stack(0x0000004876800000,0x0000004876900000)]
+  0x0000017d03234f60 JavaThread "jar transforms Thread 4" [_thread_blocked, id=11396, stack(0x0000004876900000,0x0000004876a00000)]
+  0x0000017d03231cc0 JavaThread "jar transforms Thread 5" [_thread_blocked, id=2328, stack(0x0000004876a00000,0x0000004876b00000)]
+  0x0000017d032321d0 JavaThread "jar transforms Thread 6" [_thread_blocked, id=4312, stack(0x0000004876b00000,0x0000004876c00000)]
+  0x0000017d03235980 JavaThread "jar transforms Thread 7" [_thread_blocked, id=8056, stack(0x0000004876c00000,0x0000004876d00000)]
+  0x0000017d03234540 JavaThread "jar transforms Thread 8" [_thread_blocked, id=11500, stack(0x0000004876d00000,0x0000004876e00000)]
+  0x0000017d032326e0 JavaThread "Cache worker for file content cache (C:\Users\HUAWEI\Desktop\AA-final\SoulTech-master\.gradle\caches\8.7\fileContent)" [_thread_blocked, id=13928, stack(0x0000004877100000,0x0000004877200000)]
+  0x0000017d03cc1300 JavaThread "VFS cleanup" [_thread_blocked, id=11816, stack(0x0000004875c00000,0x0000004875d00000)]
+  0x0000017d0073af30 JavaThread "Daemon Thread 2" [_thread_blocked, id=11924, stack(0x0000004875900000,0x0000004875a00000)]
+  0x0000017d03cc4ab0 JavaThread "Handler for socket connection from /127.0.0.1:58154 to /127.0.0.1:58177" [_thread_blocked, id=11304, stack(0x0000004875a00000,0x0000004875b00000)]
+  0x0000017d03cc2740 JavaThread "Cancel handler" [_thread_blocked, id=3336, stack(0x0000004874d00000,0x0000004874e00000)]
+  0x0000017d03cc3160 JavaThread "Stdin handler" [_thread_blocked, id=13056, stack(0x0000004875e00000,0x0000004875f00000)]
+  0x0000017d03cbe570 JavaThread "Cache worker for file hash cache (C:\Users\HUAWEI\Desktop\android\AA-final\SoulTech-master\.gradle\8.7\fileHashes)" [_thread_blocked, id=13500, stack(0x0000004876300000,0x0000004876400000)]
+  0x0000017d03cc54d0 JavaThread "Cache worker for checksums cache (C:\Users\HUAWEI\Desktop\android\AA-final\SoulTech-master\.gradle\8.7\checksums)" [_thread_blocked, id=1680, stack(0x0000004876e00000,0x0000004876f00000)]
+  0x0000017d03cc4090 JavaThread "Cache worker for cache directory md-supplier (C:\Users\HUAWEI\Desktop\AA-final\SoulTech-master\.gradle\caches\8.7\md-supplier)" [_thread_blocked, id=6404, stack(0x0000004876f00000,0x0000004877000000)]
+  0x0000017d03cc45a0 JavaThread "Cache worker for cache directory md-rule (C:\Users\HUAWEI\Desktop\AA-final\SoulTech-master\.gradle\caches\8.7\md-rule)" [_thread_blocked, id=14304, stack(0x0000004877200000,0x0000004877300000)]
+  0x0000017d03cbf9b0 JavaThread "Cache worker for Build Output Cleanup Cache (C:\Users\HUAWEI\Desktop\android\AA-final\SoulTech-master\.gradle\buildOutputCleanup)" [_thread_blocked, id=7768, stack(0x0000004877300000,0x0000004877400000)]
+  0x0000017d03cbf4a0 JavaThread "Unconstrained build operations" [_thread_blocked, id=3104, stack(0x0000004877400000,0x0000004877500000)]
+  0x0000017d03cbef90 JavaThread "Unconstrained build operations Thread 2" [_thread_blocked, id=12348, stack(0x0000004877500000,0x0000004877600000)]
+  0x0000017d03cbfec0 JavaThread "Unconstrained build operations Thread 3" [_thread_blocked, id=488, stack(0x0000004877600000,0x0000004877700000)]
+  0x0000017d03cc03d0 JavaThread "Unconstrained build operations Thread 4" [_thread_blocked, id=7676, stack(0x0000004877700000,0x0000004877800000)]
+  0x0000017d03cc0df0 JavaThread "Unconstrained build operations Thread 5" [_thread_blocked, id=4008, stack(0x0000004877800000,0x0000004877900000)]
+  0x0000017d03cc1d20 JavaThread "Unconstrained build operations Thread 6" [_thread_blocked, id=10568, stack(0x0000004877900000,0x0000004877a00000)]
+  0x0000017d03cc2230 JavaThread "Unconstrained build operations Thread 7" [_thread_blocked, id=13520, stack(0x0000004877a00000,0x0000004877b00000)]
+  0x0000017d04ed92b0 JavaThread "Memory manager" [_thread_blocked, id=2376, stack(0x0000004877c00000,0x0000004877d00000)]
+  0x0000017d04ed8890 JavaThread "build event listener" [_thread_blocked, id=9424, stack(0x0000004877d00000,0x0000004877e00000)]
+  0x0000017d04ed7960 JavaThread "Kotlin DSL Writer" [_thread_blocked, id=13480, stack(0x0000004877b00000,0x0000004877c00000)]
+  0x0000017d0edaa470 JavaThread "included builds" [_thread_blocked, id=6052, stack(0x0000004877f00000,0x0000004878000000)]
+  0x0000017d0eda9a50 JavaThread "Execution worker" [_thread_blocked, id=3944, stack(0x0000004878000000,0x0000004878100000)]
+  0x0000017d0edaf570 JavaThread "Execution worker Thread 2" [_thread_blocked, id=13668, stack(0x0000004878100000,0x0000004878200000)]
+  0x0000017d0eda9540 JavaThread "Execution worker Thread 3" [_thread_blocked, id=3632, stack(0x0000004878200000,0x0000004878300000)]
+  0x0000017d0eda8100 JavaThread "Execution worker Thread 4" [_thread_blocked, id=1948, stack(0x0000004878300000,0x0000004878400000)]
+  0x0000017d0eda9030 JavaThread "Execution worker Thread 5" [_thread_blocked, id=13752, stack(0x0000004878400000,0x0000004878500000)]
+  0x0000017d0edad200 JavaThread "Execution worker Thread 6" [_thread_blocked, id=14324, stack(0x0000004878500000,0x0000004878600000)]
+  0x0000017d0eda9f60 JavaThread "Execution worker Thread 7" [_thread_blocked, id=10056, stack(0x0000004878600000,0x0000004878700000)]
+  0x0000017d0edaa980 JavaThread "Cache worker for execution history cache (C:\Users\HUAWEI\Desktop\android\AA-final\SoulTech-master\.gradle\8.7\executionHistory)" [_thread_blocked, id=2040, stack(0x0000004878700000,0x0000004878800000)]
+  0x0000017d04ed7e70 JavaThread "idea-tooling-model-converter" [_thread_blocked, id=1688, stack(0x0000004878800000,0x0000004878900000)]
+  0x0000017d0aa2bed0 JavaThread "Unconstrained build operations Thread 8" [_thread_blocked, id=11728, stack(0x0000004878a00000,0x0000004878b00000)]
+  0x0000017d0e401b80 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=13096, stack(0x0000004873b00000,0x0000004873c00000)]
+  0x0000017d0aa2c3e0 JavaThread "Unconstrained build operations Thread 9" [_thread_blocked, id=11940, stack(0x0000004873c00000,0x0000004873d00000)]
+
+Other Threads:
+  0x0000017d77e11320 VMThread "VM Thread" [stack: 0x0000004874000000,0x0000004874100000] [id=11884]
+  0x0000017d7d0c0f90 WatcherThread [stack: 0x0000004874c00000,0x0000004874d00000] [id=2112]
+  0x0000017d5c775070 GCTaskThread "GC Thread#0" [stack: 0x0000004873f00000,0x0000004874000000] [id=12864]
+  0x0000017d7f08d930 GCTaskThread "GC Thread#1" [stack: 0x0000004874e00000,0x0000004874f00000] [id=1108]
+  0x0000017d7ebff250 GCTaskThread "GC Thread#2" [stack: 0x0000004874f00000,0x0000004875000000] [id=11928]
+  0x0000017d7eaea030 GCTaskThread "GC Thread#3" [stack: 0x0000004875000000,0x0000004875100000] [id=4876]
+  0x0000017d7f148e80 GCTaskThread "GC Thread#4" [stack: 0x0000004875100000,0x0000004875200000] [id=4216]
+  0x0000017d00a6f070 GCTaskThread "GC Thread#5" [stack: 0x0000004875500000,0x0000004875600000] [id=12232]
+  0x0000017d00a6f330 GCTaskThread "GC Thread#6" [stack: 0x0000004875600000,0x0000004875700000] [id=14184]
+  0x0000017d00bf0fa0 GCTaskThread "GC Thread#7" [stack: 0x0000004875700000,0x0000004875800000] [id=3440]
+
+Threads with active compile tasks:
+C2 CompilerThread0    81068 25298 % !   4       java.util.jar.Attributes::read @ 214 (494 bytes)
+C2 CompilerThread1    81068 25301       4       sun.nio.fs.WindowsFileSystem::getPath (106 bytes)
+
+VM state: not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+OutOfMemory and StackOverflow Exception counts:
+StackOverflowErrors=1
+LinkageErrors=261
+
+Heap address: 0x0000000700000000, size: 4096 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+
+CDS archive(s) not mapped
+Compressed class space mapped at: 0x0000000800000000-0x0000000840000000, reserved size: 1073741824
+Narrow klass base: 0x0000000800000000, Narrow klass shift: 0, Narrow klass range: 0x40000000
+
+GC Precious Log:
+ CPUs: 8 total, 8 available
+ Memory: 7991M
+ Large Page Support: Disabled
+ NUMA Support: Disabled
+ Compressed Oops: Enabled (Zero based)
+ Alignments: Space 512K, Generation 512K, Heap 2M
+ Heap Min Capacity: 8M
+ Heap Initial Capacity: 126M
+ Heap Max Capacity: 4G
+ Pre-touch: Disabled
+ Parallel Workers: 8
+
+Heap:
+ PSYoungGen      total 809472K, used 527468K [0x00000007aab00000, 0x00000007e1a80000, 0x0000000800000000)
+  eden space 794624K, 64% used [0x00000007aab00000,0x00000007c9f9c298,0x00000007db300000)
+  from space 14848K, 99% used [0x00000007db300000,0x00000007dc17f000,0x00000007dc180000)
+  to   space 48640K, 0% used [0x00000007deb00000,0x00000007deb00000,0x00000007e1a80000)
+ ParOldGen       total 269824K, used 177196K [0x0000000700000000, 0x0000000710780000, 0x00000007aab00000)
+  object space 269824K, 65% used [0x0000000700000000,0x000000070ad0b2e8,0x0000000710780000)
+ Metaspace       used 189691K, committed 190720K, reserved 1245184K
+  class space    used 24465K, committed 24960K, reserved 1048576K
+
+Card table byte_map: [0x0000017d6ec30000,0x0000017d6f440000] _byte_map_base: 0x0000017d6b430000
+
+Marking Bits: (ParMarkBitMap*) 0x00007ff8c46add50
+ Begin Bits: [0x0000017d6f440000, 0x0000017d73440000)
+ End Bits:   [0x0000017d73440000, 0x0000017d77440000)
+
+Polling page: 0x0000017d5a6e0000
+
+Metaspace:
+
+Usage:
+  Non-class:    161.35 MB used.
+      Class:     23.89 MB used.
+       Both:    185.25 MB used.
+
+Virtual space:
+  Non-class space:      192.00 MB reserved,     161.88 MB ( 84%) committed,  3 nodes.
+      Class space:        1.00 GB reserved,      24.38 MB (  2%) committed,  1 nodes.
+             Both:        1.19 GB reserved,     186.25 MB ( 15%) committed. 
+
+Chunk freelists:
+   Non-Class:  13.81 MB
+       Class:  7.64 MB
+        Both:  21.45 MB
+
+MaxMetaspaceSize: unlimited
+CompressedClassSpaceSize: 1.00 GB
+Initial GC threshold: 21.00 MB
+Current GC threshold: 262.75 MB
+CDS: off
+MetaspaceReclaimPolicy: balanced
+ - commit_granule_bytes: 65536.
+ - commit_granule_words: 8192.
+ - virtual_space_node_default_size: 8388608.
+ - enlarge_chunks_in_place: 1.
+ - new_chunks_are_fully_committed: 0.
+ - uncommit_free_chunks: 1.
+ - use_allocation_guard: 0.
+ - handle_deallocations: 1.
+
+
+Internal statistics:
+
+num_allocs_failed_limit: 12.
+num_arena_births: 1604.
+num_arena_deaths: 4.
+num_vsnodes_births: 4.
+num_vsnodes_deaths: 0.
+num_space_committed: 2978.
+num_space_uncommitted: 0.
+num_chunks_returned_to_freelist: 22.
+num_chunks_taken_from_freelist: 8568.
+num_chunk_merges: 12.
+num_chunk_splits: 6211.
+num_chunks_enlarged: 4709.
+num_inconsistent_stats: 0.
+
+CodeHeap 'non-profiled nmethods': size=120000Kb used=14302Kb max_used=14302Kb free=105697Kb
+ bounds [0x0000017d67700000, 0x0000017d68500000, 0x0000017d6ec30000]
+CodeHeap 'profiled nmethods': size=120000Kb used=43871Kb max_used=43871Kb free=76128Kb
+ bounds [0x0000017d5fc30000, 0x0000017d62710000, 0x0000017d67160000]
+CodeHeap 'non-nmethods': size=5760Kb used=2655Kb max_used=2698Kb free=3104Kb
+ bounds [0x0000017d67160000, 0x0000017d67410000, 0x0000017d67700000]
+ total_blobs=21935 nmethods=20718 adapters=1128
+ compilation: enabled
+              stopped_count=0, restarted_count=0
+ full_count=0
+
+Compilation events (20 events):
+Event: 81.016 Thread 0x0000017d7ce89110 25322       3       kotlinx.metadata.internal.metadata.jvm.deserialization.PackageParts::getMultifileFacadeName (18 bytes)
+Event: 81.017 Thread 0x0000017d7ce89110 nmethod 25322 0x0000017d62700790 code [0x0000017d627009e0, 0x0000017d62701318]
+Event: 81.017 Thread 0x0000017d7ce89110 25323       3       kotlinx.metadata.internal.metadata.jvm.JvmModuleProtoBuf$PackageParts$Builder::addShortClassName (29 bytes)
+Event: 81.017 Thread 0x0000017d7ce89110 nmethod 25323 0x0000017d62701610 code [0x0000017d627017e0, 0x0000017d62701b08]
+Event: 81.017 Thread 0x0000017d7ce89110 25324       3       kotlinx.metadata.internal.protobuf.CodedOutputStream::computeBytesSizeNoTag (13 bytes)
+Event: 81.017 Thread 0x0000017d7ce89110 nmethod 25324 0x0000017d62701c90 code [0x0000017d62701e40, 0x0000017d62702108]
+Event: 81.018 Thread 0x0000017d7ce89110 25325       1       org.gradle.internal.reflect.ReflectionCache$CacheEntry::access$200 (5 bytes)
+Event: 81.018 Thread 0x0000017d7ce89110 nmethod 25325 0x0000017d684f3f10 code [0x0000017d684f40a0, 0x0000017d684f4158]
+Event: 81.019 Thread 0x0000017d7ce89110 25326   !   2       java.lang.StringLatin1::replace (291 bytes)
+Event: 81.020 Thread 0x0000017d7ce89110 nmethod 25326 0x0000017d62702210 code [0x0000017d627024a0, 0x0000017d62702fc8]
+Event: 81.026 Thread 0x0000017d7ce89110 25328       3       org.gradle.internal.vfs.impl.VersionHierarchy$2::handleAsDescendantOfChild (10 bytes)
+Event: 81.027 Thread 0x0000017d7ce89110 nmethod 25328 0x0000017d62703810 code [0x0000017d627039c0, 0x0000017d62703c08]
+Event: 81.027 Thread 0x0000017d7ce89110 25329       3       org.gradle.internal.vfs.impl.VersionHierarchy$2::handleAsDescendantOfChild (14 bytes)
+Event: 81.027 Thread 0x0000017d7ce89110 nmethod 25329 0x0000017d62703d10 code [0x0000017d62703ec0, 0x0000017d62704028]
+Event: 81.035 Thread 0x0000017d7ce89110 25330   !   3       sun.nio.cs.StreamEncoder::implClose (148 bytes)
+Event: 81.035 Thread 0x0000017d7ce89110 nmethod 25330 0x0000017d62704110 code [0x0000017d627043a0, 0x0000017d62704ec8]
+Event: 81.035 Thread 0x0000017d7ce89110 25331       3       sun.nio.cs.StreamEncoder::flushLeftoverChar (243 bytes)
+Event: 81.036 Thread 0x0000017d7ce89110 nmethod 25331 0x0000017d62705410 code [0x0000017d62705740, 0x0000017d62706c48]
+Event: 81.038 Thread 0x0000017d7ce89110 25332   !   3       sun.nio.cs.StreamEncoder::close (48 bytes)
+Event: 81.038 Thread 0x0000017d7ce89110 nmethod 25332 0x0000017d62707290 code [0x0000017d62707440, 0x0000017d62707788]
+
+GC Heap History (20 events):
+Event: 25.814 GC heap before
+{Heap before GC invocations=24 (full 4):
+ PSYoungGen      total 578048K, used 574400K [0x00000007aab00000, 0x00000007cf600000, 0x0000000800000000)
+  eden space 569344K, 100% used [0x00000007aab00000,0x00000007cd700000,0x00000007cd700000)
+  from space 8704K, 58% used [0x00000007ced80000,0x00000007cf270020,0x00000007cf600000)
+  to   space 15872K, 0% used [0x00000007cd700000,0x00000007cd700000,0x00000007ce680000)
+ ParOldGen       total 143360K, used 77891K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c10e50,0x0000000708c00000)
+ Metaspace       used 82297K, committed 83072K, reserved 1179648K
+  class space    used 10891K, committed 11264K, reserved 1048576K
+}
+Event: 25.819 GC heap after
+{Heap after GC invocations=24 (full 4):
+ PSYoungGen      total 585216K, used 5488K [0x00000007aab00000, 0x00000007d4100000, 0x0000000800000000)
+  eden space 569344K, 0% used [0x00000007aab00000,0x00000007aab00000,0x00000007cd700000)
+  from space 15872K, 34% used [0x00000007cd700000,0x00000007cdc5c030,0x00000007ce680000)
+  to   space 15360K, 0% used [0x00000007d3200000,0x00000007d3200000,0x00000007d4100000)
+ ParOldGen       total 143360K, used 77899K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c12e50,0x0000000708c00000)
+ Metaspace       used 82297K, committed 83072K, reserved 1179648K
+  class space    used 10891K, committed 11264K, reserved 1048576K
+}
+Event: 27.281 GC heap before
+{Heap before GC invocations=25 (full 4):
+ PSYoungGen      total 585216K, used 574832K [0x00000007aab00000, 0x00000007d4100000, 0x0000000800000000)
+  eden space 569344K, 100% used [0x00000007aab00000,0x00000007cd700000,0x00000007cd700000)
+  from space 15872K, 34% used [0x00000007cd700000,0x00000007cdc5c030,0x00000007ce680000)
+  to   space 15360K, 0% used [0x00000007d3200000,0x00000007d3200000,0x00000007d4100000)
+ ParOldGen       total 143360K, used 77899K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c12e50,0x0000000708c00000)
+ Metaspace       used 82327K, committed 83136K, reserved 1179648K
+  class space    used 10891K, committed 11264K, reserved 1048576K
+}
+Event: 27.287 GC heap after
+{Heap after GC invocations=25 (full 4):
+ PSYoungGen      total 654336K, used 7161K [0x00000007aab00000, 0x00000007d3c80000, 0x0000000800000000)
+  eden space 643584K, 0% used [0x00000007aab00000,0x00000007aab00000,0x00000007d1f80000)
+  from space 10752K, 66% used [0x00000007d3200000,0x00000007d38fe7e0,0x00000007d3c80000)
+  to   space 14848K, 0% used [0x00000007d1f80000,0x00000007d1f80000,0x00000007d2e00000)
+ ParOldGen       total 143360K, used 77907K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c14e50,0x0000000708c00000)
+ Metaspace       used 82327K, committed 83136K, reserved 1179648K
+  class space    used 10891K, committed 11264K, reserved 1048576K
+}
+Event: 28.884 GC heap before
+{Heap before GC invocations=26 (full 4):
+ PSYoungGen      total 654336K, used 650745K [0x00000007aab00000, 0x00000007d3c80000, 0x0000000800000000)
+  eden space 643584K, 100% used [0x00000007aab00000,0x00000007d1f80000,0x00000007d1f80000)
+  from space 10752K, 66% used [0x00000007d3200000,0x00000007d38fe7e0,0x00000007d3c80000)
+  to   space 14848K, 0% used [0x00000007d1f80000,0x00000007d1f80000,0x00000007d2e00000)
+ ParOldGen       total 143360K, used 77907K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c14e50,0x0000000708c00000)
+ Metaspace       used 82402K, committed 83200K, reserved 1179648K
+  class space    used 10895K, committed 11264K, reserved 1048576K
+}
+Event: 28.888 GC heap after
+{Heap after GC invocations=26 (full 4):
+ PSYoungGen      total 658432K, used 9905K [0x00000007aab00000, 0x00000007d8880000, 0x0000000800000000)
+  eden space 643584K, 0% used [0x00000007aab00000,0x00000007aab00000,0x00000007d1f80000)
+  from space 14848K, 66% used [0x00000007d1f80000,0x00000007d292c6e0,0x00000007d2e00000)
+  to   space 14848K, 0% used [0x00000007d7a00000,0x00000007d7a00000,0x00000007d8880000)
+ ParOldGen       total 143360K, used 77915K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c16e50,0x0000000708c00000)
+ Metaspace       used 82402K, committed 83200K, reserved 1179648K
+  class space    used 10895K, committed 11264K, reserved 1048576K
+}
+Event: 30.038 GC heap before
+{Heap before GC invocations=27 (full 4):
+ PSYoungGen      total 658432K, used 653489K [0x00000007aab00000, 0x00000007d8880000, 0x0000000800000000)
+  eden space 643584K, 100% used [0x00000007aab00000,0x00000007d1f80000,0x00000007d1f80000)
+  from space 14848K, 66% used [0x00000007d1f80000,0x00000007d292c6e0,0x00000007d2e00000)
+  to   space 14848K, 0% used [0x00000007d7a00000,0x00000007d7a00000,0x00000007d8880000)
+ ParOldGen       total 143360K, used 77915K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c16e50,0x0000000708c00000)
+ Metaspace       used 82403K, committed 83200K, reserved 1179648K
+  class space    used 10895K, committed 11264K, reserved 1048576K
+}
+Event: 30.043 GC heap after
+{Heap after GC invocations=27 (full 4):
+ PSYoungGen      total 735232K, used 11870K [0x00000007aab00000, 0x00000007d8d80000, 0x0000000800000000)
+  eden space 720384K, 0% used [0x00000007aab00000,0x00000007aab00000,0x00000007d6a80000)
+  from space 14848K, 79% used [0x00000007d7a00000,0x00000007d8597ae0,0x00000007d8880000)
+  to   space 15872K, 0% used [0x00000007d6a80000,0x00000007d6a80000,0x00000007d7a00000)
+ ParOldGen       total 143360K, used 77923K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c18e50,0x0000000708c00000)
+ Metaspace       used 82403K, committed 83200K, reserved 1179648K
+  class space    used 10895K, committed 11264K, reserved 1048576K
+}
+Event: 31.596 GC heap before
+{Heap before GC invocations=28 (full 4):
+ PSYoungGen      total 735232K, used 732254K [0x00000007aab00000, 0x00000007d8d80000, 0x0000000800000000)
+  eden space 720384K, 100% used [0x00000007aab00000,0x00000007d6a80000,0x00000007d6a80000)
+  from space 14848K, 79% used [0x00000007d7a00000,0x00000007d8597ae0,0x00000007d8880000)
+  to   space 15872K, 0% used [0x00000007d6a80000,0x00000007d6a80000,0x00000007d7a00000)
+ ParOldGen       total 143360K, used 77923K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c18e50,0x0000000708c00000)
+ Metaspace       used 82405K, committed 83200K, reserved 1179648K
+  class space    used 10895K, committed 11264K, reserved 1048576K
+}
+Event: 31.600 GC heap after
+{Heap after GC invocations=28 (full 4):
+ PSYoungGen      total 736256K, used 6042K [0x00000007aab00000, 0x00000007dd900000, 0x0000000800000000)
+  eden space 720384K, 0% used [0x00000007aab00000,0x00000007aab00000,0x00000007d6a80000)
+  from space 15872K, 38% used [0x00000007d6a80000,0x00000007d7066a00,0x00000007d7a00000)
+  to   space 15360K, 0% used [0x00000007dca00000,0x00000007dca00000,0x00000007dd900000)
+ ParOldGen       total 143360K, used 77923K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c18e50,0x0000000708c00000)
+ Metaspace       used 82405K, committed 83200K, reserved 1179648K
+  class space    used 10895K, committed 11264K, reserved 1048576K
+}
+Event: 33.230 GC heap before
+{Heap before GC invocations=29 (full 4):
+ PSYoungGen      total 736256K, used 726426K [0x00000007aab00000, 0x00000007dd900000, 0x0000000800000000)
+  eden space 720384K, 100% used [0x00000007aab00000,0x00000007d6a80000,0x00000007d6a80000)
+  from space 15872K, 38% used [0x00000007d6a80000,0x00000007d7066a00,0x00000007d7a00000)
+  to   space 15360K, 0% used [0x00000007dca00000,0x00000007dca00000,0x00000007dd900000)
+ ParOldGen       total 143360K, used 77923K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c18e50,0x0000000708c00000)
+ Metaspace       used 86497K, committed 87296K, reserved 1179648K
+  class space    used 11870K, committed 12224K, reserved 1048576K
+}
+Event: 33.234 GC heap after
+{Heap after GC invocations=29 (full 4):
+ PSYoungGen      total 776704K, used 5904K [0x00000007aab00000, 0x00000007dd000000, 0x0000000800000000)
+  eden space 770560K, 0% used [0x00000007aab00000,0x00000007aab00000,0x00000007d9b80000)
+  from space 6144K, 96% used [0x00000007dca00000,0x00000007dcfc4030,0x00000007dd000000)
+  to   space 14848K, 0% used [0x00000007db300000,0x00000007db300000,0x00000007dc180000)
+ ParOldGen       total 143360K, used 77984K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c282b0,0x0000000708c00000)
+ Metaspace       used 86497K, committed 87296K, reserved 1179648K
+  class space    used 11870K, committed 12224K, reserved 1048576K
+}
+Event: 41.245 GC heap before
+{Heap before GC invocations=30 (full 4):
+ PSYoungGen      total 776704K, used 720278K [0x00000007aab00000, 0x00000007dd000000, 0x0000000800000000)
+  eden space 770560K, 92% used [0x00000007aab00000,0x00000007d64a1aa0,0x00000007d9b80000)
+  from space 6144K, 96% used [0x00000007dca00000,0x00000007dcfc4030,0x00000007dd000000)
+  to   space 14848K, 0% used [0x00000007db300000,0x00000007db300000,0x00000007dc180000)
+ ParOldGen       total 143360K, used 77984K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 54% used [0x0000000700000000,0x0000000704c282b0,0x0000000708c00000)
+ Metaspace       used 130348K, committed 131200K, reserved 1179648K
+  class space    used 17008K, committed 17408K, reserved 1048576K
+}
+Event: 41.300 GC heap after
+{Heap after GC invocations=30 (full 4):
+ PSYoungGen      total 785408K, used 14825K [0x00000007aab00000, 0x00000007de580000, 0x0000000800000000)
+  eden space 770560K, 0% used [0x00000007aab00000,0x00000007aab00000,0x00000007d9b80000)
+  from space 14848K, 99% used [0x00000007db300000,0x00000007dc17a530,0x00000007dc180000)
+  to   space 36864K, 0% used [0x00000007dc180000,0x00000007dc180000,0x00000007de580000)
+ ParOldGen       total 143360K, used 134715K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 93% used [0x0000000700000000,0x000000070838eed8,0x0000000708c00000)
+ Metaspace       used 130348K, committed 131200K, reserved 1179648K
+  class space    used 17008K, committed 17408K, reserved 1048576K
+}
+Event: 41.300 GC heap before
+{Heap before GC invocations=31 (full 5):
+ PSYoungGen      total 785408K, used 14825K [0x00000007aab00000, 0x00000007de580000, 0x0000000800000000)
+  eden space 770560K, 0% used [0x00000007aab00000,0x00000007aab00000,0x00000007d9b80000)
+  from space 14848K, 99% used [0x00000007db300000,0x00000007dc17a530,0x00000007dc180000)
+  to   space 36864K, 0% used [0x00000007dc180000,0x00000007dc180000,0x00000007de580000)
+ ParOldGen       total 143360K, used 134715K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 93% used [0x0000000700000000,0x000000070838eed8,0x0000000708c00000)
+ Metaspace       used 130348K, committed 131200K, reserved 1179648K
+  class space    used 17008K, committed 17408K, reserved 1048576K
+}
+Event: 41.511 GC heap after
+{Heap after GC invocations=31 (full 5):
+ PSYoungGen      total 785408K, used 0K [0x00000007aab00000, 0x00000007de580000, 0x0000000800000000)
+  eden space 770560K, 0% used [0x00000007aab00000,0x00000007aab00000,0x00000007d9b80000)
+  from space 14848K, 0% used [0x00000007db300000,0x00000007db300000,0x00000007dc180000)
+  to   space 36864K, 0% used [0x00000007dc180000,0x00000007dc180000,0x00000007de580000)
+ ParOldGen       total 143360K, used 137845K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 96% used [0x0000000700000000,0x000000070869d7a8,0x0000000708c00000)
+ Metaspace       used 130348K, committed 131200K, reserved 1179648K
+  class space    used 17008K, committed 17408K, reserved 1048576K
+}
+Event: 47.468 GC heap before
+{Heap before GC invocations=32 (full 6):
+ PSYoungGen      total 785408K, used 770560K [0x00000007aab00000, 0x00000007de580000, 0x0000000800000000)
+  eden space 770560K, 100% used [0x00000007aab00000,0x00000007d9b80000,0x00000007d9b80000)
+  from space 14848K, 0% used [0x00000007db300000,0x00000007db300000,0x00000007dc180000)
+  to   space 36864K, 0% used [0x00000007dc180000,0x00000007dc180000,0x00000007de580000)
+ ParOldGen       total 143360K, used 137845K [0x0000000700000000, 0x0000000708c00000, 0x00000007aab00000)
+  object space 143360K, 96% used [0x0000000700000000,0x000000070869d7a8,0x0000000708c00000)
+ Metaspace       used 160449K, committed 161408K, reserved 1245184K
+  class space    used 20691K, committed 21184K, reserved 1048576K
+}
+Event: 47.769 GC heap after
+{Heap after GC invocations=32 (full 6):
+ PSYoungGen      total 807424K, used 16812K [0x00000007aab00000, 0x00000007e0900000, 0x0000000800000000)
+  eden space 770560K, 2% used [0x00000007aab00000,0x00000007abb6b348,0x00000007d9b80000)
+  from space 36864K, 0% used [0x00000007dc180000,0x00000007dc180000,0x00000007de580000)
+  to   space 14848K, 0% used [0x00000007db300000,0x00000007db300000,0x00000007dc180000)
+ ParOldGen       total 269824K, used 142787K [0x0000000700000000, 0x0000000710780000, 0x00000007aab00000)
+  object space 269824K, 52% used [0x0000000700000000,0x0000000708b70dc8,0x0000000710780000)
+ Metaspace       used 160449K, committed 161408K, reserved 1245184K
+  class space    used 20691K, committed 21184K, reserved 1048576K
+}
+Event: 54.668 GC heap before
+{Heap before GC invocations=33 (full 6):
+ PSYoungGen      total 807424K, used 770560K [0x00000007aab00000, 0x00000007e0900000, 0x0000000800000000)
+  eden space 770560K, 100% used [0x00000007aab00000,0x00000007d9b80000,0x00000007d9b80000)
+  from space 36864K, 0% used [0x00000007dc180000,0x00000007dc180000,0x00000007de580000)
+  to   space 14848K, 0% used [0x00000007db300000,0x00000007db300000,0x00000007dc180000)
+ ParOldGen       total 269824K, used 142787K [0x0000000700000000, 0x0000000710780000, 0x00000007aab00000)
+  object space 269824K, 52% used [0x0000000700000000,0x0000000708b70dc8,0x0000000710780000)
+ Metaspace       used 178177K, committed 179264K, reserved 1245184K
+  class space    used 22896K, committed 23424K, reserved 1048576K
+}
+Event: 54.700 GC heap after
+{Heap after GC invocations=33 (full 6):
+ PSYoungGen      total 809472K, used 14844K [0x00000007aab00000, 0x00000007e1a80000, 0x0000000800000000)
+  eden space 794624K, 0% used [0x00000007aab00000,0x00000007aab00000,0x00000007db300000)
+  from space 14848K, 99% used [0x00000007db300000,0x00000007dc17f000,0x00000007dc180000)
+  to   space 48640K, 0% used [0x00000007deb00000,0x00000007deb00000,0x00000007e1a80000)
+ ParOldGen       total 269824K, used 177196K [0x0000000700000000, 0x0000000710780000, 0x00000007aab00000)
+  object space 269824K, 65% used [0x0000000700000000,0x000000070ad0b2e8,0x0000000710780000)
+ Metaspace       used 178177K, committed 179264K, reserved 1245184K
+  class space    used 22896K, committed 23424K, reserved 1048576K
+}
+
+Dll operation events (3 events):
+Event: 0.005 Loaded shared library C:\Program Files\Android\Android Studio\jbr\bin\java.dll
+Event: 0.087 Loaded shared library C:\Program Files\Android\Android Studio\jbr\bin\zip.dll
+Event: 0.354 Loaded shared library C:\Program Files\Android\Android Studio\jbr\bin\verify.dll
+
+Deoptimization events (20 events):
+Event: 80.961 Thread 0x0000017d0066b000 Uncommon trap: trap_request=0xffffffbe fr.pc=0x0000017d68227194 relative=0x0000000000000bf4
+Event: 80.961 Thread 0x0000017d0066b000 Uncommon trap: reason=profile_predicate action=maybe_recompile pc=0x0000017d68227194 method=java.util.ComparableTimSort.mergeHi(IIII)V @ 185 c2
+Event: 80.961 Thread 0x0000017d0066b000 DEOPT PACKING pc=0x0000017d68227194 sp=0x0000004875bf99b0
+Event: 80.961 Thread 0x0000017d0066b000 DEOPT UNPACKING pc=0x0000017d671b9ea3 sp=0x0000004875bf9968 mode 2
+Event: 80.961 Thread 0x0000017d0066b000 Uncommon trap: trap_request=0xffffffbe fr.pc=0x0000017d68227194 relative=0x0000000000000bf4
+Event: 80.961 Thread 0x0000017d0066b000 Uncommon trap: reason=profile_predicate action=maybe_recompile pc=0x0000017d68227194 method=java.util.ComparableTimSort.mergeHi(IIII)V @ 185 c2
+Event: 80.961 Thread 0x0000017d0066b000 DEOPT PACKING pc=0x0000017d68227194 sp=0x0000004875bf99b0
+Event: 80.961 Thread 0x0000017d0066b000 DEOPT UNPACKING pc=0x0000017d671b9ea3 sp=0x0000004875bf9968 mode 2
+Event: 81.010 Thread 0x0000017d04ed7960 Uncommon trap: trap_request=0xffffff45 fr.pc=0x0000017d67a64584 relative=0x00000000000003a4
+Event: 81.010 Thread 0x0000017d04ed7960 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000017d67a64584 method=java.io.File.mkdirs()Z @ 13 c2
+Event: 81.010 Thread 0x0000017d04ed7960 DEOPT PACKING pc=0x0000017d67a64584 sp=0x0000004877bfea60
+Event: 81.010 Thread 0x0000017d04ed7960 DEOPT UNPACKING pc=0x0000017d671b9ea3 sp=0x0000004877bfea00 mode 2
+Event: 81.016 Thread 0x0000017d0066b000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x0000017d67e8f934 relative=0x00000000000006d4
+Event: 81.016 Thread 0x0000017d0066b000 Uncommon trap: reason=bimorphic_or_optimized_type_check action=maybe_recompile pc=0x0000017d67e8f934 method=kotlinx.metadata.internal.protobuf.CodedInputStream.tryRefillBuffer(I)Z @ 177 c2
+Event: 81.016 Thread 0x0000017d0066b000 DEOPT PACKING pc=0x0000017d67e8f934 sp=0x0000004875bf6ee0
+Event: 81.016 Thread 0x0000017d0066b000 DEOPT UNPACKING pc=0x0000017d671b9ea3 sp=0x0000004875bf6dd8 mode 2
+Event: 81.016 Thread 0x0000017d0066b000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x0000017d67e8f934 relative=0x00000000000006d4
+Event: 81.016 Thread 0x0000017d0066b000 Uncommon trap: reason=bimorphic_or_optimized_type_check action=maybe_recompile pc=0x0000017d67e8f934 method=kotlinx.metadata.internal.protobuf.CodedInputStream.tryRefillBuffer(I)Z @ 177 c2
+Event: 81.016 Thread 0x0000017d0066b000 DEOPT PACKING pc=0x0000017d67e8f934 sp=0x0000004875bf6ee0
+Event: 81.016 Thread 0x0000017d0066b000 DEOPT UNPACKING pc=0x0000017d671b9ea3 sp=0x0000004875bf6dd8 mode 2
+
+Classes unloaded (12 events):
+Event: 5.809 Thread 0x0000017d77e11320 Unloading class 0x00000008007c59a8 '_BuildScript_$_run_closure1$_closure3'
+Event: 5.809 Thread 0x0000017d77e11320 Unloading class 0x00000008007c5598 '_BuildScript_$_run_closure1$_closure2'
+Event: 5.809 Thread 0x0000017d77e11320 Unloading class 0x00000008007c5188 '_BuildScript_$_run_closure1'
+Event: 5.809 Thread 0x0000017d77e11320 Unloading class 0x00000008007c4c30 '_BuildScript_'
+Event: 5.809 Thread 0x0000017d77e11320 Unloading class 0x00000008007c4820 'JetGradlePlugin$_apply_closure1$_closure2$_closure3'
+Event: 5.809 Thread 0x0000017d77e11320 Unloading class 0x00000008007c4410 'JetGradlePlugin$_apply_closure1$_closure2'
+Event: 5.809 Thread 0x0000017d77e11320 Unloading class 0x00000008007c4000 'JetGradlePlugin$_apply_closure1'
+Event: 5.809 Thread 0x0000017d77e11320 Unloading class 0x00000008007b9af0 'JetGradlePlugin'
+Event: 5.809 Thread 0x0000017d77e11320 Unloading class 0x00000008007b9800 'RegistryProcessor'
+Event: 5.809 Thread 0x0000017d77e11320 Unloading class 0x00000008007ac410 '_BuildScript_$_run_closure1$_closure2'
+Event: 5.809 Thread 0x0000017d77e11320 Unloading class 0x00000008007ac000 '_BuildScript_$_run_closure1'
+Event: 5.809 Thread 0x0000017d77e11320 Unloading class 0x00000008007a0800 '_BuildScript_'
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (20 events):
+Event: 55.015 Thread 0x0000017d04ed7e70 Exception <a 'java/lang/NoSuchMethodError'{0x00000007adc7e920}: static Lorg/jetbrains/kotlin/idea/gradleTooling/model/assignment/AssignmentModelImpl;.<clinit>()V> (0x00000007adc7e920) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 1127]
+Event: 55.020 Thread 0x0000017d0066b000 Exception <a 'java/lang/ClassNotFoundException'{0x00000007ad54cdc0}: org/codehaus/groovy/runtime/NullObjectBeanInfo> (0x00000007ad54cdc0) 
+thrown [s\src\hotspot\share\classfile\systemDictionary.cpp, line 256]
+Event: 55.022 Thread 0x0000017d0066b000 Exception <a 'java/lang/ClassNotFoundException'{0x00000007ad7165d8}: org/codehaus/groovy/runtime/NullObjectCustomizer> (0x00000007ad7165d8) 
+thrown [s\src\hotspot\share\classfile\systemDictionary.cpp, line 256]
+Event: 55.117 Thread 0x0000017d04ed7e70 Exception <a 'java/lang/NoSuchMethodError'{0x00000007af2abd50}: static Lorg/jetbrains/kotlin/idea/gradleTooling/model/samWithReceiver/SamWithReceiverModelImpl;.<clinit>()V> (0x00000007af2abd50) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 1127]
+Event: 55.118 Thread 0x0000017d04ed7e70 Exception <a 'java/lang/NoSuchMethodError'{0x00000007af2ba308}: static Lorg/jetbrains/kotlin/idea/gradleTooling/model/parcelize/ParcelizeGradleModelImpl;.<clinit>()V> (0x00000007af2ba308) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 1127]
+Event: 55.119 Thread 0x0000017d04ed7e70 Exception <a 'java/lang/NoSuchMethodError'{0x00000007af2c2528}: static Lorg/jetbrains/plugins/gradle/tooling/internal/jar/JarTaskManifestConfigurationImpl;.<clinit>()V> (0x00000007af2c2528) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 1127]
+Event: 55.119 Thread 0x0000017d04ed7e70 Exception <a 'java/lang/NoSuchMethodError'{0x00000007af2cb060}: static Lorg/jetbrains/kotlin/idea/gradleTooling/model/noarg/NoArgModelImpl;.<clinit>()V> (0x00000007af2cb060) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 1127]
+Event: 55.121 Thread 0x0000017d04ed7e70 Exception <a 'java/lang/NoSuchMethodError'{0x00000007af2d9de0}: static Lorg/jetbrains/kotlin/android/synthetic/idea/AndroidExtensionsGradleModelImpl;.<clinit>()V> (0x00000007af2d9de0) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 1127]
+Event: 55.121 Thread 0x0000017d04ed7e70 Exception <a 'java/lang/NoSuchMethodError'{0x00000007af2e25c8}: static Lorg/jetbrains/plugins/gradle/tooling/internal/VersionCatalogsModelImpl;.<clinit>()V> (0x00000007af2e25c8) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 1127]
+Event: 55.122 Thread 0x0000017d04ed7e70 Exception <a 'java/lang/NoSuchMethodError'{0x00000007af2eba80}: static Lorg/jetbrains/kotlin/idea/gradleTooling/model/allopen/AllOpenModelImpl;.<clinit>()V> (0x00000007af2eba80) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 1127]
+Event: 55.179 Thread 0x0000017d0066b000 Exception <a 'sun/nio/fs/WindowsException'{0x00000007ae8ace20}> (0x00000007ae8ace20) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 531]
+Event: 57.290 Thread 0x0000017d03cc3b80 Exception <a 'java/lang/NoSuchMethodError'{0x00000007aabd94b0}: static Lorg/gradle/internal/build/event/types/DefaultFileDownloadDescriptor;.<clinit>()V> (0x00000007aabd94b0) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 1127]
+Event: 58.018 Thread 0x0000017d03cc3b80 Exception <a 'java/lang/NoSuchMethodError'{0x00000007aabedb30}: static Lorg/gradle/internal/build/event/types/DefaultStatusEvent;.<clinit>()V> (0x00000007aabedb30) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 1127]
+Event: 66.004 Thread 0x0000017d03cc3b80 Exception <a 'java/lang/NoSuchMethodError'{0x00000007b28cfd70}: static Lorg/gradle/internal/build/event/types/DefaultFileDownloadSuccessResult;.<clinit>()V> (0x00000007b28cfd70) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 1127]
+Event: 66.246 Thread 0x0000017d0066b000 Exception <a 'java/lang/NoSuchMethodError'{0x00000007b0fee690}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.invokeSpecialIFC(java.lang.Object, java.lang.Object, java.lang.Object)'> (0x00000007b0fee690) 
+thrown [s\src\hotspot\share\interpreter\linkResolver.cpp, line 771]
+Event: 78.526 Thread 0x0000017d0066b000 Exception <a 'java/io/IOException'{0x00000007c6f6a6c8}> (0x00000007c6f6a6c8) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 531]
+Event: 78.529 Thread 0x0000017d0066b000 Exception <a 'java/io/IOException'{0x00000007c6f7e4a8}> (0x00000007c6f7e4a8) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 531]
+Event: 78.546 Thread 0x0000017d03cc1810 StackOverflowError at 0x0000017d683fa2e0
+Event: 78.546 Thread 0x0000017d03cc1810 Exception <a 'java/lang/StackOverflowError'{0x00000007aab1d0d0}> (0x00000007aab1d0d0) 
+thrown [s\src\hotspot\share\runtime\sharedRuntime.cpp, line 631]
+Event: 79.790 Thread 0x0000017d03cc3b80 Exception <a 'java/io/IOException'{0x00000007b28d9838}> (0x00000007b28d9838) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 531]
+
+VM Operations (20 events):
+Event: 63.083 Executing VM operation: Cleanup
+Event: 63.083 Executing VM operation: Cleanup done
+Event: 64.084 Executing VM operation: Cleanup
+Event: 64.084 Executing VM operation: Cleanup done
+Event: 64.905 Executing VM operation: HandshakeAllThreads
+Event: 64.906 Executing VM operation: HandshakeAllThreads done
+Event: 65.907 Executing VM operation: Cleanup
+Event: 65.907 Executing VM operation: Cleanup done
+Event: 66.114 Executing VM operation: HandshakeAllThreads
+Event: 66.114 Executing VM operation: HandshakeAllThreads done
+Event: 67.120 Executing VM operation: Cleanup
+Event: 67.120 Executing VM operation: Cleanup done
+Event: 72.162 Executing VM operation: Cleanup
+Event: 72.162 Executing VM operation: Cleanup done
+Event: 79.239 Executing VM operation: Cleanup
+Event: 79.255 Executing VM operation: Cleanup done
+Event: 79.259 Executing VM operation: HandshakeAllThreads
+Event: 79.259 Executing VM operation: HandshakeAllThreads done
+Event: 80.261 Executing VM operation: Cleanup
+Event: 80.262 Executing VM operation: Cleanup done
+
+Events (20 events):
+Event: 79.208 loading class sun/security/ssl/SSLKeyExchange$SSLKeyExECDHERSAOrPSS done
+Event: 79.213 loading class sun/security/ssl/SSLCipher$T12CC20P1305WriteCipherGenerator$CC20P1305WriteCipher
+Event: 79.213 loading class sun/security/ssl/SSLCipher$T12CC20P1305WriteCipherGenerator$CC20P1305WriteCipher done
+Event: 79.213 loading class com/sun/crypto/provider/ChaCha20Cipher$EngineAEADEnc
+Event: 79.213 loading class com/sun/crypto/provider/ChaCha20Cipher$ChaChaEngine
+Event: 79.214 loading class com/sun/crypto/provider/ChaCha20Cipher$ChaChaEngine done
+Event: 79.214 loading class com/sun/crypto/provider/ChaCha20Cipher$EngineAEADEnc done
+Event: 79.214 loading class com/sun/crypto/provider/Poly1305
+Event: 79.256 loading class com/sun/crypto/provider/Poly1305 done
+Event: 79.256 loading class sun/security/util/math/intpoly/IntegerPolynomial1305
+Event: 79.256 loading class sun/security/util/math/intpoly/IntegerPolynomial1305 done
+Event: 79.376 loading class sun/security/ssl/SSLCipher$T12CC20P1305ReadCipherGenerator$CC20P1305ReadCipher
+Event: 79.376 loading class sun/security/ssl/SSLCipher$T12CC20P1305ReadCipherGenerator$CC20P1305ReadCipher done
+Event: 79.377 loading class com/sun/crypto/provider/ChaCha20Cipher$EngineAEADDec
+Event: 79.377 loading class com/sun/crypto/provider/ChaCha20Cipher$EngineAEADDec done
+Event: 79.790 Thread 0x0000017d03cc3b80 Thread exited: 0x0000017d03cc3b80
+Event: 79.797 Thread 0x0000017d0e407080 Thread added: 0x0000017d0e407080
+Event: 80.026 Thread 0x0000017d0e407080 Thread exited: 0x0000017d0e407080
+Event: 81.012 Thread 0x0000017d0e401b80 Thread added: 0x0000017d0e401b80
+Event: 81.024 Thread 0x0000017d0aa2c3e0 Thread added: 0x0000017d0aa2c3e0
+
+
+Dynamic libraries:
+0x00007ff789a40000 - 0x00007ff789a4a000 	C:\Program Files\Android\Android Studio\jbr\bin\java.exe
+0x00007ff9430f0000 - 0x00007ff943307000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff941f90000 - 0x00007ff942054000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ff940350000 - 0x00007ff940723000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ff940c70000 - 0x00007ff940d81000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ff92bb60000 - 0x00007ff92bb77000 	C:\Program Files\Android\Android Studio\jbr\bin\jli.dll
+0x00007ff91b980000 - 0x00007ff91b99b000 	C:\Program Files\Android\Android Studio\jbr\bin\VCRUNTIME140.dll
+0x00007ff942d40000 - 0x00007ff942ef1000 	C:\WINDOWS\System32\USER32.dll
+0x00007ff9407f0000 - 0x00007ff940816000 	C:\WINDOWS\System32\win32u.dll
+0x00007ff92e120000 - 0x00007ff92e3b8000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.5124_none_270e8f4f7386d69d\COMCTL32.dll
+0x00007ff942250000 - 0x00007ff942279000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ff942080000 - 0x00007ff942127000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ff940a10000 - 0x00007ff940b2b000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ff940230000 - 0x00007ff9402ca000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ff9421a0000 - 0x00007ff9421d1000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ff92bb50000 - 0x00007ff92bb5c000 	C:\Program Files\Android\Android Studio\jbr\bin\vcruntime140_1.dll
+0x00007ff8f0850000 - 0x00007ff8f08dd000 	C:\Program Files\Android\Android Studio\jbr\bin\msvcp140.dll
+0x00007ff8c3b00000 - 0x00007ff8c4783000 	C:\Program Files\Android\Android Studio\jbr\bin\server\jvm.dll
+0x00007ff9422a0000 - 0x00007ff942351000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ff941710000 - 0x00007ff9417b8000 	C:\WINDOWS\System32\sechost.dll
+0x00007ff940200000 - 0x00007ff940228000 	C:\WINDOWS\System32\bcrypt.dll
+0x00007ff942f90000 - 0x00007ff9430a4000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ff93f7f0000 - 0x00007ff93f83d000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
+0x00007ff93d9b0000 - 0x00007ff93d9e4000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ff928e50000 - 0x00007ff928e5a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ff9205b0000 - 0x00007ff9205b9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ff941f10000 - 0x00007ff941f81000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ff93f7c0000 - 0x00007ff93f7d3000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x00007ff93f200000 - 0x00007ff93f218000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ff9381e0000 - 0x00007ff9381ea000 	C:\Program Files\Android\Android Studio\jbr\bin\jimage.dll
+0x00007ff93d390000 - 0x00007ff93d5c2000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ff941b10000 - 0x00007ff941ea2000 	C:\WINDOWS\System32\combase.dll
+0x00007ff940d90000 - 0x00007ff940e67000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ff9212e0000 - 0x00007ff921312000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ff940820000 - 0x00007ff94089b000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ff938250000 - 0x00007ff93825e000 	C:\Program Files\Android\Android Studio\jbr\bin\instrument.dll
+0x00007ff92df90000 - 0x00007ff92dfb5000 	C:\Program Files\Android\Android Studio\jbr\bin\java.dll
+0x00007ff92cbf0000 - 0x00007ff92cc08000 	C:\Program Files\Android\Android Studio\jbr\bin\zip.dll
+0x00007ff940e70000 - 0x00007ff941706000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ff940b30000 - 0x00007ff940c6f000 	C:\WINDOWS\System32\wintypes.dll
+0x00007ff93e0d0000 - 0x00007ff93e9ea000 	C:\WINDOWS\SYSTEM32\windows.storage.dll
+0x00007ff942510000 - 0x00007ff94261a000 	C:\WINDOWS\System32\SHCORE.dll
+0x00007ff942130000 - 0x00007ff942193000 	C:\WINDOWS\System32\shlwapi.dll
+0x00007ff940130000 - 0x00007ff94015b000 	C:\WINDOWS\SYSTEM32\profapi.dll
+0x00007ff92ca40000 - 0x00007ff92ca59000 	C:\Program Files\Android\Android Studio\jbr\bin\net.dll
+0x00007ff93c380000 - 0x00007ff93c4ac000 	C:\WINDOWS\SYSTEM32\WINHTTP.dll
+0x00007ff93f6f0000 - 0x00007ff93f75a000 	C:\WINDOWS\system32\mswsock.dll
+0x00007ff92bd30000 - 0x00007ff92bd46000 	C:\Program Files\Android\Android Studio\jbr\bin\nio.dll
+0x00007ff92cfc0000 - 0x00007ff92cfd0000 	C:\Program Files\Android\Android Studio\jbr\bin\verify.dll
+0x00007ff92d280000 - 0x00007ff92d2a7000 	C:\Users\HUAWEI\Desktop\AA-final\SoulTech-master\.gradle\native\c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48\windows-amd64\native-platform.dll
+0x00007ff8f7440000 - 0x00007ff8f7584000 	C:\Users\HUAWEI\Desktop\AA-final\SoulTech-master\.gradle\native\38dada09dfb8b06ba9b0570ebf7e218e3eb74d4ef43ca46872605cf95ebc2f47\windows-amd64\native-platform-file-events.dll
+0x00007ff92d2f0000 - 0x00007ff92d2f9000 	C:\Program Files\Android\Android Studio\jbr\bin\management.dll
+0x00007ff92d260000 - 0x00007ff92d26b000 	C:\Program Files\Android\Android Studio\jbr\bin\management_ext.dll
+0x00007ff941980000 - 0x00007ff941988000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ff93f9d0000 - 0x00007ff93f9eb000 	C:\WINDOWS\SYSTEM32\CRYPTSP.dll
+0x00007ff93f160000 - 0x00007ff93f197000 	C:\WINDOWS\system32\rsaenh.dll
+0x00007ff93f870000 - 0x00007ff93f898000 	C:\WINDOWS\SYSTEM32\USERENV.dll
+0x00007ff93f9f0000 - 0x00007ff93f9fc000 	C:\WINDOWS\SYSTEM32\CRYPTBASE.dll
+0x00007ff93ec50000 - 0x00007ff93ec7d000 	C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL
+0x00007ff941b00000 - 0x00007ff941b09000 	C:\WINDOWS\System32\NSI.dll
+0x00007ff93b680000 - 0x00007ff93b699000 	C:\WINDOWS\SYSTEM32\dhcpcsvc6.DLL
+0x00007ff93b660000 - 0x00007ff93b67f000 	C:\WINDOWS\SYSTEM32\dhcpcsvc.DLL
+0x00007ff93ec80000 - 0x00007ff93ed82000 	C:\WINDOWS\SYSTEM32\DNSAPI.dll
+0x00007ff92de50000 - 0x00007ff92de59000 	C:\Program Files\Android\Android Studio\jbr\bin\extnet.dll
+0x00007ff8ed1b0000 - 0x00007ff8ed1b8000 	C:\WINDOWS\system32\wshunix.dll
+0x00007ff93f380000 - 0x00007ff93f3b4000 	C:\WINDOWS\SYSTEM32\ntmarta.dll
+0x00007ff93b2d0000 - 0x00007ff93b2da000 	C:\Windows\System32\rasadhlp.dll
+0x00007ff93aa50000 - 0x00007ff93aad3000 	C:\WINDOWS\System32\fwpuclnt.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Android\Android Studio\jbr\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.5124_none_270e8f4f7386d69d;C:\Program Files\Android\Android Studio\jbr\bin\server;C:\Users\HUAWEI\Desktop\AA-final\SoulTech-master\.gradle\native\c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48\windows-amd64;C:\Users\HUAWEI\Desktop\AA-final\SoulTech-master\.gradle\native\38dada09dfb8b06ba9b0570ebf7e218e3eb74d4ef43ca46872605cf95ebc2f47\windows-amd64
+
+VM Arguments:
+jvm_args: -XX:MaxPermSize=1024m -XX:+HeapDumpOnOutOfMemoryError -XX:+UseParallelGC --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED -Xmx4096m -Dfile.encoding=UTF-8 -Duser.country=RU -Duser.language=ru -Duser.variant -javaagent:C:\Users\HUAWEI\Desktop\AA-final\SoulTech-master\.gradle\wrapper\dists\gradle-8.7-bin\bhs2wmbdwecv87pi65oeuq5iu\gradle-8.7\lib\agents\gradle-instrumentation-agent-8.7.jar 
+java_command: org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.7
+java_class_path (initial): C:\Users\HUAWEI\Desktop\AA-final\SoulTech-master\.gradle\wrapper\dists\gradle-8.7-bin\bhs2wmbdwecv87pi65oeuq5iu\gradle-8.7\lib\gradle-launcher-8.7.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     bool HeapDumpOnOutOfMemoryError               = true                                   {manageable} {command line}
+   size_t InitialHeapSize                          = 132120576                                 {product} {ergonomic}
+   size_t MaxHeapSize                              = 4294967296                                {product} {command line}
+   size_t MaxNewSize                               = 1431306240                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 524288                                    {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+   size_t NewSize                                  = 44040192                                  {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+   size_t OldSize                                  = 88080384                                  {product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 4294967296                             {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+     bool UseParallelGC                            = true                                      {product} {command line}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk-23
+PATH=C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\nodejs\;C:\Python\Python311;C:\Users\HUAWEI\Downloads\gradle-8.12-bin\gradle-8.12\bin;C:\Program Files\Java\jdk-23\bin;C:\Program Files\Git\cmd;C:\Program Files\PostgreSQL\17\bin;C:\Program Files\PostgreSQL\17\data;C:\Program Files\PowerShell\7\;C:\Program Files\Docker\Docker\resources\bin;C:\Python\Python311\Scripts\;C:\WINDOWS\System32\OpenSSH\ssh.exe;C:\WINDOWS\System32\OpenSSH\;C:\Users\HUAWEI\AppData\Roaming\npm;C:\Users\HUAWEI\AppData\Local\Programs\Microsoft VS Code\bin;C:\Python\Python311;C:\Users\HUAWEI\Downloads\gradle-8.12-bin\gradle-8.12\bin;C:\Program Files\Java\jdk-23\bin;C:\Program Files\PostgreSQL\17\data;C:\Program Files\PostgreSQL\17\bin;C:\Python\Python311\Scripts\;C:\Users\HUAWEI\AppData\Local\Programs\Ollama;C:\WINDOWS\System32\OpenSSH\ssh.exe;C:\Users\HUAWEI\AppData\Local\Programs\cursor\resources\app\bin
+USERNAME=GALYMZHAN MUSSILIMOV
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 140 Stepping 1, GenuineIntel
+TMP=C:\Users\HUAWEI\AppData\Local\Temp
+TEMP=C:\Users\HUAWEI\AppData\Local\Temp
+
+
+
+Periodic native trim disabled
+
+JNI global refs:
+JNI global refs: 29, weak refs: 3
+
+JNI global refs memory usage: 843, weak refs: 841
+
+Process memory usage:
+Resident Set Size: 1358012K (16% of 8183096K total physical memory with 441612K free physical memory)
+
+OOME stack traces (most recent first):
+Classloader memory used:
+Loader org.gradle.internal.classloader.VisitableURLClassLoader                         : 13893K
+Loader bootstrap                                                                       : 3603K
+Loader org.gradle.internal.classloader.VisitableURLClassLoader$InstrumentingVisitableURLClassLoader: 2895K
+Loader org.gradle.initialization.MixInLegacyTypesClassLoader                           : 1603K
+Loader jdk.internal.loader.ClassLoaders$AppClassLoader                                 : 1015K
+Loader org.gradle.internal.classloader.VisitableURLClassLoader                         : 373K
+Loader jdk.internal.reflect.DelegatingClassLoader                                      : 136K
+Loader jdk.internal.loader.ClassLoaders$PlatformClassLoader                            : 122K
+Loader jdk.internal.jrtfs.JrtFileSystemProvider$JrtFsLoader                            : 42385B
+Loader org.gradle.groovy.scripts.internal.DefaultScriptCompilationHandler$ScriptClassLoader: 19469B
+Loader org.codehaus.groovy.runtime.callsite.CallSiteClassLoader                        : 6808B
+
+Classes loaded by more than one classloader:
+Class Program                                                                         : loaded 5 times (x 70B)
+Class Build_gradle                                                                    : loaded 3 times (x 128B)
+Class org.gradle.api.UncheckedIOException                                             : loaded 3 times (x 80B)
+Class Build_gradle$1                                                                  : loaded 3 times (x 73B)
+Class org.gradle.internal.Cast                                                        : loaded 3 times (x 69B)
+Class org.gradle.internal.IoActions                                                   : loaded 3 times (x 69B)
+Class org.gradle.api.GradleException                                                  : loaded 3 times (x 80B)
+Class org.gradle.api.Action                                                           : loaded 3 times (x 68B)
+Class org.objectweb.asm.ModuleVisitor                                                 : loaded 2 times (x 79B)
+Class org.jetbrains.plugins.gradle.model.MavenRepositoryModel                         : loaded 2 times (x 68B)
+Class org.gradle.util.internal.DefaultGradleVersion                                   : loaded 2 times (x 82B)
+Class [Lcom.google.common.collect.AbstractMapEntry;                                   : loaded 2 times (x 67B)
+Class com.google.common.collect.SingletonImmutableList                                : loaded 2 times (x 167B)
+Class com.google.common.cache.CacheLoader$SupplierToCacheLoader                       : loaded 2 times (x 73B)
+Class com.amazon.ion.impl.bin.utf8.Utf8StringEncoderPool$1                            : loaded 2 times (x 74B)
+Class org.gradle.internal.classpath.ClassPath                                         : loaded 2 times (x 68B)
+Class com.google.common.cache.RemovalListener                                         : loaded 2 times (x 68B)
+Class org.gradle.api.internal.classpath.DefaultModuleRegistry                         : loaded 2 times (x 84B)
+Class org.gradle.internal.exceptions.NonGradleCauseExceptionsHolder                   : loaded 2 times (x 68B)
+Class Settings_gradle$1$1                                                             : loaded 2 times (x 72B)
+Class com.google.common.collect.ImmutableEnumSet                                      : loaded 2 times (x 144B)
+Class com.google.common.collect.ListMultimap                                          : loaded 2 times (x 68B)
+Class com.google.common.base.CharMatcher$JavaDigit                                    : loaded 2 times (x 109B)
+Class com.google.common.base.CharMatcher$Digit                                        : loaded 2 times (x 110B)
+Class com.google.common.collect.AbstractMultimap                                      : loaded 2 times (x 121B)
+Class com.intellij.openapi.externalSystem.model.ExternalSystemException               : loaded 2 times (x 84B)
+Class org.gradle.tooling.model.kotlin.dsl.KotlinDslScriptsModel                       : loaded 2 times (x 68B)
+Class jdk.internal.jimage.BasicImageReader$1                                          : loaded 2 times (x 75B)
+Class kotlin.enums.EnumEntries                                                        : loaded 2 times (x 68B)
+Class com.google.common.cache.CacheBuilder$OneWeigher                                 : loaded 2 times (x 80B)
+Class com.amazon.ion.impl._Private_SymtabExtendsCache                                 : loaded 2 times (x 70B)
+Class com.amazon.ion.impl.lite.IonIntLite                                             : loaded 2 times (x 187B)
+Class sync_studio_tooling7_34lhoa46o5lu9yvfoj6zewbh7$_run_closure1                    : loaded 2 times (x 137B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.KotlinDslScriptsModelSerializationService: loaded 2 times (x 79B)
+Class org.jetbrains.kotlin.idea.gradleTooling.model.samWithReceiver.SamWithReceiverModel: loaded 2 times (x 68B)
+Class com.google.common.collect.ImmutableEntry                                        : loaded 2 times (x 80B)
+Class com.google.common.collect.Lists$StringAsImmutableList                           : loaded 2 times (x 167B)
+Class kotlin.enums.EnumEntriesKt                                                      : loaded 2 times (x 69B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$SafeMethodInvoker    : loaded 2 times (x 74B)
+Class com.intellij.openapi.externalSystem.model.project.IExternalSystemSourceType     : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.model.ExternalProject                              : loaded 2 times (x 68B)
+Class com.google.common.cache.LocalCache$StrongEntry                                  : loaded 2 times (x 106B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$1                    : loaded 2 times (x 73B)
+Class com.amazon.ion.impl.lite.IonStructLite                                          : loaded 2 times (x 295B)
+Class org.jetbrains.plugins.gradle.model.IntelliJSettings                             : loaded 2 times (x 68B)
+Class org.objectweb.asm.FieldWriter                                                   : loaded 2 times (x 76B)
+Class com.google.common.base.CharMatcher                                              : loaded 2 times (x 109B)
+Class com.amazon.ion.impl.bin.IntList                                                 : loaded 2 times (x 75B)
+Class jdk.internal.jimage.ImageBufferCache$1                                          : loaded 2 times (x 78B)
+Class jdk.internal.jimage.ImageBufferCache$2                                          : loaded 2 times (x 89B)
+Class com.google.common.base.CharMatcher$IsNot                                        : loaded 2 times (x 109B)
+Class org.gradle.internal.impldep.gnu.trove.THash                                     : loaded 2 times (x 79B)
+Class org.jetbrains.kotlin.tooling.core.Extras                                        : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.bin.utf8.Pool                                               : loaded 2 times (x 72B)
+Class com.amazon.ion.IonReader                                                        : loaded 2 times (x 68B)
+Class com.google.common.base.Splitter                                                 : loaded 2 times (x 70B)
+Class [Lcom.google.common.cache.Weigher;                                              : loaded 2 times (x 67B)
+Class com.google.common.collect.Iterators$ArrayItr                                    : loaded 2 times (x 95B)
+Class com.google.common.cache.LocalCache$Segment                                      : loaded 2 times (x 152B)
+Class org.jetbrains.kotlin.idea.gradleTooling.KotlinMPPGradleModel                    : loaded 2 times (x 68B)
+Class org.gradle.api.internal.DefaultClassPathProvider                                : loaded 2 times (x 74B)
+Class org.gradle.internal.installation.GradleInstallation$1                           : loaded 2 times (x 73B)
+Class com.google.common.cache.LocalCache$AbstractReferenceEntry                       : loaded 2 times (x 105B)
+Class org.objectweb.asm.Type                                                          : loaded 2 times (x 70B)
+Class jdk.internal.jrtfs.SystemImage$1                                                : loaded 2 times (x 76B)
+Class com.google.common.util.concurrent.AbstractFuture$Failure                        : loaded 2 times (x 70B)
+Class jdk.internal.jrtfs.SystemImage$2                                                : loaded 2 times (x 74B)
+Class com.google.common.base.CharMatcher$BitSetMatcher                                : loaded 2 times (x 110B)
+Class com.amazon.ion.impl.bin._Private_IonManagedWriter                               : loaded 2 times (x 68B)
+Class com.google.common.collect.ImmutableMap$IteratorBasedImmutableMap                : loaded 2 times (x 123B)
+Class org.gradle.internal.exceptions.DefaultMultiCauseException                       : loaded 2 times (x 93B)
+Class com.google.common.collect.ImmutableMap                                          : loaded 2 times (x 118B)
+Class com.google.common.base.Converter                                                : loaded 2 times (x 88B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$PatchList$Node                       : loaded 2 times (x 70B)
+Class org.gradle.tooling.model.UnsupportedMethodException                             : loaded 2 times (x 80B)
+Class com.google.common.collect.ImmutableSet$EmptySetBuilderImpl                      : loaded 2 times (x 74B)
+Class com.amazon.ion.IonBlob                                                          : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.model.GradleSourceSetModel                         : loaded 2 times (x 68B)
+Class com.google.common.base.Equivalence                                              : loaded 2 times (x 80B)
+Class com.amazon.ion.impl.lite.ContainerlessContext                                   : loaded 2 times (x 78B)
+Class com.google.common.primitives.Ints                                               : loaded 2 times (x 69B)
+Class com.google.common.cache.LocalCache$EntryFactory$1                               : loaded 2 times (x 81B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$PropertyCachingMethodInvoker: loaded 2 times (x 74B)
+Class org.gradle.tooling.model.build.JavaEnvironment                                  : loaded 2 times (x 68B)
+Class com.google.common.cache.LocalCache$EntryFactory$2                               : loaded 2 times (x 81B)
+Class com.amazon.ion.IonDecimal                                                       : loaded 2 times (x 68B)
+Class com.google.common.cache.LocalCache$EntryFactory$3                               : loaded 2 times (x 81B)
+Class com.google.common.cache.LocalCache$EntryFactory$4                               : loaded 2 times (x 81B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$NoOpDecoration       : loaded 2 times (x 77B)
+Class com.google.common.cache.LocalCache$EntryFactory$5                               : loaded 2 times (x 81B)
+Class com.google.common.cache.LocalCache$EntryFactory$6                               : loaded 2 times (x 81B)
+Class com.google.common.cache.LocalCache$EntryFactory$7                               : loaded 2 times (x 81B)
+Class org.gradle.internal.time.MonotonicClock                                         : loaded 2 times (x 75B)
+Class com.google.common.cache.LocalCache$EntryFactory$8                               : loaded 2 times (x 81B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$SupportedPropertyInvoker: loaded 2 times (x 74B)
+Class com.google.common.base.Predicate                                                : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$PreallocationMode$1                  : loaded 2 times (x 80B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$PreallocationMode$2                  : loaded 2 times (x 80B)
+Class com.google.common.cache.LocalCache$StrongValueReference                         : loaded 2 times (x 88B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$PreallocationMode$3                  : loaded 2 times (x 80B)
+Class org.gradle.internal.classloader.FilteringClassLoader                            : loaded 2 times (x 103B)
+Class com.amazon.ion.impl.lite.IonSymbolLite                                          : loaded 2 times (x 244B)
+Class com.amazon.ion.impl.lite.IonContext                                             : loaded 2 times (x 68B)
+Class com.google.common.collect.RegularImmutableSet                                   : loaded 2 times (x 146B)
+Class jdk.internal.jimage.ImageReader$Resource                                        : loaded 2 times (x 82B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.SerializationService         : loaded 2 times (x 68B)
+Class kotlin.jvm.internal.Lambda                                                      : loaded 2 times (x 73B)
+Class jdk.internal.jrtfs.SystemImage                                                  : loaded 2 times (x 72B)
+Class org.gradle.tooling.model.Model                                                  : loaded 2 times (x 68B)
+Class [Lcom.google.common.cache.LocalCache$Strength;                                  : loaded 2 times (x 67B)
+Class org.gradle.internal.classpath.DefaultClassPath$ImmutableUniqueList$Builder      : loaded 2 times (x 73B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$ImportedSymbolResolverMode$1$1   : loaded 2 times (x 76B)
+Class kotlin.UninitializedPropertyAccessException                                     : loaded 2 times (x 80B)
+Class com.amazon.ion.impl._Private_IonContainer                                       : loaded 2 times (x 68B)
+Class com.google.common.collect.Maps$8                                                : loaded 2 times (x 80B)
+Class [Lcom.google.common.cache.CacheBuilder$NullListener;                            : loaded 2 times (x 67B)
+Class com.google.common.base.PatternCompiler                                          : loaded 2 times (x 68B)
+Class com.intellij.gradle.toolingExtension.impl.model.dependencyDownloadPolicyModel.GradleDependencyDownloadPolicy: loaded 2 times (x 68B)
+Class com.google.common.base.CharMatcher$InRange                                      : loaded 2 times (x 109B)
+Class org.jetbrains.kotlin.idea.gradleTooling.KotlinSourceSetContainer                : loaded 2 times (x 68B)
+Class com.google.common.collect.Sets$SetView                                          : loaded 2 times (x 136B)
+Class com.google.common.collect.BiMap                                                 : loaded 2 times (x 68B)
+Class com.google.common.collect.Lists                                                 : loaded 2 times (x 69B)
+Class jdk.internal.jrtfs.JrtDirectoryStream$1                                         : loaded 2 times (x 81B)
+Class org.objectweb.asm.AnnotationWriter                                              : loaded 2 times (x 77B)
+Class com.amazon.ion.IonMutableCatalog                                                : loaded 2 times (x 68B)
+Class org.apache.commons.io.output.ThresholdingOutputStream                           : loaded 2 times (x 92B)
+Class com.google.common.math.IntMath$1                                                : loaded 2 times (x 69B)
+Class org.gradle.internal.classloader.ClassLoaderVisitor                              : loaded 2 times (x 74B)
+Class org.objectweb.asm.Label                                                         : loaded 2 times (x 71B)
+Class com.google.common.cache.CacheBuilder$NullListener                               : loaded 2 times (x 80B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$MethodInvocationCache$MethodInvocationKey: loaded 2 times (x 71B)
+Class sync_studio_tooling7_34lhoa46o5lu9yvfoj6zewbh7                                  : loaded 2 times (x 177B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.adapter.Supplier    : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.SharedSymbolTable                                           : loaded 2 times (x 91B)
+Class com.google.common.math.MathPreconditions                                        : loaded 2 times (x 69B)
+Class org.gradle.internal.time.DefaultCountdownTimer                                  : loaded 2 times (x 86B)
+Class org.jetbrains.kotlin.cli.common.CompilerSystemProperties                        : loaded 2 times (x 78B)
+Class [Lcom.amazon.ion.SymbolToken;                                                   : loaded 2 times (x 67B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$ImportedSymbolResolverMode       : loaded 2 times (x 78B)
+Class org.gradle.tooling.internal.adapter.CollectionMapper                            : loaded 2 times (x 71B)
+Class com.amazon.ion.impl._Private_LocalSymbolTableFactory                            : loaded 2 times (x 68B)
+Class org.gradle.internal.service.DefaultServiceLocator                               : loaded 2 times (x 81B)
+Class org.jetbrains.plugins.gradle.model.jar.JarTaskManifestConfiguration             : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.lite.IonFloatLite                                           : loaded 2 times (x 184B)
+Class org.gradle.internal.service.UnknownServiceException                             : loaded 2 times (x 81B)
+Class org.jetbrains.plugins.gradle.model.ClasspathEntryModel                          : loaded 2 times (x 68B)
+Class com.google.common.util.concurrent.AbstractFuture$SynchronizedHelper             : loaded 2 times (x 76B)
+Class com.google.common.collect.ArrayListMultimap                                     : loaded 2 times (x 170B)
+Class com.amazon.ion.impl.lite.IonBlobLite                                            : loaded 2 times (x 217B)
+Class com.google.common.base.Strings                                                  : loaded 2 times (x 69B)
+Class com.amazon.ion.IonClob                                                          : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.model.DependencyAccessorsModel                     : loaded 2 times (x 68B)
+Class com.google.common.cache.CacheLoader$InvalidCacheLoadException                   : loaded 2 times (x 80B)
+Class org.gradle.internal.classloader.DefaultClassLoaderFactory                       : loaded 2 times (x 80B)
+Class com.google.common.collect.UnmodifiableIterator                                  : loaded 2 times (x 78B)
+Class jdk.internal.jimage.ImageReader$SharedImageReader                               : loaded 2 times (x 93B)
+Class org.jetbrains.plugins.gradle.model.internal.TurnOffDefaultTasks                 : loaded 2 times (x 68B)
+Class com.google.common.base.Stopwatch                                                : loaded 2 times (x 70B)
+Class com.google.common.base.Platform$JdkPatternCompiler                              : loaded 2 times (x 73B)
+Class com.amazon.ion.UnsupportedIonVersionException                                   : loaded 2 times (x 83B)
+Class org.jetbrains.plugins.gradle.tooling.ModelBuilderService$Parameter              : loaded 2 times (x 68B)
+Class com.google.common.cache.LocalCache$LoadingValueReference                        : loaded 2 times (x 94B)
+Class org.apache.commons.io.output.ByteArrayOutputStream                              : loaded 2 times (x 100B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$DefaultViewBuilder   : loaded 2 times (x 78B)
+Class com.google.common.base.CharMatcher$SingleWidth                                  : loaded 2 times (x 110B)
+Class com.google.common.collect.Hashing                                               : loaded 2 times (x 69B)
+Class com.amazon.ion.impl.LocalSymbolTable                                            : loaded 2 times (x 119B)
+Class org.jetbrains.plugins.gradle.model.internal.DummyModel                          : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.model.GradleExtensions                             : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.model.GradleSourceSetDependencyModel               : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.GradleExtensionsSerializationService$WriteContext: loaded 2 times (x 70B)
+Class com.google.common.base.JdkPattern                                               : loaded 2 times (x 73B)
+Class com.google.common.collect.Multimap                                              : loaded 2 times (x 68B)
+Class jdk.internal.jimage.decompressor.ZipDecompressorFactory                         : loaded 2 times (x 72B)
+Class com.amazon.ion.impl.LocalSymbolTableAsStruct$Factory                            : loaded 2 times (x 77B)
+Class org.gradle.internal.impldep.gnu.trove.PrimeFinder                               : loaded 2 times (x 69B)
+Class com.google.common.base.FunctionalEquivalence                                    : loaded 2 times (x 81B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$PatchList                            : loaded 2 times (x 83B)
+Class org.objectweb.asm.AnnotationVisitor                                             : loaded 2 times (x 76B)
+Class org.objectweb.asm.RecordComponentWriter                                         : loaded 2 times (x 76B)
+Class com.amazon.ion.impl.bin.Symbols                                                 : loaded 2 times (x 69B)
+Class com.google.common.cache.LocalCache$1                                            : loaded 2 times (x 87B)
+Class com.google.common.cache.LocalCache$2                                            : loaded 2 times (x 140B)
+Class com.amazon.ion.impl.IonWriterSystemText                                         : loaded 2 times (x 188B)
+Class com.google.common.collect.RegularImmutableBiMap                                 : loaded 2 times (x 146B)
+Class com.amazon.ion.impl.bin.utf8.Utf8StringEncoder$Result                           : loaded 2 times (x 72B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.IdeaProjectSerializationService$WriteContext$1: loaded 2 times (x 81B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.IdeaProjectSerializationService$WriteContext$2: loaded 2 times (x 81B)
+Class org.jetbrains.plugins.gradle.model.VersionCatalogsModel                         : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.IdeaProjectSerializationService$WriteContext$3: loaded 2 times (x 81B)
+Class org.jetbrains.kotlin.idea.gradleTooling.AndroidAwareGradleModelProvider$Companion: loaded 2 times (x 69B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.IdeaProjectSerializationService$WriteContext$4: loaded 2 times (x 81B)
+Class org.gradle.internal.classloader.VisitableURLClassLoader$Spec                    : loaded 2 times (x 72B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.IdeaProjectSerializationService$WriteContext$5: loaded 2 times (x 81B)
+Class org.gradle.tooling.model.ProjectModel                                           : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.IdeaProjectSerializationService$WriteContext$6: loaded 2 times (x 81B)
+Class org.gradle.internal.impldep.gnu.trove.TObjectIdentityHashingStrategy            : loaded 2 times (x 76B)
+Class kotlin.collections.AbstractCollection                                           : loaded 2 times (x 115B)
+Class com.google.common.base.CharMatcher$JavaLetterOrDigit                            : loaded 2 times (x 109B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.IdeaProjectSerializationService$WriteContext$7: loaded 2 times (x 81B)
+Class org.gradle.tooling.internal.gradle.DefaultProjectIdentifier                     : loaded 2 times (x 84B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.IdeaProjectSerializationService$WriteContext$8: loaded 2 times (x 81B)
+Class com.intellij.util.containers.IntObjectHashMap                                   : loaded 2 times (x 70B)
+Class org.gradle.api.internal.classpath.ModuleRegistry                                : loaded 2 times (x 68B)
+Class com.google.common.cache.CacheBuilder                                            : loaded 2 times (x 70B)
+Class org.objectweb.asm.ByteVector                                                    : loaded 2 times (x 77B)
+Class com.google.common.collect.ImmutableCollection                                   : loaded 2 times (x 123B)
+Class com.amazon.ion.impl.bin.PooledBlockAllocatorProvider$PooledBlockAllocator       : loaded 2 times (x 79B)
+Class org.jetbrains.plugins.gradle.model.RepositoriesModel                            : loaded 2 times (x 68B)
+Class com.amazon.ion.impl._Private_RecyclingStack                                     : loaded 2 times (x 70B)
+Class com.google.common.base.PairwiseEquivalence                                      : loaded 2 times (x 81B)
+Class com.google.common.base.Ticker                                                   : loaded 2 times (x 70B)
+Class kotlin.jvm.internal.markers.KMappedMarker                                       : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.bin.WriteBuffer                                             : loaded 2 times (x 76B)
+Class org.gradle.tooling.internal.adapter.TypeInspector                               : loaded 2 times (x 71B)
+Class org.gradle.api.internal.ClassPathProvider                                       : loaded 2 times (x 68B)
+Class com.google.common.base.Ascii                                                    : loaded 2 times (x 69B)
+Class com.google.common.collect.RegularImmutableMap$Values                            : loaded 2 times (x 167B)
+Class org.objectweb.asm.ModuleWriter                                                  : loaded 2 times (x 80B)
+Class org.gradle.internal.classloader.ClasspathUtil$1                                 : loaded 2 times (x 74B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.ExternalTestsSerializationService$ReadContext: loaded 2 times (x 70B)
+Class com.google.common.collect.ImmutableEnumMap                                      : loaded 2 times (x 123B)
+Class [Lcom.amazon.ion.impl.bin._Private_IonManagedBinaryWriterBuilder$AllocatorMode; : loaded 2 times (x 67B)
+Class org.gradle.tooling.model.DomainObjectSet                                        : loaded 2 times (x 68B)
+Class com.amazon.ion.IonSymbol                                                        : loaded 2 times (x 68B)
+Class com.google.common.collect.ImmutableList$ReverseImmutableList                    : loaded 2 times (x 168B)
+Class com.google.common.cache.AbstractCache$StatsCounter                              : loaded 2 times (x 68B)
+Class org.objectweb.asm.FieldVisitor                                                  : loaded 2 times (x 75B)
+Class org.objectweb.asm.Symbol                                                        : loaded 2 times (x 71B)
+Class com.amazon.ion.impl.bin.BlockAllocator                                          : loaded 2 times (x 78B)
+Class com.amazon.ion.IonBufferConfiguration                                           : loaded 2 times (x 71B)
+Class com.google.common.cache.LocalCache$Strength$1                                   : loaded 2 times (x 79B)
+Class com.amazon.ion.IonCatalog                                                       : loaded 2 times (x 68B)
+Class com.google.common.cache.LocalCache$Strength$2                                   : loaded 2 times (x 79B)
+Class com.google.common.cache.LocalCache$Strength$3                                   : loaded 2 times (x 79B)
+Class org.gradle.internal.classloader.ClassLoaderFactory                              : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$LocalSymbolTableView             : loaded 2 times (x 105B)
+Class com.google.common.collect.ObjectArrays                                          : loaded 2 times (x 69B)
+Class com.google.common.util.concurrent.AbstractFuture$Waiter                         : loaded 2 times (x 70B)
+Class com.amazon.ion.system.IonWriterBuilder                                          : loaded 2 times (x 72B)
+Class com.google.common.util.concurrent.Uninterruptibles                              : loaded 2 times (x 69B)
+Class com.google.common.collect.Iterators$10                                          : loaded 2 times (x 79B)
+Class jdk.internal.jimage.ImageHeader                                                 : loaded 2 times (x 69B)
+Class com.amazon.ion.impl.lite.IonListLite                                            : loaded 2 times (x 449B)
+Class com.google.common.collect.ImmutableList                                         : loaded 2 times (x 166B)
+Class org.jetbrains.plugins.gradle.model.FileCollectionDependency                     : loaded 2 times (x 68B)
+Class org.gradle.api.internal.classpath.ManifestUtil                                  : loaded 2 times (x 69B)
+Class org.gradle.api.specs.Spec                                                       : loaded 2 times (x 68B)
+Class com.google.common.cache.CacheLoader$UnsupportedLoadingOperationException        : loaded 2 times (x 80B)
+Class kotlin.jvm.internal.Intrinsics                                                  : loaded 2 times (x 69B)
+Class com.google.common.base.CharMatcher$Whitespace                                   : loaded 2 times (x 110B)
+Class com.amazon.ion.impl.bin._Private_IonManagedBinaryWriterBuilder                  : loaded 2 times (x 70B)
+Class com.google.common.util.concurrent.ListenableFuture                              : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.lite._Private_LiteDomTrampoline                             : loaded 2 times (x 69B)
+Class com.amazon.ion.impl.lite.IonValueLite                                           : loaded 2 times (x 145B)
+Class com.amazon.ion.IonValue                                                         : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.bin.PooledBlockAllocatorProvider$PooledBlockAllocator$1     : loaded 2 times (x 77B)
+Class org.gradle.tooling.internal.gradle.GradleBuildIdentity                          : loaded 2 times (x 68B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$ReflectionMethodInvoker: loaded 2 times (x 74B)
+Class com.google.common.collect.Iterators$1                                           : loaded 2 times (x 79B)
+Class org.jetbrains.plugins.gradle.model.GradleConfiguration                          : loaded 2 times (x 68B)
+Class com.google.common.collect.Iterators$4                                           : loaded 2 times (x 80B)
+Class com.google.common.collect.RegularImmutableMap$BucketOverflowException           : loaded 2 times (x 80B)
+Class com.google.common.collect.Iterators$5                                           : loaded 2 times (x 80B)
+Class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper             : loaded 2 times (x 76B)
+Class com.google.common.base.Joiner                                                   : loaded 2 times (x 77B)
+Class com.google.common.base.Equivalence$Equals                                       : loaded 2 times (x 80B)
+Class com.google.common.base.Preconditions                                            : loaded 2 times (x 69B)
+Class com.google.common.base.Function                                                 : loaded 2 times (x 68B)
+Class com.google.common.collect.Iterators$9                                           : loaded 2 times (x 79B)
+Class com.amazon.ion.impl.bin.PooledBlockAllocatorProvider                            : loaded 2 times (x 71B)
+Class com.amazon.ion.SymbolToken                                                      : loaded 2 times (x 68B)
+Class com.amazon.ion.impl._Private_IonReaderBuilder                                   : loaded 2 times (x 93B)
+Class com.amazon.ion.impl.lite.IonSequenceLite                                        : loaded 2 times (x 391B)
+Class com.amazon.ion.IonList                                                          : loaded 2 times (x 68B)
+Class kotlin.collections.AbstractList                                                 : loaded 2 times (x 157B)
+Class org.jetbrains.plugins.gradle.model.FilePatternSet                               : loaded 2 times (x 68B)
+Class com.amazon.ion.impl._Private_IonWriter                                          : loaded 2 times (x 68B)
+Class com.google.common.cache.ReferenceEntry                                          : loaded 2 times (x 68B)
+Class org.gradle.tooling.internal.adapter.ObjectGraphAdapter                          : loaded 2 times (x 68B)
+Class com.google.common.collect.RegularImmutableMap$KeySet                            : loaded 2 times (x 148B)
+Class com.google.common.collect.CollectPreconditions                                  : loaded 2 times (x 69B)
+Class com.google.common.primitives.IntsMethodsForWeb                                  : loaded 2 times (x 69B)
+Class com.amazon.ion.impl.lite.IonLoaderLite                                          : loaded 2 times (x 80B)
+Class com.google.common.collect.Maps                                                  : loaded 2 times (x 69B)
+Class com.amazon.ion.impl._Private_ByteTransferSink                                   : loaded 2 times (x 68B)
+Class com.google.common.collect.RegularImmutableMap                                   : loaded 2 times (x 119B)
+Class [Lcom.amazon.ion.SymbolTable;                                                   : loaded 2 times (x 67B)
+Class jdk.internal.jimage.decompressor.StringSharingDecompressorFactory               : loaded 2 times (x 72B)
+Class com.amazon.ion.impl._Private_IonValue                                           : loaded 2 times (x 68B)
+Class com.google.common.collect.AbstractIndexedListIterator                           : loaded 2 times (x 94B)
+Class com.google.common.base.CharMatcher$None                                         : loaded 2 times (x 110B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.adapter.InternalBuildIdentifier: loaded 2 times (x 73B)
+Class [Lorg.apache.commons.io.StandardLineSeparator;                                  : loaded 2 times (x 67B)
+Class org.gradle.api.internal.classpath.EffectiveClassPath                            : loaded 2 times (x 88B)
+Class org.apache.commons.io.StandardLineSeparator                                     : loaded 2 times (x 77B)
+Class org.apache.commons.io.output.AppendableWriter                                   : loaded 2 times (x 98B)
+Class com.google.common.collect.UnmodifiableListIterator                              : loaded 2 times (x 93B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$StreamFlushMode                      : loaded 2 times (x 77B)
+Class com.amazon.ion.impl._Private_ValueFactory                                       : loaded 2 times (x 68B)
+Class com.amazon.ion.BufferConfiguration$Builder                                      : loaded 2 times (x 76B)
+Class kotlin.jvm.internal.DefaultConstructorMarker                                    : loaded 2 times (x 69B)
+Class jdk.internal.jimage.ImageReader$LinkNode                                        : loaded 2 times (x 82B)
+Class com.amazon.ion.impl.lite.IonBoolLite                                            : loaded 2 times (x 176B)
+Class com.google.common.cache.CacheLoader$FunctionToCacheLoader                       : loaded 2 times (x 73B)
+Class com.google.common.cache.CacheBuilder$1                                          : loaded 2 times (x 83B)
+Class com.google.common.cache.CacheBuilder$2                                          : loaded 2 times (x 70B)
+Class com.google.common.collect.ImmutableList$1                                       : loaded 2 times (x 95B)
+Class com.google.common.base.Splitter$Strategy                                        : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.bin.utf8.Utf8StringEncoder                                  : loaded 2 times (x 78B)
+Class com.amazon.ion.IonSexp                                                          : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.lite.IonSystemLite                                          : loaded 2 times (x 273B)
+Class com.google.common.collect.ImmutableMapEntrySet$RegularEntrySet                  : loaded 2 times (x 149B)
+Class com.amazon.ion.impl.bin._Private_IonManagedBinaryWriterBuilder$AllocatorMode    : loaded 2 times (x 78B)
+Class [Lcom.google.common.cache.RemovalListener;                                      : loaded 2 times (x 67B)
+Class [Lcom.google.common.collect.ImmutableMapEntry;                                  : loaded 2 times (x 67B)
+Class org.gradle.internal.exceptions.ResolutionProvider                               : loaded 2 times (x 68B)
+Class org.gradle.tooling.model.idea.IdeaDependency                                    : loaded 2 times (x 68B)
+Class com.google.common.collect.Iterators$MergingIterator                             : loaded 2 times (x 79B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$SymbolResolverBuilder            : loaded 2 times (x 68B)
+Class org.jetbrains.kotlin.idea.gradleTooling.model.assignment.AssignmentModel        : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.ExternalProjectSerializationService: loaded 2 times (x 75B)
+Class org.gradle.internal.installation.CurrentGradleInstallation                      : loaded 2 times (x 71B)
+Class org.gradle.internal.agents.InstrumentingClassLoader                             : loaded 2 times (x 68B)
+Class org.gradle.internal.installation.CurrentGradleInstallationLocator               : loaded 2 times (x 69B)
+Class [Lcom.google.common.cache.LocalCache$Segment;                                   : loaded 2 times (x 67B)
+Class com.amazon.ion.impl.LocalSymbolTableAsStruct                                    : loaded 2 times (x 124B)
+Class com.amazon.ion.impl.lite.IonClobLite                                            : loaded 2 times (x 218B)
+Class org.gradle.api.internal.classpath.Module                                        : loaded 2 times (x 68B)
+Class [Lcom.amazon.ion.impl.bin.IonRawBinaryWriter$PreallocationMode;                 : loaded 2 times (x 67B)
+Class com.amazon.ion.impl.bin.AbstractSymbolTable                                     : loaded 2 times (x 105B)
+Class org.jetbrains.plugins.gradle.model.GradleBuildScriptClasspathModel              : loaded 2 times (x 68B)
+Class com.google.common.base.Splitter$1$1                                             : loaded 2 times (x 84B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.ProjectDependenciesSerializationService$ReadContext: loaded 2 times (x 70B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.IdeaProjectSerializationService$WriteContext: loaded 2 times (x 70B)
+Class org.gradle.tooling.internal.adapter.ViewBuilder                                 : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.lite.IonNullLite                                            : loaded 2 times (x 173B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter                      : loaded 2 times (x 78B)
+Class com.amazon.ion.impl._Private_RecyclingStack$ElementFactory                      : loaded 2 times (x 68B)
+Class com.google.common.collect.ImmutableSet$JdkBackedSetBuilderImpl                  : loaded 2 times (x 74B)
+Class [Lcom.amazon.ion.IonType;                                                       : loaded 2 times (x 67B)
+Class org.gradle.tooling.internal.adapter.WeakIdentityHashMap$WeakKey                 : loaded 2 times (x 77B)
+Class com.google.common.collect.ImmutableSet$RegularSetBuilderImpl                    : loaded 2 times (x 75B)
+Class com.amazon.ion.UnknownSymbolException                                           : loaded 2 times (x 84B)
+Class [Lorg.objectweb.asm.AnnotationWriter;                                           : loaded 2 times (x 67B)
+Class com.amazon.ion.BufferConfiguration                                              : loaded 2 times (x 71B)
+Class org.gradle.internal.service.CachingServiceLocator                               : loaded 2 times (x 80B)
+Class com.amazon.ion.IonSystem                                                        : loaded 2 times (x 68B)
+Class org.gradle.internal.time.Timer                                                  : loaded 2 times (x 68B)
+Class [Lcom.google.common.collect.ImmutableEntry;                                     : loaded 2 times (x 67B)
+Class org.jetbrains.plugins.gradle.model.tests.ExternalTestsModel                     : loaded 2 times (x 68B)
+Class org.jetbrains.kotlin.idea.gradleTooling.KotlinDslScriptAdditionalTask           : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.tooling.util.ObjectCollector                       : loaded 2 times (x 70B)
+Class sync_studio_tooling5_4xp3qb2vkflzsimbj7jmjawj1$_run_closure1                    : loaded 2 times (x 137B)
+Class org.gradle.internal.classpath.DefaultClassPath                                  : loaded 2 times (x 88B)
+Class org.gradle.internal.impldep.gnu.trove.TObjectHash$NULL                          : loaded 2 times (x 69B)
+Class com.google.common.util.concurrent.AbstractFuture$SetFuture                      : loaded 2 times (x 73B)
+Class com.intellij.gradle.toolingExtension.impl.model.dependencyDownloadPolicyModel.DefaultGradleDependencyDownloadPolicy: loaded 2 times (x 75B)
+Class com.amazon.ion.impl.bin.utf8.Pool$Allocator                                     : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.GradleExtensionsSerializationService$ReadContext: loaded 2 times (x 70B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.IdeaProjectSerializationService: loaded 2 times (x 75B)
+Class org.gradle.internal.impldep.gnu.trove.TObjectIntHashMap                         : loaded 2 times (x 107B)
+Class org.gradle.tooling.model.idea.IdeaProject                                       : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.SymbolTableAsStruct                                         : loaded 2 times (x 68B)
+Class org.gradle.tooling.model.Element                                                : loaded 2 times (x 68B)
+Class [Lcom.amazon.ion.impl.bin.IonManagedBinaryWriter$SymbolState;                   : loaded 2 times (x 67B)
+Class jdk.internal.jimage.BasicImageReader                                            : loaded 2 times (x 93B)
+Class com.amazon.ion.IonLob                                                           : loaded 2 times (x 68B)
+Class com.google.common.base.Splitter$SplittingIterator                               : loaded 2 times (x 82B)
+Class com.amazon.ion.impl.lite.IonContainerLite                                       : loaded 2 times (x 245B)
+Class com.amazon.ion.impl.bin._Private_IonManagedBinaryWriterBuilder$AllocatorMode$1  : loaded 2 times (x 78B)
+Class com.amazon.ion.impl.bin._Private_IonManagedBinaryWriterBuilder$AllocatorMode$2  : loaded 2 times (x 78B)
+Class org.gradle.internal.impldep.gnu.trove.TObjectHash                               : loaded 2 times (x 92B)
+Class [Lcom.amazon.ion.impl.bin.IonRawBinaryWriter$StreamFlushMode;                   : loaded 2 times (x 67B)
+Class com.intellij.openapi.externalSystem.model.project.dependencies.ProjectDependencies: loaded 2 times (x 68B)
+Class com.intellij.gradle.toolingExtension.util.GradleVersionUtil                     : loaded 2 times (x 69B)
+Class com.google.common.cache.LocalCache$LocalManualCache$1                           : loaded 2 times (x 73B)
+Class kotlin.enums.EnumEntriesList                                                    : loaded 2 times (x 183B)
+Class org.gradle.util.GradleVersion                                                   : loaded 2 times (x 81B)
+Class Build_gradle$2                                                                  : loaded 2 times (x 77B)
+Class org.jetbrains.kotlin.idea.gradleTooling.PrepareKotlinIdeImportTaskModel         : loaded 2 times (x 68B)
+Class jdk.internal.jimage.ImageLocation                                               : loaded 2 times (x 88B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$PreallocationMode                    : loaded 2 times (x 80B)
+Class org.gradle.tooling.internal.adapter.TargetTypeProvider                          : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$ImportedSymbolContext            : loaded 2 times (x 70B)
+Class org.gradle.internal.impldep.com.google.common.base.Preconditions                : loaded 2 times (x 69B)
+Class kotlin.jvm.functions.Function1                                                  : loaded 2 times (x 68B)
+Class org.jetbrains.kotlin.idea.gradleTooling.AndroidAwareGradleModelProvider         : loaded 2 times (x 78B)
+Class org.objectweb.asm.SymbolTable$Entry                                             : loaded 2 times (x 72B)
+Class [Lcom.google.common.cache.LocalCache$EntryFactory;                              : loaded 2 times (x 67B)
+Class jdk.internal.jimage.ImageReader$Node                                            : loaded 2 times (x 82B)
+Class com.amazon.ion.IonText                                                          : loaded 2 times (x 68B)
+Class com.google.common.base.CharMatcher$Is                                           : loaded 2 times (x 109B)
+Class com.google.common.base.Platform                                                 : loaded 2 times (x 69B)
+Class com.google.common.collect.RegularImmutableAsList                                : loaded 2 times (x 176B)
+Class com.google.common.collect.PeekingIterator                                       : loaded 2 times (x 68B)
+Class org.gradle.internal.time.Time                                                   : loaded 2 times (x 69B)
+Class jdk.internal.jimage.decompressor.CompressedResourceHeader                       : loaded 2 times (x 69B)
+Class org.gradle.internal.time.TimeSource$1                                           : loaded 2 times (x 75B)
+Class com.amazon.ion.IonSequence                                                      : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.RepositoriesModelSerializationService$WriteContext: loaded 2 times (x 70B)
+Class kotlin.KotlinNullPointerException                                               : loaded 2 times (x 81B)
+Class jdk.internal.jrtfs.JrtPath                                                      : loaded 2 times (x 116B)
+Class com.google.common.collect.ImmutableMapEntrySet                                  : loaded 2 times (x 149B)
+Class com.google.common.cache.CacheLoader                                             : loaded 2 times (x 72B)
+Class com.google.common.collect.ImmutableBiMapFauxverideShim                          : loaded 2 times (x 118B)
+Class jdk.internal.jimage.ImageStrings                                                : loaded 2 times (x 68B)
+Class org.objectweb.asm.MethodTooLargeException                                       : loaded 2 times (x 81B)
+Class com.amazon.ion.impl._Private_SymbolToken                                        : loaded 2 times (x 68B)
+Class jdk.internal.jrtfs.JrtFileAttributes                                            : loaded 2 times (x 81B)
+Class com.amazon.ion.BufferConfiguration$OversizedValueHandler                        : loaded 2 times (x 68B)
+Class com.google.common.cache.Cache                                                   : loaded 2 times (x 68B)
+Class com.intellij.gradle.toolingExtension.impl.model.taskModel.GradleTaskModel       : loaded 2 times (x 68B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$MixInMappingAction   : loaded 2 times (x 78B)
+Class org.gradle.internal.classloader.SystemClassLoaderSpec                           : loaded 2 times (x 69B)
+Class com.amazon.ion.impl.bin.utf8.Poolable                                           : loaded 2 times (x 77B)
+Class com.google.common.util.concurrent.internal.InternalFutureFailureAccess          : loaded 2 times (x 70B)
+Class com.amazon.ion.impl.bin.AbstractIonWriter                                       : loaded 2 times (x 159B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.AnnotationProcessingModelSerializationService$ReadContext: loaded 2 times (x 70B)
+Class com.google.common.base.Charsets                                                 : loaded 2 times (x 69B)
+Class com.google.common.primitives.Ints$IntConverter                                  : loaded 2 times (x 88B)
+Class com.amazon.ion.impl.bin.IonBinaryWriterAdapter$Factory                          : loaded 2 times (x 68B)
+Class com.google.common.collect.SingletonImmutableSet                                 : loaded 2 times (x 144B)
+Class [Lcom.google.common.base.AbstractIterator$State;                                : loaded 2 times (x 67B)
+Class com.amazon.ion.system.IonWriterBuilderBase                                      : loaded 2 times (x 81B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.RepositoriesModelSerializationService: loaded 2 times (x 80B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.ProjectDependenciesSerializationService: loaded 2 times (x 75B)
+Class org.gradle.tooling.internal.adapter.WeakIdentityHashMap$AbsentValueProvider     : loaded 2 times (x 68B)
+Class com.google.common.collect.ImmutableMap$Builder                                  : loaded 2 times (x 80B)
+Class org.gradle.tooling.model.Dependency                                             : loaded 2 times (x 68B)
+Class com.google.common.base.AbstractIterator                                         : loaded 2 times (x 78B)
+Class org.jetbrains.kotlin.cli.common.CompilerSystemProperties$Companion              : loaded 2 times (x 69B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$1                                    : loaded 2 times (x 75B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.AnnotationProcessingModelSerializationService: loaded 2 times (x 75B)
+Class com.amazon.ion.impl.IonWriterSystemTextMarkup                                   : loaded 2 times (x 190B)
+Class org.objectweb.asm.ClassWriter                                                   : loaded 2 times (x 104B)
+Class com.amazon.ion.IonFloat                                                         : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$ImportedSymbolResolverMode$1     : loaded 2 times (x 78B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$ImportedSymbolResolverMode$2     : loaded 2 times (x 78B)
+Class com.amazon.ion.facet.Faceted                                                    : loaded 2 times (x 68B)
+Class jdk.internal.jimage.decompressor.ResourceDecompressorRepository                 : loaded 2 times (x 69B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$ContainerType                        : loaded 2 times (x 77B)
+Class org.apache.commons.io.IOUtils                                                   : loaded 2 times (x 69B)
+Class com.google.common.base.AbstractIterator$1                                       : loaded 2 times (x 69B)
+Class kotlin.jvm.internal.FunctionBase                                                : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.BlockedBuffer$BufferedOutputStream                          : loaded 2 times (x 88B)
+Class com.intellij.gradle.toolingExtension.impl.model.buildScriptClasspathModel.GradleBuildScriptClasspathSerializationService$WriteContext: loaded 2 times (x 70B)
+Class [Lcom.google.common.cache.CacheBuilder$OneWeigher;                              : loaded 2 times (x 67B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$SymbolResolver                   : loaded 2 times (x 68B)
+Class kotlin.Function                                                                 : loaded 2 times (x 68B)
+Class com.google.common.collect.Iterators                                             : loaded 2 times (x 69B)
+Class com.amazon.ion.impl._Private_ReaderWriter                                       : loaded 2 times (x 68B)
+Class com.google.common.base.CharMatcher$Ascii                                        : loaded 2 times (x 110B)
+Class com.google.common.base.CharMatcher$1                                            : loaded 2 times (x 111B)
+Class com.google.common.cache.LocalCache$ComputingValueReference                      : loaded 2 times (x 94B)
+Class com.amazon.ion.impl.bin.utf8.Utf8StringEncoderPool                              : loaded 2 times (x 72B)
+Class org.jetbrains.plugins.gradle.tooling.util.ObjectCollector$Processor             : loaded 2 times (x 68B)
+Class com.amazon.ion.IonNull                                                          : loaded 2 times (x 68B)
+Class com.amazon.ion.util._Private_FastAppendable                                     : loaded 2 times (x 68B)
+Class com.google.common.base.CharMatcher$And                                          : loaded 2 times (x 110B)
+Class com.amazon.ion.impl.lite.IonTextLite                                            : loaded 2 times (x 179B)
+Class com.google.common.collect.IndexedImmutableSet                                   : loaded 2 times (x 148B)
+Class com.amazon.ion.SubstituteSymbolTableException                                   : loaded 2 times (x 82B)
+Class com.google.common.base.ExtraObjectsMethodsForWeb                                : loaded 2 times (x 69B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$ViewKey              : loaded 2 times (x 70B)
+Class com.google.common.collect.AbstractListMultimap                                  : loaded 2 times (x 170B)
+Class com.google.common.base.CharMatcher$Any                                          : loaded 2 times (x 110B)
+Class jdk.internal.jimage.decompressor.ResourceDecompressor$StringsProvider           : loaded 2 times (x 68B)
+Class com.amazon.ion.system.IonSystemBuilder$Mutable                                  : loaded 2 times (x 73B)
+Class org.gradle.internal.installation.GradleInstallation                             : loaded 2 times (x 73B)
+Class org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream                : loaded 2 times (x 100B)
+Class jdk.internal.jimage.decompressor.Decompressor                                   : loaded 2 times (x 70B)
+Class com.google.common.cache.LocalCache$Strength                                     : loaded 2 times (x 79B)
+Class jdk.internal.jrtfs.JrtFileSystem                                                : loaded 2 times (x 100B)
+Class com.google.common.collect.ArrayListMultimapGwtSerializationDependencies         : loaded 2 times (x 170B)
+Class kotlin.Unit                                                                     : loaded 2 times (x 69B)
+Class com.google.common.base.CharMatcher$RangesMatcher                                : loaded 2 times (x 110B)
+Class com.amazon.ion.impl.lite.IonStringLite                                          : loaded 2 times (x 210B)
+Class org.objectweb.asm.Handler                                                       : loaded 2 times (x 70B)
+Class org.gradle.internal.impldep.gnu.trove.TObjectIntProcedure                       : loaded 2 times (x 68B)
+Class org.gradle.tooling.internal.gradle.GradleProjectIdentity                        : loaded 2 times (x 68B)
+Class com.google.common.collect.ImmutableList$SubList                                 : loaded 2 times (x 168B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$StreamCloseMode                      : loaded 2 times (x 77B)
+Class jdk.internal.jrtfs.JrtFileSystemProvider                                        : loaded 2 times (x 97B)
+Class com.google.common.cache.LocalCache$ValueReference                               : loaded 2 times (x 68B)
+Class org.gradle.tooling.internal.adapter.MethodInvocation                            : loaded 2 times (x 83B)
+Class org.gradle.internal.time.CountdownTimer                                         : loaded 2 times (x 68B)
+Class org.gradle.internal.time.Clock                                                  : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$PatchPoint                           : loaded 2 times (x 69B)
+Class org.gradle.internal.classloader.ClasspathUtil                                   : loaded 2 times (x 69B)
+Class org.objectweb.asm.CurrentFrame                                                  : loaded 2 times (x 71B)
+Class jdk.internal.jrtfs.JrtDirectoryStream                                           : loaded 2 times (x 87B)
+Class com.amazon.ion.IonInt                                                           : loaded 2 times (x 68B)
+Class com.google.common.util.concurrent.AbstractFuture                                : loaded 2 times (x 93B)
+Class org.jetbrains.kotlin.tooling.core.HasMutableExtras                              : loaded 2 times (x 68B)
+Class com.amazon.ion.impl._Private_IonSymbol                                          : loaded 2 times (x 68B)
+Class com.amazon.ion.impl._Private_IonBinaryWriterBuilder$Mutable                     : loaded 2 times (x 107B)
+Class org.gradle.tooling.model.BuildIdentifier                                        : loaded 2 times (x 68B)
+Class jdk.internal.jimage.decompressor.ResourceDecompressor                           : loaded 2 times (x 68B)
+Class com.google.common.base.Splitter$1                                               : loaded 2 times (x 75B)
+Class com.google.common.base.Ticker$1                                                 : loaded 2 times (x 70B)
+Class com.google.common.collect.Maps$BiMapConverter                                   : loaded 2 times (x 88B)
+Class org.gradle.api.internal.DefaultClassPathRegistry                                : loaded 2 times (x 74B)
+Class com.google.common.base.Splitter$5                                               : loaded 2 times (x 78B)
+Class com.google.common.util.concurrent.AbstractFuture$Cancellation                   : loaded 2 times (x 70B)
+Class [Lorg.objectweb.asm.Symbol;                                                     : loaded 2 times (x 67B)
+Class com.amazon.ion.impl.bin.AbstractIonWriter$WriteValueOptimization                : loaded 2 times (x 77B)
+Class com.amazon.ion.impl.bin._Private_IonRawWriter                                   : loaded 2 times (x 68B)
+Class com.google.common.collect.ImmutableSet$SetBuilderImpl                           : loaded 2 times (x 74B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$UserState                        : loaded 2 times (x 83B)
+Class org.gradle.api.internal.classpath.DefaultModuleRegistry$DefaultModule           : loaded 2 times (x 84B)
+Class com.amazon.ion.ReadOnlyValueException                                           : loaded 2 times (x 82B)
+Class com.google.common.base.CharMatcher$JavaIsoControl                               : loaded 2 times (x 110B)
+Class com.google.common.collect.ImmutableMap$1                                        : loaded 2 times (x 79B)
+Class org.gradle.tooling.model.build.GradleEnvironment                                : loaded 2 times (x 68B)
+Class com.amazon.ion.IonException                                                     : loaded 2 times (x 82B)
+Class com.google.common.base.CharMatcher$Or                                           : loaded 2 times (x 110B)
+Class com.amazon.ion.BufferConfiguration$DataHandler                                  : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$SymbolState                      : loaded 2 times (x 78B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.ExternalTestsSerializationService$WriteContext: loaded 2 times (x 70B)
+Class org.gradle.kotlin.dsl.VersionCatalogAccessorsKt                                 : loaded 2 times (x 69B)
+Class org.gradle.internal.time.TimeSource                                             : loaded 2 times (x 68B)
+Class com.google.common.base.Suppliers$SupplierOfInstance                             : loaded 2 times (x 77B)
+Class org.objectweb.asm.RecordComponentVisitor                                        : loaded 2 times (x 75B)
+Class [Lorg.jetbrains.kotlin.cli.common.CompilerSystemProperties;                     : loaded 2 times (x 67B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$SymbolState$1                    : loaded 2 times (x 78B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$SymbolState$2                    : loaded 2 times (x 78B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$SymbolState$3                    : loaded 2 times (x 78B)
+Class com.intellij.util.containers.IntObjectHashMap$ArrayProducer                     : loaded 2 times (x 68B)
+Class com.google.common.collect.Iterables                                             : loaded 2 times (x 69B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$SymbolState$4                    : loaded 2 times (x 78B)
+Class org.jetbrains.kotlin.android.synthetic.idea.AndroidExtensionsGradleModel        : loaded 2 times (x 68B)
+Class [Lcom.intellij.openapi.externalSystem.model.project.dependencies.ResolutionState;: loaded 2 times (x 67B)
+Class org.jetbrains.kotlin.cli.common.CompilerSystemProperties$value$1                : loaded 2 times (x 123B)
+Class com.google.common.base.CharMatcher$JavaLowerCase                                : loaded 2 times (x 109B)
+Class org.objectweb.asm.ClassTooLargeException                                        : loaded 2 times (x 81B)
+Class com.intellij.openapi.externalSystem.model.project.dependencies.ResolutionState  : loaded 2 times (x 77B)
+Class org.gradle.api.internal.classpath.UnknownModuleException                        : loaded 2 times (x 80B)
+Class com.amazon.ion.system.SimpleCatalog                                             : loaded 2 times (x 89B)
+Class com.google.common.util.concurrent.AbstractFuture$Listener                       : loaded 2 times (x 70B)
+Class com.amazon.ion.IonNumber                                                        : loaded 2 times (x 68B)
+Class org.apache.commons.io.output.AbstractByteArrayOutputStream                      : loaded 2 times (x 100B)
+Class com.amazon.ion.IonBufferConfiguration$OversizedSymbolTableHandler               : loaded 2 times (x 68B)
+Class com.intellij.gradle.toolingExtension.impl.model.buildScriptClasspathModel.GradleBuildScriptClasspathSerializationService: loaded 2 times (x 75B)
+Class org.objectweb.asm.Edge                                                          : loaded 2 times (x 70B)
+Class com.android.ide.gradle.model.GradlePluginModel                                  : loaded 2 times (x 68B)
+Class com.google.common.collect.Maps$EntryTransformer                                 : loaded 2 times (x 68B)
+Class com.google.common.collect.ImmutableCollection$Builder                           : loaded 2 times (x 74B)
+Class org.jetbrains.plugins.gradle.model.ProjectImportModelProvider                   : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.GradleExtensionsSerializationService: loaded 2 times (x 75B)
+Class com.amazon.ion.IonContainer                                                     : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.lite.ValueFactoryLite                                       : loaded 2 times (x 216B)
+Class com.amazon.ion.impl._Private_IonWriterBase                                      : loaded 2 times (x 160B)
+Class [Lorg.objectweb.asm.SymbolTable$Entry;                                          : loaded 2 times (x 67B)
+Class com.google.common.collect.SingletonImmutableBiMap                               : loaded 2 times (x 141B)
+Class com.google.common.base.CommonPattern                                            : loaded 2 times (x 72B)
+Class com.google.common.base.Suppliers                                                : loaded 2 times (x 69B)
+Class com.amazon.ion.impl._Private_IonTextWriterBuilder$Mutable                       : loaded 2 times (x 99B)
+Class org.jetbrains.plugins.gradle.model.IntelliJProjectSettings                      : loaded 2 times (x 68B)
+Class org.objectweb.asm.ClassVisitor                                                  : loaded 2 times (x 86B)
+Class com.amazon.ion.system.IonReaderBuilder                                          : loaded 2 times (x 91B)
+Class com.google.common.cache.LoadingCache                                            : loaded 2 times (x 68B)
+Class org.gradle.internal.service.ServiceLookupException                              : loaded 2 times (x 80B)
+Class sync_studio_tooling483_a4wig7ic1k4jh5eozkqm0i9j0                                : loaded 2 times (x 177B)
+Class jdk.internal.jimage.ImageStringsReader                                          : loaded 2 times (x 78B)
+Class org.gradle.cache.GlobalCache                                                    : loaded 2 times (x 68B)
+Class jdk.internal.jimage.decompressor.ResourceDecompressorFactory                    : loaded 2 times (x 72B)
+Class org.jetbrains.kotlin.idea.gradleTooling.model.lombok.LombokModel                : loaded 2 times (x 68B)
+Class sync_studio_tooling5_4xp3qb2vkflzsimbj7jmjawj1                                  : loaded 2 times (x 177B)
+Class org.gradle.tooling.model.ProjectIdentifier                                      : loaded 2 times (x 68B)
+Class com.google.common.base.CharMatcher$NegatedFastMatcher                           : loaded 2 times (x 111B)
+Class [Lorg.gradle.api.internal.ClassPathProvider;                                    : loaded 2 times (x 67B)
+Class com.google.common.util.concurrent.AbstractFuture$SafeAtomicHelper               : loaded 2 times (x 77B)
+Class jdk.internal.jimage.ImageReader$SharedImageReader$LocationVisitor               : loaded 2 times (x 68B)
+Class org.gradle.internal.operations.MultipleBuildOperationFailures                   : loaded 2 times (x 93B)
+Class org.gradle.util.internal.GUtil                                                  : loaded 2 times (x 69B)
+Class jdk.internal.jimage.decompressor.ZipDecompressor                                : loaded 2 times (x 73B)
+Class com.amazon.ion.IonBufferConfiguration$Builder                                   : loaded 2 times (x 76B)
+Class org.gradle.tooling.internal.adapter.MethodInvoker                               : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.model.AnnotationProcessingModel                    : loaded 2 times (x 68B)
+Class com.google.common.math.IntMath                                                  : loaded 2 times (x 69B)
+Class org.jetbrains.plugins.gradle.model.ExternalTask                                 : loaded 2 times (x 68B)
+Class org.gradle.tooling.model.HierarchicalElement                                    : loaded 2 times (x 68B)
+Class com.google.common.collect.AbstractIterator                                      : loaded 2 times (x 80B)
+Class com.amazon.ion.system.IonTextWriterBuilder                                      : loaded 2 times (x 95B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.ExternalProjectSerializationService$ReadContext: loaded 2 times (x 72B)
+Class org.gradle.internal.classloader.ClassLoaderSpec                                 : loaded 2 times (x 69B)
+Class com.google.common.base.NullnessCasts                                            : loaded 2 times (x 69B)
+Class org.objectweb.asm.Frame                                                         : loaded 2 times (x 71B)
+Class com.google.common.cache.LocalCache$LocalManualCache                             : loaded 2 times (x 97B)
+Class com.google.common.collect.AbstractMapEntry                                      : loaded 2 times (x 79B)
+Class com.google.common.collect.ImmutableList$Builder                                 : loaded 2 times (x 75B)
+Class com.google.common.base.CharMatcher$Negated                                      : loaded 2 times (x 111B)
+Class com.google.common.cache.CacheLoader$1                                           : loaded 2 times (x 73B)
+Class com.amazon.ion.impl.bin.Block                                                   : loaded 2 times (x 77B)
+Class com.amazon.ion.impl.LocalSymbolTable$Factory                                    : loaded 2 times (x 75B)
+Class org.jetbrains.plugins.gradle.model.GradleExtension                              : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter                                  : loaded 2 times (x 164B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$AdaptingMethodInvoker: loaded 2 times (x 74B)
+Class ijInit2_52yopm8z4q4a4ut7ftq9v23a                                                : loaded 2 times (x 177B)
+Class com.amazon.ion.impl.IonWriterSystem                                             : loaded 2 times (x 169B)
+Class org.jetbrains.plugins.gradle.tooling.util.IntObjectMap                          : loaded 2 times (x 71B)
+Class org.gradle.tooling.model.idea.IdeaModuleDependency                              : loaded 2 times (x 68B)
+Class [Lcom.amazon.ion.impl.bin.IonManagedBinaryWriter$ImportedSymbolResolverMode;    : loaded 2 times (x 67B)
+Class com.google.common.util.concurrent.AbstractFuture$TrustedFuture                  : loaded 2 times (x 95B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.RepositoriesModelSerializationService$ReadContext: loaded 2 times (x 70B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter                                      : loaded 2 times (x 167B)
+Class com.amazon.ion.impl._Private_IonSystem                                          : loaded 2 times (x 68B)
+Class com.amazon.ion.impl._Private_IonBinaryWriterBuilder                             : loaded 2 times (x 107B)
+Class com.google.common.collect.Sets                                                  : loaded 2 times (x 69B)
+Class sync_studio_tooling483_a4wig7ic1k4jh5eozkqm0i9j0$_run_closure1                  : loaded 2 times (x 137B)
+Class com.amazon.ion.SymbolTable                                                      : loaded 2 times (x 68B)
+Class org.jetbrains.kotlin.util.capitalizeDecapitalize.CapitalizeDecapitalizeKt       : loaded 2 times (x 69B)
+Class com.google.common.collect.ImmutableSet$Builder                                  : loaded 2 times (x 83B)
+Class com.amazon.ion.impl.bin.Symbols$2                                               : loaded 2 times (x 105B)
+Class com.google.common.base.CharMatcher$ForPredicate                                 : loaded 2 times (x 110B)
+Class com.google.common.collect.ImmutableMap$MapViewOfValuesAsSingletonSets           : loaded 2 times (x 123B)
+Class org.apache.commons.io.output.StringBuilderWriter                                : loaded 2 times (x 98B)
+Class org.objectweb.asm.commons.InstructionAdapter                                    : loaded 2 times (x 186B)
+Class com.google.common.base.MoreObjects                                              : loaded 2 times (x 69B)
+Class com.google.common.collect.SortedMapDifference                                   : loaded 2 times (x 68B)
+Class org.objectweb.asm.SymbolTable                                                   : loaded 2 times (x 70B)
+Class com.amazon.ion.impl.bin.BlockAllocatorProvider                                  : loaded 2 times (x 70B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$ViewGraphDetails$1   : loaded 2 times (x 75B)
+Class [Lorg.objectweb.asm.AnnotationVisitor;                                          : loaded 2 times (x 67B)
+Class com.google.common.cache.CacheStats                                              : loaded 2 times (x 69B)
+Class com.intellij.gradle.toolingExtension.impl.model.buildScriptClasspathModel.GradleBuildScriptClasspathSerializationService$ReadContext: loaded 2 times (x 70B)
+Class org.objectweb.asm.Attribute                                                     : loaded 2 times (x 75B)
+Class com.amazon.ion.IonDatagram                                                      : loaded 2 times (x 68B)
+Class org.gradle.internal.classloader.VisitableURLClassLoader                         : loaded 2 times (x 115B)
+Class com.google.common.cache.LocalCache$LocalLoadingCache                            : loaded 2 times (x 132B)
+Class [Lcom.amazon.ion.impl.bin.IonManagedBinaryWriter$UserState;                     : loaded 2 times (x 67B)
+Class com.google.common.base.Supplier                                                 : loaded 2 times (x 68B)
+Class com.google.common.base.Objects                                                  : loaded 2 times (x 69B)
+Class com.google.common.util.concurrent.AbstractFuture$AtomicHelper                   : loaded 2 times (x 76B)
+Class com.google.common.collect.ImmutableBiMap                                        : loaded 2 times (x 141B)
+Class org.jetbrains.kotlin.idea.gradleTooling.model.annotation.AnnotationBasedPluginModel: loaded 2 times (x 68B)
+Class com.amazon.ion.system.IonSystemBuilder                                          : loaded 2 times (x 73B)
+Class org.jetbrains.plugins.gradle.model.GradleProperty                               : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.lite.IonLobLite                                             : loaded 2 times (x 182B)
+Class com.amazon.ion.IonStruct                                                        : loaded 2 times (x 68B)
+Class org.gradle.api.internal.ClassPathRegistry                                       : loaded 2 times (x 68B)
+Class com.google.common.cache.LocalCache$EntryFactory                                 : loaded 2 times (x 81B)
+Class com.google.common.util.concurrent.UncheckedExecutionException                   : loaded 2 times (x 80B)
+Class com.google.common.collect.ImmutableSet                                          : loaded 2 times (x 143B)
+Class org.gradle.internal.classloader.VisitableURLClassLoader$InstrumentingVisitableURLClassLoader: loaded 2 times (x 121B)
+Class org.gradle.internal.classloader.ClassLoaderHierarchy                            : loaded 2 times (x 68B)
+Class com.amazon.ion.UnexpectedEofException                                           : loaded 2 times (x 82B)
+Class org.gradle.internal.exceptions.MultiCauseException                              : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.lite.IonSexpLite                                            : loaded 2 times (x 449B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$UserState$1                      : loaded 2 times (x 83B)
+Class [Lcom.amazon.ion.impl.bin.IonRawBinaryWriter$ContainerType;                     : loaded 2 times (x 67B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$UserState$2                      : loaded 2 times (x 83B)
+Class [Lcom.amazon.ion.impl.bin.IonRawBinaryWriter$StreamCloseMode;                   : loaded 2 times (x 67B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$UserState$3                      : loaded 2 times (x 83B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$UserState$4                      : loaded 2 times (x 83B)
+Class com.amazon.ion.IonTimestamp                                                     : loaded 2 times (x 68B)
+Class jdk.internal.jimage.ImageReader                                                 : loaded 2 times (x 73B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$PatchList$1                          : loaded 2 times (x 81B)
+Class com.amazon.ion.impl.SymbolTokenImpl                                             : loaded 2 times (x 79B)
+Class org.jetbrains.kotlin.idea.gradleTooling.model.parcelize.ParcelizeGradleModel    : loaded 2 times (x 68B)
+Class [Lorg.objectweb.asm.Type;                                                       : loaded 2 times (x 67B)
+Class com.google.common.base.AbstractIterator$State                                   : loaded 2 times (x 77B)
+Class com.amazon.ion.impl._Private_Utils                                              : loaded 2 times (x 69B)
+Class com.google.common.cache.Weigher                                                 : loaded 2 times (x 68B)
+Class com.amazon.ion.impl._Private_IonTextWriterBuilder                               : loaded 2 times (x 99B)
+Class com.google.common.base.CharMatcher$NamedFastMatcher                             : loaded 2 times (x 110B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.ToolingStreamApiUtils        : loaded 2 times (x 69B)
+Class org.gradle.internal.InternalTransformer                                         : loaded 2 times (x 68B)
+Class org.apache.commons.io.output.NullOutputStream                                   : loaded 2 times (x 83B)
+Class org.jetbrains.kotlin.idea.gradleTooling.model.noarg.NoArgModel                  : loaded 2 times (x 68B)
+Class org.jetbrains.kotlin.idea.gradleTooling.KotlinGradleModel                       : loaded 2 times (x 68B)
+Class org.gradle.tooling.internal.gradle.DefaultBuildIdentifier                       : loaded 2 times (x 77B)
+Class org.gradle.internal.service.ServiceLocator                                      : loaded 2 times (x 68B)
+Class Settings_gradle$1                                                               : loaded 2 times (x 72B)
+Class org.jetbrains.plugins.gradle.model.ExternalDependency                           : loaded 2 times (x 68B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$ImportedSymbolResolverMode$1$1$1 : loaded 2 times (x 74B)
+Class com.google.common.util.concurrent.SettableFuture                                : loaded 2 times (x 95B)
+Class org.gradle.internal.impldep.gnu.trove.TObjectHashingStrategy                    : loaded 2 times (x 68B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$MethodInvocationCache: loaded 2 times (x 71B)
+Class com.amazon.ion.IonString                                                        : loaded 2 times (x 68B)
+Class com.amazon.ion.IonLoader                                                        : loaded 2 times (x 68B)
+Class com.google.common.collect.ImmutableMapEntry                                     : loaded 2 times (x 83B)
+Class com.amazon.ion.IonBinaryWriter                                                  : loaded 2 times (x 68B)
+Class org.jetbrains.kotlin.idea.gradleTooling.model.allopen.AllOpenModel              : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.model.AnnotationProcessingConfig                   : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.ExternalTestsSerializationService: loaded 2 times (x 75B)
+Class com.google.common.base.CharMatcher$Invisible                                    : loaded 2 times (x 110B)
+Class com.google.common.base.Joiner$1                                                 : loaded 2 times (x 78B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.ProjectDependenciesSerializationService$WriteContext: loaded 2 times (x 70B)
+Class com.google.common.base.Joiner$2                                                 : loaded 2 times (x 77B)
+Class org.gradle.tooling.internal.adapter.WeakIdentityHashMap                         : loaded 2 times (x 74B)
+Class com.google.common.base.CharMatcher$FastMatcher                                  : loaded 2 times (x 109B)
+Class org.gradle.internal.classpath.DefaultClassPath$ImmutableUniqueList              : loaded 2 times (x 159B)
+Class com.amazon.ion.IonBool                                                          : loaded 2 times (x 68B)
+Class jdk.internal.jimage.ImageBufferCache                                            : loaded 2 times (x 69B)
+Class com.amazon.ion.impl.bin.IonRawBinaryWriter$ContainerInfo                        : loaded 2 times (x 74B)
+Class org.gradle.internal.time.DefaultTimer                                           : loaded 2 times (x 78B)
+Class com.google.common.base.CharMatcher$JavaLetter                                   : loaded 2 times (x 109B)
+Class org.gradle.internal.classpath.TransformedClassPath                              : loaded 2 times (x 94B)
+Class com.google.common.collect.MapDifference                                         : loaded 2 times (x 68B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.ExternalProjectSerializationService$WriteContext: loaded 2 times (x 72B)
+Class com.amazon.ion.impl.bin.IonManagedBinaryWriter$ImportDescriptor                 : loaded 2 times (x 74B)
+Class com.amazon.ion.system.IonBinaryWriterBuilder                                    : loaded 2 times (x 95B)
+Class org.jetbrains.kotlin.tooling.core.HasExtras                                     : loaded 2 times (x 68B)
+Class com.google.common.collect.Sets$1                                                : loaded 2 times (x 137B)
+Class com.google.common.collect.Sets$2                                                : loaded 2 times (x 137B)
+Class com.google.common.util.concurrent.AbstractFuture$Trusted                        : loaded 2 times (x 68B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$InvocationHandlerImpl: loaded 2 times (x 75B)
+Class com.google.common.collect.Sets$3                                                : loaded 2 times (x 137B)
+Class com.google.common.collect.Sets$4                                                : loaded 2 times (x 137B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.AnnotationProcessingModelSerializationService$WriteContext: loaded 2 times (x 70B)
+Class com.amazon.ion.impl._Private_IonReaderBuilder$Mutable                           : loaded 2 times (x 93B)
+Class Settings_gradle                                                                 : loaded 2 times (x 126B)
+Class org.jetbrains.plugins.gradle.tooling.serialization.internal.IdeaProjectSerializationService$ReadContext: loaded 2 times (x 70B)
+Class org.objectweb.asm.MethodWriter                                                  : loaded 2 times (x 104B)
+Class com.amazon.ion.impl._Private_Utils$1                                            : loaded 2 times (x 87B)
+Class kotlin.collections.AbstractList$Companion                                       : loaded 2 times (x 69B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$ViewDecoration       : loaded 2 times (x 68B)
+Class com.google.common.collect.Platform                                              : loaded 2 times (x 69B)
+Class com.google.common.collect.ImmutableAsList                                       : loaded 2 times (x 169B)
+Class com.amazon.ion.impl._Private_IonReaderBuilder$TwoElementSequenceInputStream     : loaded 2 times (x 90B)
+Class com.google.common.util.concurrent.ExecutionError                                : loaded 2 times (x 80B)
+Class com.google.common.base.Equivalence$Identity                                     : loaded 2 times (x 80B)
+Class com.google.common.base.CharMatcher$AnyOf                                        : loaded 2 times (x 110B)
+Class com.google.common.base.CharMatcher$IsEither                                     : loaded 2 times (x 109B)
+Class com.amazon.ion.impl._Private_LocalSymbolTable                                   : loaded 2 times (x 68B)
+Class com.amazon.ion.ValueFactory                                                     : loaded 2 times (x 68B)
+Class com.google.common.cache.LocalCache                                              : loaded 2 times (x 185B)
+Class jdk.internal.jimage.ImageReader$Directory                                       : loaded 2 times (x 82B)
+Class com.google.common.collect.RegularImmutableList                                  : loaded 2 times (x 172B)
+Class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper$1           : loaded 2 times (x 74B)
+Class org.gradle.internal.impldep.gnu.trove.TObjectCanonicalHashingStrategy           : loaded 2 times (x 78B)
+Class com.google.common.base.CharMatcher$JavaUpperCase                                : loaded 2 times (x 109B)
+Class org.jetbrains.plugins.gradle.tooling.util.IntObjectMap$ObjectFactory            : loaded 2 times (x 68B)
+Class com.google.common.collect.Multiset                                              : loaded 2 times (x 68B)
+Class com.google.common.collect.ImmutableSet$CachingAsList                            : loaded 2 times (x 145B)
+Class com.amazon.ion.impl.lite.IonDecimalLite                                         : loaded 2 times (x 186B)
+Class org.jetbrains.plugins.gradle.tooling.util.IntObjectMap$1                        : loaded 2 times (x 75B)
+Class [Lcom.amazon.ion.impl.bin.AbstractIonWriter$WriteValueOptimization;             : loaded 2 times (x 67B)
+Class com.amazon.ion.Decimal                                                          : loaded 2 times (x 131B)
+Class com.amazon.ion.impl.lite.IonTimestampLite                                       : loaded 2 times (x 190B)
+Class org.gradle.tooling.internal.adapter.ProtocolToModelAdapter$ViewGraphDetails     : loaded 2 times (x 70B)
+Class org.objectweb.asm.MethodVisitor                                                 : loaded 2 times (x 103B)
+Class com.amazon.ion.IonWriter                                                        : loaded 2 times (x 68B)
+Class com.google.common.collect.ImmutableMapEntry$NonTerminalImmutableMapEntry        : loaded 2 times (x 83B)
+Class com.google.common.collect.AbstractMapBasedMultimap                              : loaded 2 times (x 137B)
+Class org.gradle.internal.impldep.gnu.trove.Equality                                  : loaded 2 times (x 68B)
+Class com.amazon.ion.IonType                                                          : loaded 2 times (x 77B)
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 22621 (10.0.22621.5124)
+OS uptime: 0 days 1:34 hours
+Hyper-V role detected
+
+CPU: total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 140 stepping 1 microcode 0x8a, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, avx512f, avx512dq, avx512cd, avx512bw, avx512vl, sha, fma, vzeroupper, avx512_vpopcntdq, avx512_vpclmulqdq, avx512_vaes, avx512_vnni, clflush, clflushopt, clwb, avx512_vbmi2, avx512_vbmi, hv
+Processor Information for processor 0
+  Max Mhz: 2419, Current Mhz: 1209, Mhz Limit: 2419
+Processor Information for processor 1
+  Max Mhz: 2419, Current Mhz: 1209, Mhz Limit: 2419
+Processor Information for processor 2
+  Max Mhz: 2419, Current Mhz: 2419, Mhz Limit: 2419
+Processor Information for processor 3
+  Max Mhz: 2419, Current Mhz: 2419, Mhz Limit: 2419
+Processor Information for processor 4
+  Max Mhz: 2419, Current Mhz: 2419, Mhz Limit: 2419
+Processor Information for processor 5
+  Max Mhz: 2419, Current Mhz: 2419, Mhz Limit: 2419
+Processor Information for processor 6
+  Max Mhz: 2419, Current Mhz: 1209, Mhz Limit: 2419
+Processor Information for processor 7
+  Max Mhz: 2419, Current Mhz: 2419, Mhz Limit: 2419
+
+Memory: 4k page, system-wide physical 7991M (424M free)
+TotalPageFile size 12087M (AvailPageFile size 4M)
+current process WorkingSet (physical memory assigned to process): 1330M, peak: 1332M
+current process commit charge ("private bytes"): 1698M, peak: 1704M
+
+vm_info: OpenJDK 64-Bit Server VM (17.0.11+0--11852314) for windows-amd64 JRE (17.0.11+0--11852314), built on May 16 2024 21:29:20 by "androidbuild" with MS VC++ 16.10 / 16.11 (VS2019)
+
+END.

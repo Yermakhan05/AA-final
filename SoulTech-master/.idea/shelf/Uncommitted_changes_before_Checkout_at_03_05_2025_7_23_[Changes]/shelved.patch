@@ -1,0 +1,635 @@
+Index: app/src/main/java/com/example/myfaith/activity/LoginActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myfaith.activity\n\nimport android.content.Context\nimport android.content.Intent\nimport android.graphics.Color\nimport android.os.Bundle\nimport android.text.Spannable\nimport android.text.SpannableString\nimport android.text.style.ForegroundColorSpan\nimport android.widget.Button\nimport android.widget.EditText\nimport android.widget.TextView\nimport android.widget.Toast\nimport androidx.appcompat.app.AppCompatActivity\nimport com.example.myfaith.datasource.ApiSource\nimport com.example.myfaith.entity.response.LoginResponse\nimport com.example.myfaith.R\nimport retrofit2.Call\nimport retrofit2.Callback\nimport retrofit2.Response\n\nclass LoginActivity : AppCompatActivity() {\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_login)\n        ApiSource.init(applicationContext)\n\n        val prefs = getSharedPreferences(\"MyAppPrefs\", MODE_PRIVATE)\n        val savedEmail = prefs.getString(\"user_email\", null)\n        val savedPassword = prefs.getString(\"user_password\", null)\n        if (!savedEmail.isNullOrEmpty() && !savedPassword.isNullOrEmpty()) {\n            ApiSource.login.loginUser(savedEmail, savedPassword).enqueue(object : Callback<LoginResponse> {\n                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {\n                    if (response.isSuccessful && response.body() != null) {\n                        val token = response.body()!!.access\n                        prefs.edit().putString(\"auth_token\", token).apply()\n                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))\n                        finish()\n                    }\n                    else {\n                        Toast.makeText(this@LoginActivity, \"Login failed\", Toast.LENGTH_SHORT).show()\n                    }\n                }\n\n                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {\n                    Toast.makeText(this@LoginActivity, \"Error: ${t.message}\", Toast.LENGTH_SHORT).show()\n                }\n            })\n        }\n\n        val emailOrNumberField = findViewById<EditText>(R.id.login_email_or_number)\n        val passwordField = findViewById<EditText>(R.id.login_password)\n        val loginButton = findViewById<Button>(R.id.login_button)\n        val registerButton = findViewById<TextView>(R.id.register_text)\n\n        val prefillEmail = intent.getStringExtra(\"email\")\n        val prefillPassword = intent.getStringExtra(\"password\")\n\n        prefillEmail?.let {\n            emailOrNumberField.setText(it)\n            emailOrNumberField.requestFocus()\n        }\n\n        val textView = findViewById<TextView>(R.id.register_text)\n        val fullText = \"Don't have an account? Sign up\"\n        val spannable = SpannableString(fullText)\n\n        spannable.setSpan(\n            ForegroundColorSpan(Color.parseColor(\"#f2f2ec\")),\n            0,\n            fullText.indexOf(\"Sign up\"),\n            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE\n        )\n\n        spannable.setSpan(\n            ForegroundColorSpan(Color.parseColor(\"#f4ff9d\")),\n            fullText.indexOf(\"Sign up\"),\n            fullText.length,\n            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE\n        )\n\n        textView.text = spannable\n\n        textView.text = spannable\n\n        loginButton.setOnClickListener {\n            val email = emailOrNumberField.text.toString()\n            val password = passwordField.text.toString()\n\n            ApiSource.login.loginUser(email, password).enqueue(object : Callback<LoginResponse> {\n                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {\n                    if (response.isSuccessful && response.body() != null) {\n                        val token = response.body()!!.access\n                        val sharedPrefs = getSharedPreferences(\"MyAppPrefs\", Context.MODE_PRIVATE)\n                        sharedPrefs.edit()\n                            .putString(\"user_email\", email)\n                            .putString(\"user_password\", password)\n                            .putString(\"auth_token\", token).apply()\n\n                        val intent = Intent(this@LoginActivity, MainActivity::class.java)\n                        startActivity(intent)\n                        finish()\n                    } else {\n                        Toast.makeText(this@LoginActivity, \"Login failed\", Toast.LENGTH_SHORT).show()\n                    }\n                }\n\n                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {\n                    Toast.makeText(this@LoginActivity, \"Error: ${t.message}\", Toast.LENGTH_SHORT).show()\n                }\n            })\n        }\n        registerButton.setOnClickListener {\n            val intent = Intent(this, RegistrationActivity::class.java)\n            startActivity(intent)\n            finish()\n        }\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myfaith/activity/LoginActivity.kt b/app/src/main/java/com/example/myfaith/activity/LoginActivity.kt
+--- a/app/src/main/java/com/example/myfaith/activity/LoginActivity.kt	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/app/src/main/java/com/example/myfaith/activity/LoginActivity.kt	(date 1746238112454)
+@@ -25,6 +25,8 @@
+         setContentView(R.layout.activity_login)
+         ApiSource.init(applicationContext)
+ 
++        // Temporarily disabled auto-login
++        /*
+         val prefs = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+         val savedEmail = prefs.getString("user_email", null)
+         val savedPassword = prefs.getString("user_password", null)
+@@ -47,6 +49,7 @@
+                 }
+             })
+         }
++        */
+ 
+         val emailOrNumberField = findViewById<EditText>(R.id.login_email_or_number)
+         val passwordField = findViewById<EditText>(R.id.login_password)
+@@ -84,6 +87,12 @@
+         textView.text = spannable
+ 
+         loginButton.setOnClickListener {
++            // Temporarily skip authentication
++            val intent = Intent(this@LoginActivity, MainActivity::class.java)
++            startActivity(intent)
++            finish()
++            
++            /*
+             val email = emailOrNumberField.text.toString()
+             val password = passwordField.text.toString()
+ 
+@@ -109,6 +118,7 @@
+                     Toast.makeText(this@LoginActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                 }
+             })
++            */
+         }
+         registerButton.setOnClickListener {
+             val intent = Intent(this, RegistrationActivity::class.java)
+Index: app/src/main/assets/quran_data.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"surahs\": [\n    {\n      \"number\": 1,\n      \"name\": \"әл-Фатиха\",\n      \"type\": \"Меккелік\",\n      \"verses\": [\n        {\n          \"number\": 1,\n          \"arabicText\": \"بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ\",\n          \"transliteration\": \"Bismillāhi r-raḥmāni r-raḥīm\",\n          \"translation\": \"Аса қамқор, ерекше мейірімді Алланың атымен.\",\n          \"highlights\": {\n            \"اللَّهِ\": \"#4CD3A5\",\n            \"الرَّحْمَٰنِ\": \"#4CD3A5\"\n          }\n        },\n        {\n          \"number\": 2,\n          \"arabicText\": \"الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ\",\n          \"transliteration\": \"Al-ḥamdu lillāhi rabbi l-‘ālamīn\",\n          \"translation\": \"Әлемдердің Раббысы – Аллаға мадақ.\",\n          \"highlights\": {\n            \"اللَّهِ\": \"#4CD3A5\"\n          }\n        },\n        {\n          \"number\": 3,\n          \"arabicText\": \"الرَّحْمَٰنِ الرَّحِيمِ\",\n          \"transliteration\": \"Ar-raḥmāni r-raḥīm\",\n          \"translation\": \"Аса қамқор, ерекше мейірімді.\",\n          \"highlights\": {\n            \"الرَّحْمَٰنِ\": \"#4CD3A5\",\n            \"الرَّحِيمِ\": \"#4CD3A5\"\n          }\n        }\n      ]\n    },\n    {\n      \"number\": 2,\n      \"name\": \"әл-Бақара\",\n      \"type\": \"Мединалық\",\n      \"verses\": [\n        {\n          \"number\": 1,\n          \"arabicText\": \"الم\",\n          \"transliteration\": \"Alif-Lām-Mīm\",\n          \"translation\": \"Алиф, Лам, Мим.\",\n          \"highlights\": {\n            \"الم\": \"#4CD3A5\"\n          }\n        },\n        {\n          \"number\": 2,\n          \"arabicText\": \"ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۖ فِيهِ\",\n          \"transliteration\": \"Dhālika l-kitābu lā rayba fīh\",\n          \"translation\": \"Бұл — күмән жоқ Кітап.\",\n          \"highlights\": {\n            \"الْكِتَابُ\": \"#4CD3A5\"\n          }\n        },\n        {\n          \"number\": 3,\n          \"arabicText\": \"هُدًى لِّلْمُتَّقِينَ\",\n          \"transliteration\": \"Hudan lil-muttaqīn\",\n          \"translation\": \"Тақуалар үшін тура жол көрсеткіші.\",\n          \"highlights\": {\n            \"لِّلْمُتَّقِينَ\": \"#4CD3A5\"\n          }\n        },\n        {\n          \"number\": 4,\n          \"arabicText\": \"الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ\",\n          \"transliteration\": \"Alladhīna yu’minūna bil-ghayb\",\n          \"translation\": \"Олар ғайыпқа иман келтіреді.\",\n          \"highlights\": {\n            \"يُؤْمِنُونَ\": \"#4CD3A5\"\n          }\n        }\n      ]\n    },\n    {\n      \"number\": 3,\n      \"name\": \"Әли Имран\",\n      \"type\": \"Мединалық\",\n      \"verses\": [\n        {\n          \"number\": 1,\n          \"arabicText\": \"الم\",\n          \"transliteration\": \"Alif-Lām-Mīm\",\n          \"translation\": \"Алиф, Лам, Мим.\",\n          \"highlights\": {\n            \"الم\": \"#4CD3A5\"\n          }\n        },\n        {\n          \"number\": 2,\n          \"arabicText\": \"اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ\",\n          \"transliteration\": \"Allāhu lā ilāha illā huwa l-ḥayyu l-qayyūm\",\n          \"translation\": \"Алладан басқа құдай жоқ, Ол – тірі, мәңгі тіреуші.\",\n          \"highlights\": {\n            \"اللَّهُ\": \"#4CD3A5\",\n            \"الْقَيُّومُ\": \"#4CD3A5\"\n          }\n        }\n      ]\n    },\n    {\n      \"number\": 4,\n      \"name\": \"ан-Ниса\",\n      \"type\": \"Мединалық\",\n      \"verses\": [\n        {\n          \"number\": 1,\n          \"arabicText\": \"يَا أَيُّهَا النَّاسُ\",\n          \"transliteration\": \"Yā ayyuhā an-nās\",\n          \"translation\": \"Ей, адамдар!\",\n          \"highlights\": {\n            \"النَّاسُ\": \"#4CD3A5\"\n          }\n        },\n        {\n          \"number\": 2,\n          \"arabicText\": \"اتَّقُوا رَبَّكُمُ\",\n          \"transliteration\": \"Ittaqū rabbakum\",\n          \"translation\": \"Раббыларыңнан қорқыңдар!\",\n          \"highlights\": {\n            \"رَبَّكُمُ\": \"#4CD3A5\"\n          }\n        }\n      ]\n    },\n    {\n      \"number\": 5,\n      \"name\": \"әл-Мәида\",\n      \"type\": \"Мединалық\",\n      \"verses\": [\n        {\n          \"number\": 1,\n          \"arabicText\": \"يَا أَيُّهَا الَّذِينَ آمَنُوا\",\n          \"transliteration\": \"Yā ayyuhā al-laḏīna āmanū\",\n          \"translation\": \"Ей, иман келтіргендер!\",\n          \"highlights\": {\n            \"آمَنُوا\": \"#4CD3A5\"\n          }\n        },\n        {\n          \"number\": 2,\n          \"arabicText\": \"أَوْفُوا بِالْعُقُودِ\",\n          \"transliteration\": \"Awfū bil-‘uqūd\",\n          \"translation\": \"Уәделеріңді орындаңдар!\",\n          \"highlights\": {\n            \"بِالْعُقُودِ\": \"#4CD3A5\"\n          }\n        }\n      ]\n    }\n  ]\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/assets/quran_data.json b/app/src/main/assets/quran_data.json
+--- a/app/src/main/assets/quran_data.json	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/app/src/main/assets/quran_data.json	(date 1746238034996)
+@@ -4,7 +4,7 @@
+       "number": 1,
+       "name": "әл-Фатиха",
+       "type": "Меккелік",
+-      "verses": [
++      "verses":[
+         {
+           "number": 1,
+           "arabicText": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+@@ -45,7 +45,7 @@
+           "number": 1,
+           "arabicText": "الم",
+           "transliteration": "Alif-Lām-Mīm",
+-          "translation": "Алиф, Лам, Мим.",
++          "translation": "Әлиф, Ләм, Мим.",
+           "highlights": {
+             "الم": "#4CD3A5"
+           }
+@@ -88,7 +88,7 @@
+           "number": 1,
+           "arabicText": "الم",
+           "transliteration": "Alif-Lām-Mīm",
+-          "translation": "Алиф, Лам, Мим.",
++          "translation": "Әлиф, Ләм, Мим.",
+           "highlights": {
+             "الم": "#4CD3A5"
+           }
+Index: .idea/render.experimental.xml
+===================================================================
+diff --git a/.idea/render.experimental.xml b/.idea/render.experimental.xml
+deleted file mode 100644
+--- a/.idea/render.experimental.xml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ /dev/null	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="RenderSettings">
+-    <option name="showDecorations" value="true" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/appInsightsSettings.xml
+===================================================================
+diff --git a/.idea/appInsightsSettings.xml b/.idea/appInsightsSettings.xml
+deleted file mode 100644
+--- a/.idea/appInsightsSettings.xml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ /dev/null	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
+@@ -1,26 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="AppInsightsSettings">
+-    <option name="tabSettings">
+-      <map>
+-        <entry key="Firebase Crashlytics">
+-          <value>
+-            <InsightsFilterSettings>
+-              <option name="connection">
+-                <ConnectionSetting>
+-                  <option name="appId" value="PLACEHOLDER" />
+-                  <option name="mobileSdkAppId" value="" />
+-                  <option name="projectId" value="" />
+-                  <option name="projectNumber" value="" />
+-                </ConnectionSetting>
+-              </option>
+-              <option name="signal" value="SIGNAL_UNSPECIFIED" />
+-              <option name="timeIntervalDays" value="THIRTY_DAYS" />
+-              <option name="visibilityType" value="ALL" />
+-            </InsightsFilterSettings>
+-          </value>
+-        </entry>
+-      </map>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/deviceManager.xml
+===================================================================
+diff --git a/.idea/deviceManager.xml b/.idea/deviceManager.xml
+deleted file mode 100644
+--- a/.idea/deviceManager.xml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ /dev/null	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
+@@ -1,17 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="DeviceTable">
+-    <option name="columnSorters">
+-      <list>
+-        <ColumnSorterState>
+-          <option name="column" value="Type" />
+-          <option name="order" value="ASCENDING" />
+-        </ColumnSorterState>
+-        <ColumnSorterState>
+-          <option name="column" value="API" />
+-          <option name="order" value="ASCENDING" />
+-        </ColumnSorterState>
+-      </list>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/runConfigurations.xml
+===================================================================
+diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations.xml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ /dev/null	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
+@@ -1,17 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="RunConfigurationProducerService">
+-    <option name="ignoredProducers">
+-      <set>
+-        <option value="com.intellij.execution.junit.AbstractAllInDirectoryConfigurationProducer" />
+-        <option value="com.intellij.execution.junit.AllInPackageConfigurationProducer" />
+-        <option value="com.intellij.execution.junit.PatternConfigurationProducer" />
+-        <option value="com.intellij.execution.junit.TestInClassConfigurationProducer" />
+-        <option value="com.intellij.execution.junit.UniqueIdConfigurationProducer" />
+-        <option value="com.intellij.execution.junit.testDiscovery.JUnitTestDiscoveryConfigurationProducer" />
+-        <option value="org.jetbrains.kotlin.idea.junit.KotlinJUnitRunConfigurationProducer" />
+-        <option value="org.jetbrains.kotlin.idea.junit.KotlinPatternConfigurationProducer" />
+-      </set>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ /dev/null	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: .idea/inspectionProfiles/Project_Default.xml
+===================================================================
+diff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml
+deleted file mode 100644
+--- a/.idea/inspectionProfiles/Project_Default.xml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ /dev/null	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
+@@ -1,47 +0,0 @@
+-<component name="InspectionProjectProfileManager">
+-  <profile version="1.0">
+-    <option name="myName" value="Project Default" />
+-    <inspection_tool class="ComposePreviewDimensionRespectsLimit" enabled="true" level="WARNING" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="ComposePreviewMustBeTopLevelFunction" enabled="true" level="ERROR" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="ComposePreviewNeedsComposableAnnotation" enabled="true" level="ERROR" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="ComposePreviewNotSupportedInUnitTestFiles" enabled="true" level="ERROR" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="GlancePreviewDimensionRespectsLimit" enabled="true" level="WARNING" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="GlancePreviewMustBeTopLevelFunction" enabled="true" level="ERROR" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="GlancePreviewNeedsComposableAnnotation" enabled="true" level="ERROR" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="GlancePreviewNotSupportedInUnitTestFiles" enabled="true" level="ERROR" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="PreviewAnnotationInFunctionWithParameters" enabled="true" level="ERROR" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="PreviewApiLevelMustBeValid" enabled="true" level="ERROR" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="PreviewDeviceShouldUseNewSpec" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="PreviewFontScaleMustBeGreaterThanZero" enabled="true" level="ERROR" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="PreviewMultipleParameterProviders" enabled="true" level="ERROR" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-    <inspection_tool class="PreviewPickerAnnotation" enabled="true" level="ERROR" enabled_by_default="true">
+-      <option name="composableFile" value="true" />
+-    </inspection_tool>
+-  </profile>
+-</component>
+\ No newline at end of file
+Index: app/src/main/java/com/example/myfaith/datasource/OkHttp.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myfaith.datasource\n\nimport android.content.Context\nimport okhttp3.Interceptor\nimport okhttp3.Response\n\nclass AuthInterceptor(private val context: Context) : Interceptor {\n    override fun intercept(chain: Interceptor.Chain): Response {\n        val sharedPreferences = context.getSharedPreferences(\"MyAppPrefs\", Context.MODE_PRIVATE)\n        val token = sharedPreferences.getString(\"auth_token\", null)\n\n        val newRequest = if (!token.isNullOrEmpty()) {\n            chain.request().newBuilder()\n                .addHeader(\"Authorization\", \"Bearer $token\")\n                .build()\n        } else {\n            chain.request()\n        }\n\n        return chain.proceed(newRequest)\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myfaith/datasource/OkHttp.kt b/app/src/main/java/com/example/myfaith/datasource/OkHttp.kt
+--- a/app/src/main/java/com/example/myfaith/datasource/OkHttp.kt	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/app/src/main/java/com/example/myfaith/datasource/OkHttp.kt	(date 1746238112418)
+@@ -6,6 +6,8 @@
+ 
+ class AuthInterceptor(private val context: Context) : Interceptor {
+     override fun intercept(chain: Interceptor.Chain): Response {
++        // Temporarily disabled authentication
++        /*
+         val sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+         val token = sharedPreferences.getString("auth_token", null)
+ 
+@@ -16,7 +18,7 @@
+         } else {
+             chain.request()
+         }
+-
+-        return chain.proceed(newRequest)
++        */
++        return chain.proceed(chain.request())
+     }
+ }
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>distributionBase=GRADLE_USER_HOME\ndistributionPath=wrapper/dists\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-8.9-bin.zip\nnetworkTimeout=10000\nvalidateDistributionUrl=true\nzipStoreBase=GRADLE_USER_HOME\nzipStorePath=wrapper/dists\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+--- a/gradle/wrapper/gradle-wrapper.properties	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/gradle/wrapper/gradle-wrapper.properties	(date 1746227737061)
+@@ -1,6 +1,7 @@
++#Sat May 03 04:11:47 QYZT 2025
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-8.9-bin.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-8.7-bin.zip
+ networkTimeout=10000
+ validateDistributionUrl=true
+ zipStoreBase=GRADLE_USER_HOME
+Index: app/src/main/res/drawable/circle_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<shape xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    android:shape=\"oval\">\n    <solid android:color=\"#E0E0E0\" />\n</shape>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/circle_background.xml b/app/src/main/res/drawable/circle_background.xml
+--- a/app/src/main/res/drawable/circle_background.xml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/app/src/main/res/drawable/circle_background.xml	(date 1746232904394)
+@@ -1,5 +1,8 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <shape xmlns:android="http://schemas.android.com/apk/res/android"
+     android:shape="oval">
+-    <solid android:color="#E0E0E0" />
++    <solid android:color="#1A1A1A" />
++    <stroke
++        android:width="2dp"
++        android:color="#f4ff9d" />
+ </shape>
+Index: gradle.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Project-wide Gradle settings.\n# IDE (e.g. Android Studio) users:\n# Gradle settings configured through the IDE *will override*\n# any settings specified in this file.\n# For more details on how to configure your build environment visit\n# http://www.gradle.org/docs/current/userguide/build_environment.html\n# Specifies the JVM arguments used for the daemon process.\n# The setting is particularly useful for tweaking memory settings.\norg.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8\n# When configured, Gradle will run in incubating parallel mode.\n# This option should only be used with decoupled projects. For more details, visit\n# https://developer.android.com/r/tools/gradle-multi-project-decoupled-projects\n# org.gradle.parallel=true\n# AndroidX package structure to make it clearer which packages are bundled with the\n# Android operating system, and which are packaged with your app's APK\n# https://developer.android.com/topic/libraries/support-library/androidx-rn\nandroid.useAndroidX=true\n# Kotlin code style for this project: \"official\" or \"obsolete\":\nkotlin.code.style=official\n# Enables namespacing of each library's R class so that its R class includes only the\n# resources declared in the library itself and none from the library's dependencies,\n# thereby reducing the size of the R class for that library\nandroid.nonTransitiveRClass=true
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle.properties b/gradle.properties
+--- a/gradle.properties	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/gradle.properties	(date 1746229679092)
+@@ -6,18 +6,35 @@
+ # http://www.gradle.org/docs/current/userguide/build_environment.html
+ # Specifies the JVM arguments used for the daemon process.
+ # The setting is particularly useful for tweaking memory settings.
+-org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
++org.gradle.jvmargs=-Xmx4096m -XX:MaxPermSize=1024m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -XX:+UseParallelGC
+ # When configured, Gradle will run in incubating parallel mode.
+ # This option should only be used with decoupled projects. For more details, visit
+ # https://developer.android.com/r/tools/gradle-multi-project-decoupled-projects
+-# org.gradle.parallel=true
++org.gradle.parallel=true
+ # AndroidX package structure to make it clearer which packages are bundled with the
+ # Android operating system, and which are packaged with your app's APK
+ # https://developer.android.com/topic/libraries/support-library/androidx-rn
+ android.useAndroidX=true
++android.enableJetifier=true
+ # Kotlin code style for this project: "official" or "obsolete":
+ kotlin.code.style=official
+ # Enables namespacing of each library's R class so that its R class includes only the
+ # resources declared in the library itself and none from the library's dependencies,
+ # thereby reducing the size of the R class for that library
+-android.nonTransitiveRClass=true
+\ No newline at end of file
++android.nonTransitiveRClass=true
++org.gradle.daemon=true
++org.gradle.configureondemand=true
++# Specify the path to JDK bundled with Android Studio
++org.gradle.java.home=C:\\Program Files\\Android\\Android Studio\\jbr
++# Enable Gradle build cache
++org.gradle.caching=true
++# Enable configuration cache
++org.gradle.configuration-cache=true
++
++# Kotlin settings
++kotlin.daemon.jvm.options=-Xmx4096m
++kotlin.incremental=true
++
++# Android settings
++android.defaults.buildfeatures.buildconfig=true
++android.nonFinalResIds=false
+\ No newline at end of file
+Index: gradle/libs.versions.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[versions]\nkotlin = \"1.9.24\"\nagp = \"8.5.0\"\n\ncoreKtx = \"1.13.1\"\nappcompat = \"1.7.0\"\nmaterial = \"1.12.0\"\nactivity = \"1.9.1\"\nconstraintlayout = \"2.1.4\"\nnavigation = \"2.8.6\"\n\ncompose = \"1.6.4\"\nmaterial3Android = \"1.3.2\"\n\nmedia3CommonKtx = \"1.6.1\"\ncoil = \"2.4.0\"\n\nplayServicesMaps = \"19.2.0\"\nplaces = \"4.2.0\"\n\nroom = \"2.6.1\"\nwork = \"2.9.0\"\n\n\njunit = \"4.13.2\"\njunitVersion = \"1.2.1\"\nespressoCore = \"3.6.1\"\n\n\n\n[libraries]\nandroidx-core-ktx = { group = \"androidx.core\", name = \"core-ktx\", version.ref = \"coreKtx\" }\njunit = { group = \"junit\", name = \"junit\", version.ref = \"junit\" }\nandroidx-junit = { group = \"androidx.test.ext\", name = \"junit\", version.ref = \"junitVersion\" }\nandroidx-espresso-core = { group = \"androidx.test.espresso\", name = \"espresso-core\", version.ref = \"espressoCore\" }\nandroidx-appcompat = { group = \"androidx.appcompat\", name = \"appcompat\", version.ref = \"appcompat\" }\nmaterial = { group = \"com.google.android.material\", name = \"material\", version.ref = \"material\" }\nandroidx-activity = { group = \"androidx.activity\", name = \"activity\", version.ref = \"activity\" }\nandroidx-constraintlayout = { group = \"androidx.constraintlayout\", name = \"constraintlayout\", version.ref = \"constraintlayout\" }\nandroidx-navigation-fragment = { module = \"androidx.navigation:navigation-fragment\", version.ref = \"navigation\" }\nandroidx-navigation-ui = { module = \"androidx.navigation:navigation-ui\", version.ref = \"navigation\" }\nandroidx-media3-common-ktx = { group = \"androidx.media3\", name = \"media3-common-ktx\", version.ref = \"media3CommonKtx\" }\nplay-services-maps = { group = \"com.google.android.gms\", name = \"play-services-maps\", version.ref = \"playServicesMaps\" }\nplaces = { group = \"com.google.android.libraries.places\", name = \"places\", version.ref = \"places\" }\nroom-compiler = { group = \"androidx.room\", name = \"room-compiler\", version.ref = \"room\"}\nwork-runtime = { group = \"androidx.work\", name = \"work-runtime-ktx\", version.ref = \"work\"}\ncompose-ui = { group = \"androidx.compose.ui\", name = \"ui\", version.ref = \"compose\" }\ncompose-material = { group = \"androidx.compose.material\", name = \"material\", version.ref = \"compose\" }\ncompose-tooling = { group = \"androidx.compose.ui\", name = \"ui-tooling-preview\", version.ref = \"compose\" }\nandroidx-material3-android = { group = \"androidx.compose.material3\", name = \"material3-android\", version.ref = \"material3Android\" }\ncoil-compose = { group = \"io.coil-kt\", name = \"coil-compose\", version.ref = \"coil\" }\n\n[plugins]\nandroid-application = { id = \"com.android.application\", version.ref = \"agp\" }\nkotlin-android = { id = \"org.jetbrains.kotlin.android\", version.ref = \"kotlin\" }\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml
+--- a/gradle/libs.versions.toml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/gradle/libs.versions.toml	(date 1746229255588)
+@@ -1,6 +1,6 @@
+ [versions]
+ kotlin = "1.9.24"
+-agp = "8.5.0"
++agp = "8.6.0"
+ 
+ coreKtx = "1.13.1"
+ appcompat = "1.7.0"
+Index: .idea/deploymentTargetSelector.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"deploymentTargetSelector\">\n    <selectionStates>\n      <SelectionState runConfigName=\"app\">\n        <option name=\"selectionMode\" value=\"DROPDOWN\" />\n        <DropdownSelection timestamp=\"2025-05-02T17:59:36.162429Z\">\n          <Target type=\"DEFAULT_BOOT\">\n            <handle>\n              <DeviceId pluginId=\"LocalEmulator\" identifier=\"path=/Users/yermakhankasymzhomart/.android/avd/Pixel_8_API_35.avd\" />\n            </handle>\n          </Target>\n        </DropdownSelection>\n        <DialogSelection />\n      </SelectionState>\n    </selectionStates>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetSelector.xml b/.idea/deploymentTargetSelector.xml
+--- a/.idea/deploymentTargetSelector.xml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/.idea/deploymentTargetSelector.xml	(date 1746232251510)
+@@ -4,10 +4,10 @@
+     <selectionStates>
+       <SelectionState runConfigName="app">
+         <option name="selectionMode" value="DROPDOWN" />
+-        <DropdownSelection timestamp="2025-05-02T17:59:36.162429Z">
++        <DropdownSelection timestamp="2025-05-03T00:29:31.022196500Z">
+           <Target type="DEFAULT_BOOT">
+             <handle>
+-              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/yermakhankasymzhomart/.android/avd/Pixel_8_API_35.avd" />
++              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\HUAWEI\AppData\Local\Android\Sdk\platform-tools\.android\avd\Pixel_8_Pro_API_35.avd" />
+             </handle>
+           </Target>
+         </DropdownSelection>
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\n  <component name=\"GradleSettings\">\n    <option name=\"linkedExternalProjectsSettings\">\n      <GradleProjectSettings>\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"gradleJvm\" value=\"jbr-17\" />\n        <option name=\"modules\">\n          <set>\n            <option value=\"$PROJECT_DIR$\" />\n            <option value=\"$PROJECT_DIR$/app\" />\n          </set>\n        </option>\n        <option name=\"resolveExternalAnnotations\" value=\"false\" />\n      </GradleProjectSettings>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/.idea/gradle.xml	(date 1746228189727)
+@@ -5,7 +5,7 @@
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-        <option name="gradleJvm" value="jbr-17" />
++        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+         <option name="modules">
+           <set>
+             <option value="$PROJECT_DIR$" />
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"VcsDirectoryMappings\">\n    <mapping directory=\"$PROJECT_DIR$/..\" vcs=\"Git\" />\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"svn\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/.idea/vcs.xml	(date 1746227496943)
+@@ -2,6 +2,5 @@
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+-    <mapping directory="$PROJECT_DIR$" vcs="svn" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_17\" default=\"true\" project-jdk-name=\"jbr-17\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/.idea/misc.xml	(date 1746228201186)
+@@ -1,10 +1,4 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+-    <output url="file://$PROJECT_DIR$/build/classes" />
+-  </component>
+-  <component name="ProjectType">
+-    <option name="id" value="Android" />
+-  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK" />
+ </project>
+\ No newline at end of file
+Index: app/src/main/java/com/example/myfaith/activity/RegistrationActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myfaith.activity\n\nimport android.content.Intent\nimport android.graphics.Color\nimport android.os.Bundle\nimport android.text.Spannable\nimport android.text.SpannableString\nimport android.text.style.ForegroundColorSpan\nimport android.util.Log\nimport android.widget.Button\nimport android.widget.EditText\nimport android.widget.TextView\nimport android.widget.Toast\nimport androidx.appcompat.app.AppCompatActivity\nimport com.example.myfaith.datasource.ApiSource\nimport com.example.myfaith.entity.response.RegistrationResponse\nimport com.example.myfaith.R\nimport retrofit2.Call\nimport retrofit2.Callback\nimport retrofit2.Response\n\nclass RegistrationActivity : AppCompatActivity() {\n\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_registration)\n\n        val emailField = findViewById<EditText>(R.id.registration_email)\n        val numberField = findViewById<EditText>(R.id.registration_number)\n        val nameField = findViewById<EditText>(R.id.registration_name)\n        val usernameField = findViewById<EditText>(R.id.registration_username)\n        val passwordField = findViewById<EditText>(R.id.registration_password)\n        val registerButton = findViewById<Button>(R.id.registration_button)\n        val loginButton = findViewById<TextView>(R.id.sign_in)\n        val signInTextView = findViewById<TextView>(R.id.sign_in)\n\n        val fullText = \"Already have an account? Sign in\"\n        val spannable = SpannableString(fullText)\n        val signInStart = fullText.indexOf(\"Sign in\")\n\n        if (signInStart != -1) {\n            spannable.setSpan(\n                ForegroundColorSpan(Color.parseColor(\"#f2f2ec\")),\n                0,\n                signInStart,\n                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE\n            )\n            spannable.setSpan(\n                ForegroundColorSpan(Color.parseColor(\"#f4ff9d\")),\n                signInStart,\n                fullText.length,\n                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE\n            )\n        } else {\n            spannable.setSpan(ForegroundColorSpan(Color.parseColor(\"#f2f2ec\")), 0, fullText.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)\n        }\n        signInTextView.text = spannable\n\n        registerButton.setOnClickListener {\n            val email = emailField.text.toString().trim()\n            val number = numberField.text.toString().trim()\n            val fullName = nameField.text.toString().trim()\n            val username = usernameField.text.toString().trim()\n            val password = passwordField.text.toString().trim()\n\n            if (email.isEmpty() || number.isEmpty() || fullName.isEmpty() || username.isEmpty() || password.isEmpty()) {\n                Toast.makeText(this, \"Please fill in all fields\", Toast.LENGTH_SHORT).show()\n                return@setOnClickListener\n            }\n            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {\n                Toast.makeText(this, \"Invalid email format\", Toast.LENGTH_SHORT).show()\n                return@setOnClickListener\n            }\n\n\n            ApiSource.registration.registerUser(\n                email,\n                username,\n                password,\n                fullName,\n                number)\n                .enqueue(object : Callback<RegistrationResponse> {\n                    override fun onResponse(\n                        call: Call<RegistrationResponse>,\n                        response: Response<RegistrationResponse>\n                    ) {\n                        if (response.body() != null) {\n//                            val token = response.body()!!.token\n//                            val prefs = getSharedPreferences(\"MyAppPrefs\", MODE_PRIVATE)\n//                            prefs.edit().putString(\"auth_token\", token).apply()\n                            val user = response.body()!!\n\n                            Toast.makeText(this@RegistrationActivity, \"Registration successful! Please log in.\", Toast.LENGTH_SHORT).show()\n\n                            val intent = Intent(this@RegistrationActivity, LoginActivity::class.java)\n                            intent.putExtra(\"email\", user.email)\n                            intent.putExtra(\"password\", password)\n                            startActivity(intent)\n                            finish()\n\n                        } else {\n                            val errorBody = response.errorBody()?.string()\n                            Log.e(\"Registration\", \"Error: ${response.code()} - $errorBody\")\n                            Toast.makeText(\n                                this@RegistrationActivity,\n                                \"Registration failed: ${errorBody ?: \"Unknown error\"}\",\n                                Toast.LENGTH_LONG\n                            ).show()\n                        }\n                    }\n\n                    override fun onFailure(call: Call<RegistrationResponse>, t: Throwable) {\n                        Log.e(\"Registration\", \"Network error\", t)\n                        Toast.makeText(\n                            this@RegistrationActivity,\n                            \"Network error: ${t.message}\",\n                            Toast.LENGTH_SHORT\n                        ).show()\n                    }\n                })\n        }\n\n\n        loginButton.setOnClickListener {\n            val intent = Intent(this, LoginActivity::class.java)\n            startActivity(intent)\n            finish()\n        }\n    }\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myfaith/activity/RegistrationActivity.kt b/app/src/main/java/com/example/myfaith/activity/RegistrationActivity.kt
+--- a/app/src/main/java/com/example/myfaith/activity/RegistrationActivity.kt	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/app/src/main/java/com/example/myfaith/activity/RegistrationActivity.kt	(date 1746238112455)
+@@ -57,21 +57,17 @@
+         signInTextView.text = spannable
+ 
+         registerButton.setOnClickListener {
+-            val email = emailField.text.toString().trim()
+-            val number = numberField.text.toString().trim()
+-            val fullName = nameField.text.toString().trim()
+-            val username = usernameField.text.toString().trim()
+-            val password = passwordField.text.toString().trim()
++            // Temporarily skip registration
++            val intent = Intent(this@RegistrationActivity, MainActivity::class.java)
++            startActivity(intent)
++            finish()
+ 
+-            if (email.isEmpty() || number.isEmpty() || fullName.isEmpty() || username.isEmpty() || password.isEmpty()) {
+-                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+-                return@setOnClickListener
+-            }
+-            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+-                Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show()
+-                return@setOnClickListener
+-            }
+-
++            /*
++            val email = emailField.text.toString()
++            val number = numberField.text.toString()
++            val fullName = nameField.text.toString()
++            val username = usernameField.text.toString()
++            val password = passwordField.text.toString()
+ 
+             ApiSource.registration.registerUser(
+                 email,
+@@ -85,9 +81,6 @@
+                         response: Response<RegistrationResponse>
+                     ) {
+                         if (response.body() != null) {
+-//                            val token = response.body()!!.token
+-//                            val prefs = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+-//                            prefs.edit().putString("auth_token", token).apply()
+                             val user = response.body()!!
+ 
+                             Toast.makeText(this@RegistrationActivity, "Registration successful! Please log in.", Toast.LENGTH_SHORT).show()
+@@ -118,8 +111,8 @@
+                         ).show()
+                     }
+                 })
++            */
+         }
+-
+ 
+         loginButton.setOnClickListener {
+             val intent = Intent(this, LoginActivity::class.java)
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n    alias(libs.plugins.android.application)\n    alias(libs.plugins.kotlin.android)\n//    alias(libs.plugins.ksp)\n    id(\"androidx.navigation.safeargs.kotlin\")\n}\n\nandroid {\n    namespace = \"com.example.myfaith\"\n    compileSdk = 35\n\n    defaultConfig {\n        applicationId = \"com.example.myfaith\"\n        minSdk = 24\n        targetSdk = 34\n        versionCode = 1\n        versionName = \"1.0\"\n\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\n    }\n\n\n    buildTypes {\n        release {\n            isMinifyEnabled = false\n            proguardFiles(\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\n                \"proguard-rules.pro\"\n            )\n        }\n    }\n    compileOptions {\n        sourceCompatibility = JavaVersion.VERSION_1_8\n        targetCompatibility = JavaVersion.VERSION_1_8\n    }\n    buildFeatures{\n        viewBinding = true\n        compose = true\n    }\n    kotlinOptions {\n        jvmTarget = \"1.8\"\n    }\n    composeOptions {\n        kotlinCompilerExtensionVersion = \"1.5.14\" // подходящая версия для Compose 1.6.x\n    }\n    configurations.all {\n        resolutionStrategy.eachDependency {\n            if (requested.group == \"org.jetbrains.kotlin\" && requested.name.startsWith(\"kotlin-stdlib\")) {\n                useVersion(\"1.9.24\")\n            }\n        }\n    }\n\n}\n\ndependencies {\n    implementation(libs.androidx.navigation.fragment)\n    implementation(libs.androidx.navigation.ui)\n    implementation(libs.androidx.core.ktx)\n    implementation(\"org.jetbrains.kotlin:kotlin-stdlib:1.9.24\")\n    implementation(\"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3\") // Совместимо\n    implementation(\"com.github.bumptech.glide:glide:4.16.0\") // Актуально\n    implementation(\"com.google.android.gms:play-services-location:21.0.1\") // Актуально\n    implementation(\"com.squareup.retrofit2:retrofit:2.11.0\") // Актуально\n    implementation(\"com.squareup.retrofit2:converter-gson:2.11.0\") // Совместимо\n    implementation(\"com.squareup.okhttp3:logging-interceptor:4.12.0\") // Совместимо\n    implementation(\"androidx.recyclerview:recyclerview:1.3.1\") // Обновлено\n    implementation(\"androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0\") // Обновлено\n    implementation(\"com.squareup.okhttp3:okhttp:4.12.0\") // Обновлено до той же версии, что и logging-interceptor\n    implementation(\"com.google.code.gson:gson:2.10.1\") // Обновлено\n    implementation(\"com.google.android.libraries.places:places:3.3.0\")\n    implementation(libs.material)\n    implementation(libs.androidx.core.ktx)\n    implementation(libs.androidx.appcompat)\n    implementation(libs.work.runtime)\n    implementation(libs.material)\n    implementation(libs.androidx.activity)\n    implementation(libs.androidx.constraintlayout)\n    implementation(libs.androidx.media3.common.ktx)\n    implementation(libs.play.services.maps)\n//    implementation(libs.places)\n    implementation(libs.androidx.espresso.core)\n    implementation(libs.androidx.material3.android)\n    testImplementation(libs.junit)\n    androidTestImplementation(libs.androidx.junit)\n    androidTestImplementation(libs.androidx.espresso.core)\n    implementation(libs.compose.ui)\n    implementation(libs.compose.material)\n    implementation(libs.compose.tooling)\n    implementation(libs.compose.ui)\n    implementation(libs.compose.tooling)\n    implementation(libs.coil.compose)\n//    ksp(libs.room.compiler)\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+--- a/app/build.gradle.kts	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/app/build.gradle.kts	(date 1746229277190)
+@@ -30,15 +30,16 @@
+         }
+     }
+     compileOptions {
+-        sourceCompatibility = JavaVersion.VERSION_1_8
+-        targetCompatibility = JavaVersion.VERSION_1_8
++        sourceCompatibility = JavaVersion.VERSION_17
++        targetCompatibility = JavaVersion.VERSION_17
+     }
+     buildFeatures{
+         viewBinding = true
+         compose = true
++        buildConfig = true
+     }
+     kotlinOptions {
+-        jvmTarget = "1.8"
++        jvmTarget = "17"
+     }
+     composeOptions {
+         kotlinCompilerExtensionVersion = "1.5.14" // подходящая версия для Compose 1.6.x
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"CompilerConfiguration\">\n    <bytecodeTargetLevel target=\"17\">\n      <module name=\"My_Faith.app\" target=\"21\" />\n      <module name=\"My_Faith.chatlibrary\" target=\"21\" />\n    </bytecodeTargetLevel>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/.idea/compiler.xml	(date 1746228148248)
+@@ -1,9 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="CompilerConfiguration">
+-    <bytecodeTargetLevel target="17">
+-      <module name="My_Faith.app" target="21" />
+-      <module name="My_Faith.chatlibrary" target="21" />
+-    </bytecodeTargetLevel>
++    <bytecodeTargetLevel target="17" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\">\n    <uses-permission android:name=\"android.permission.INTERNET\"/>\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>\n    <uses-permission android:name=\"android.permission.RECORD_AUDIO\" />\n    <uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />\n    <uses-permission android:name=\"android.permission.READ_MEDIA_AUDIO\" />\n    <uses-permission android:name=\"android.permission.SENSOR_DELAY_GAME\"/>\n    <uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />\n    <uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />\n    <uses-permission android:name=\"android.permission.POST_NOTIFICATIONS\" />\n    <uses-permission android:name=\"android.permission.SCHEDULE_EXACT_ALARM\" />\n    <uses-permission android:name=\"android.permission.USE_EXACT_ALARM\"/>\n    <uses-permission android:name=\"android.permission.FOREGROUND_SERVICE\" />\n    <uses-permission android:name=\"android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\" />\n\n    <uses-feature android:name=\"android.hardware.sensor.accelerometer\" />\n    <uses-feature android:name=\"android.hardware.sensor.compass\" />\n\n    <application\n        android:name=\".App\"\n        android:allowBackup=\"true\"\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\n        android:fullBackupContent=\"@xml/backup_rules\"\n        android:icon=\"@mipmap/logo\"\n        android:label=\"@string/app_name\"\n        android:roundIcon=\"@mipmap/logo_round\"\n        android:supportsRtl=\"true\"\n        android:networkSecurityConfig=\"@xml/network_security_config\"\n        android:theme=\"@style/Theme.MyFaith\"\n        tools:targetApi=\"31\">\n        <activity\n            android:name=\".activity.MainActivity\"\n            android:exported=\"true\">\n<!--            <intent-filter>-->\n<!--                <action android:name=\"android.intent.action.MAIN\" />-->\n\n<!--                <category android:name=\"android.intent.category.LAUNCHER\" />-->\n<!--            </intent-filter>-->\n\n            <intent-filter android:autoVerify=\"true\">\n                <action android:name=\"android.intent.action.VIEW\" />\n\n                <category android:name=\"android.intent.category.DEFAULT\" />\n                <category android:name=\"android.intent.category.BROWSABLE\" />\n\n                <data\n                    android:host=\"myfaith.kz\"\n                    android:scheme=\"https\" />\n            </intent-filter>\n        </activity>\n<!--        <activity-->\n<!--            android:name=\"com.example.myfaith.activity.ZikrActivity\"-->\n<!--            android:exported=\"false\">-->\n<!--        </activity>-->\n        <activity\n            android:name=\".activity.LoginActivity\"\n            android:exported=\"true\">\n            <intent-filter>\n                <action android:name=\"android.intent.action.MAIN\" />\n                <category android:name=\"android.intent.category.LAUNCHER\" />\n            </intent-filter>\n        </activity>\n        <activity\n            android:name=\".activity.RegistrationActivity\"\n            android:exported=\"false\">\n        </activity>\n        <service\n            android:name=\".AzanService\"\n            android:exported=\"false\"\n            android:foregroundServiceType=\"mediaPlayback\" />\n\n        <receiver android:name=\".receiver.NamazAlarmReceiver\" />\n        <receiver android:name=\".receiver.StopAzanReceiver\" />\n        <receiver android:name=\".receiver.AzanWidgetProvider\" android:exported=\"true\">\n            <intent-filter>\n                <action android:name=\"android.appwidget.action.APPWIDGET_UPDATE\" />\n            </intent-filter>\n\n            <meta-data\n                android:name=\"android.appwidget.provider\"\n                android:resource=\"@xml/azan_widget_info\" />\n        </receiver>\n        <meta-data\n            android:name=\"com.google.android.geo.API_KEY\"\n            android:value=\"AIzaSyBU-hVdtGr6qD3220iOhHOMH1VYvj8cnb8\" />\n\n    </application>\n\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 48d230749ce3632ea4f3e46cdd04bb49f4232959)
++++ b/app/src/main/AndroidManifest.xml	(date 1746238112457)
+@@ -14,6 +14,7 @@
+     <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
++    <uses-permission android:name="android.permission.VIBRATE" />
+ 
+     <uses-feature android:name="android.hardware.sensor.accelerometer" />
+     <uses-feature android:name="android.hardware.sensor.compass" />
+@@ -33,12 +34,6 @@
+         <activity
+             android:name=".activity.MainActivity"
+             android:exported="true">
+-<!--            <intent-filter>-->
+-<!--                <action android:name="android.intent.action.MAIN" />-->
+-
+-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+-<!--            </intent-filter>-->
+-
+             <intent-filter android:autoVerify="true">
+                 <action android:name="android.intent.action.VIEW" />
+ 
+@@ -50,10 +45,17 @@
+                     android:scheme="https" />
+             </intent-filter>
+         </activity>
+-<!--        <activity-->
+-<!--            android:name="com.example.myfaith.activity.ZikrActivity"-->
+-<!--            android:exported="false">-->
+-<!--        </activity>-->
++        <activity
++            android:name=".activity.DhikrListActivity"
++            android:exported="true">
++            <intent-filter>
++                <action android:name="android.intent.action.MAIN" />
++                <category android:name="android.intent.category.LAUNCHER" />
++            </intent-filter>
++        </activity>
++        <activity
++            android:name=".activity.DhikrCounterActivity"
++            android:exported="false" />
+         <activity
+             android:name=".activity.LoginActivity"
+             android:exported="true">

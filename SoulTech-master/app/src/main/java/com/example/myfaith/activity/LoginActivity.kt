@@ -25,6 +25,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         ApiSource.init(applicationContext)
 
+        // Temporarily disabled auto-login
+        /*
         val prefs = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
         val savedEmail = prefs.getString("user_email", null)
         val savedPassword = prefs.getString("user_password", null)
@@ -47,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             })
         }
+        */
 
         val emailOrNumberField = findViewById<EditText>(R.id.login_email_or_number)
         val passwordField = findViewById<EditText>(R.id.login_password)
@@ -84,6 +87,12 @@ class LoginActivity : AppCompatActivity() {
         textView.text = spannable
 
         loginButton.setOnClickListener {
+            // Temporarily skip authentication
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+            
+            /*
             val email = emailOrNumberField.text.toString()
             val password = passwordField.text.toString()
 
@@ -109,6 +118,7 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
+            */
         }
         registerButton.setOnClickListener {
             val intent = Intent(this, RegistrationActivity::class.java)
