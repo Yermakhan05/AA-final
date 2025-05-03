@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.myfaith.R
 import com.example.myfaith.viewmodel.QuoteViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class QuoteFragment : Fragment() {
 
@@ -21,7 +22,6 @@ class QuoteFragment : Fragment() {
     private lateinit var favoriteButton: ImageButton
     private lateinit var nextQuoteButton: Button
     private lateinit var favoritesButton: Button
-    private lateinit var backButton: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +34,6 @@ class QuoteFragment : Fragment() {
         favoriteButton = view.findViewById(R.id.favoriteButton)
         nextQuoteButton = view.findViewById(R.id.nextQuoteButton)
         favoritesButton = view.findViewById(R.id.favoritesButton)
-        backButton = view.findViewById(R.id.backButton)
 
         return view
     }
@@ -43,6 +42,7 @@ class QuoteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         quoteViewModel = ViewModelProvider(requireActivity())[QuoteViewModel::class.java]
+        activity?.findViewById<BottomNavigationView>(R.id.bottom_nav_view)?.visibility = View.GONE
 
         // Подписываемся на загрузку данных
         quoteViewModel.quotes.observe(viewLifecycleOwner) {
@@ -67,11 +67,6 @@ class QuoteFragment : Fragment() {
         // Favorites list button
         nextQuoteButton.setOnClickListener {
             findNavController().navigate(R.id.action_quoteFragment_to_favoritesFragment)
-        }
-
-        // Back button
-        backButton.setOnClickListener {
-            findNavController().navigateUp()
         }
     }
 

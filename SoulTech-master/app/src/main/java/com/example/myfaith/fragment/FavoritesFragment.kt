@@ -14,13 +14,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myfaith.adapter.FavoritesAdapter
 import com.example.myfaith.viewmodel.QuoteViewModel
 import com.example.myfaith.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class FavoritesFragment : Fragment() {
 
     private lateinit var quoteViewModel: QuoteViewModel
     private lateinit var favoritesRecyclerView: RecyclerView
     private lateinit var favoritesAdapter: FavoritesAdapter
-    private lateinit var backButton: ImageButton
     private lateinit var emptyStateTextView: TextView
     private lateinit var favoritesCountTextView: TextView
 
@@ -30,9 +30,9 @@ class FavoritesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_favorites, container, false)
+        activity?.findViewById<BottomNavigationView>(R.id.bottom_nav_view)?.visibility = View.GONE
 
         favoritesRecyclerView = view.findViewById(R.id.favoritesRecyclerView)
-        backButton = view.findViewById(R.id.backButton)
         emptyStateTextView = view.findViewById(R.id.emptyStateTextView)
         favoritesCountTextView = view.findViewById(R.id.favoritesCountTextView)
 
@@ -56,10 +56,6 @@ class FavoritesFragment : Fragment() {
             adapter = favoritesAdapter
         }
 
-        // Set up back button
-        backButton.setOnClickListener {
-            findNavController().navigateUp()
-        }
 
         // Update favorites count
         updateFavoritesCount()

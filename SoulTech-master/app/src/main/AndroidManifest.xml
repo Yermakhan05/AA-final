@@ -14,7 +14,6 @@
     <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
-    <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature android:name="android.hardware.sensor.accelerometer" />
     <uses-feature android:name="android.hardware.sensor.compass" />
@@ -34,6 +33,7 @@
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
+
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -43,26 +43,24 @@
                 <data
                     android:host="myfaith.kz"
                     android:scheme="https" />
+
             </intent-filter>
+
+
         </activity>
-        <activity
-            android:name=".activity.DhikrListActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activity.DhikrCounterActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name="com.example.myfaith.activity.ZikrActivity"-->
+<!--            android:exported="false">-->
+<!--        </activity>-->
         <activity
             android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".activity.RegistrationActivity"

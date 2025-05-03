@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "829778064200",
+    "project_id": "aa-final-cbc6e",
+    "storage_bucket": "aa-final-cbc6e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829778064200:android:31d8f51b6e4ac7ab23797d",
+        "android_client_info": {
+          "package_name": "com.example.myfaith"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkYQZxRgJuFh8JBZrOazXtIJLZIUBhFZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

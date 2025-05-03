@@ -25,6 +25,36 @@
             android:id="@+id/action_homeFragment_to_zikrFragment"
             app:destination="@id/zikrFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.myfaith.fragment.FavoritesFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorites">
+
+        <action
+            android:id="@+id/action_favoritesFragment_to_quoteFragment"
+            app:destination="@id/quoteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDetailFragment"
+        android:name="com.example.myfaith.fragment.BookDetailFragment"
+        android:label="BookDetail"
+        tools:layout="@layout/fragment_book_detail">
+
+        <!-- ВАЖНО: аргумент для SafeArgs -->
+        <argument
+            android:name="bookId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/booksFragment"
+        android:name="com.example.myfaith.fragment.BooksFragment"
+        android:label="Books">
+
+        <action
+            android:id="@+id/action_booksFragment_to_bookDetailFragment"
+            app:destination="@id/bookDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/compassFragment"
@@ -54,16 +84,11 @@
         tools:layout="@layout/fragment_maps" />
 
     <fragment
-        android:id="@+id/booksFragment"
+        android:id="@+id/LessonsListFragment"
         android:label=""
-        android:name="com.example.myfaith.fragment.BooksFragment"
+        android:name="com.example.myfaith.fragment.LessonListFragment"
         tools:layout="@layout/books_fragment" />
 
-    <fragment
-        android:id="@+id/quoteFragment"
-        android:label=""
-        android:name="com.example.myfaith.fragment.QuoteFragment"
-        tools:layout="@layout/quote_fragment" />
     <fragment
         android:id="@+id/profileFragment"
         android:label=""
@@ -100,4 +125,26 @@
         android:id="@+id/zikrFragment"
         android:name="com.example.myfaith.fragment.ZikrFragment"
         tools:layout="@layout/activity_zikr" />
+
+    <fragment
+        android:id="@+id/quoteFragment"
+        android:name="com.example.myfaith.fragment.QuoteFragment"
+        android:label="Quote"
+        tools:layout="@layout/fragment_quote">
+
+        <action
+            android:id="@+id/action_quoteFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
 </navigation>
+
+
+
+
+
+
+
+
+
+
+

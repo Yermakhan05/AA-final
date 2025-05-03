@@ -8,9 +8,10 @@
         android:icon="@drawable/home_icon"/>
 
     <item
-        android:id="@+id/notifications"
+        android:id="@+id/lessons"
         android:title=""
-        android:icon="@drawable/notification_icon"/>
+        app:showAsAction="always"
+        android:icon="@drawable/video_lessons_24"/>
 
     <item
         android:id="@+id/profile"

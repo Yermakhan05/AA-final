@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment, R.id.notificationFragment, R.id.profileFragment, R.id.settingsFragment,
-                R.id.nav_events, R.id.nav_communities, R.id.nav_map, R.id.nav_settings, R.id.nav_logout
+                R.id.nav_events, R.id.nav_communities, R.id.nav_map, R.id.nav_settings, R.id.nav_logout, R.id.lessons
             ),
             drawerLayout
         )
@@ -73,6 +73,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.home -> {
                     navController.navigate(R.id.homeFragment)
+                    true
+                }
+                R.id.lessons -> {
+                    navController.navigate(R.id.LessonsListFragment)
                     true
                 }
                 else -> false
