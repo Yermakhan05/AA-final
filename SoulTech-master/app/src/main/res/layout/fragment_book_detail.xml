@@ -31,7 +31,7 @@
             android:id="@+id/downloadButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Скачать PDF"
+            android:text="Прочитать Книгу"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/purple_500"
             android:textColor="@color/white" />
