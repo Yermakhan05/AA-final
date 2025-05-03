@@ -43,7 +43,10 @@
                 <data
                     android:host="myfaith.kz"
                     android:scheme="https" />
+
             </intent-filter>
+
+
         </activity>
 <!--        <activity-->
 <!--            android:name="com.example.myfaith.activity.ZikrActivity"-->

@@ -1,5 +1,7 @@
 package com.example.myfaith.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,7 +52,11 @@ class BookDetailFragment : Fragment() {
             descriptionTextView.text = it.description
 
             downloadButton.setOnClickListener {
-                // Здесь мы позже реализуем скачивание PDF
+                val pdfUri = Uri.parse(book.fileUrl)
+                val intent = Intent(Intent.ACTION_VIEW, pdfUri).apply {
+                    addCategory(Intent.CATEGORY_BROWSABLE)
+                }
+                startActivity(intent)
             }
         }
     }
