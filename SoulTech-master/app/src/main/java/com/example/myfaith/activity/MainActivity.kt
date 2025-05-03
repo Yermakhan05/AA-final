@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.homeFragment, R.id.notificationFragment, R.id.profileFragment, R.id.settingsFragment,
+                R.id.home, R.id.notificationFragment, R.id.profileFragment, R.id.settingsFragment,
                 R.id.nav_events, R.id.nav_communities, R.id.nav_map, R.id.nav_settings, R.id.nav_logout
             ),
             drawerLayout
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.home -> {
-                    navController.navigate(R.id.homeFragment)
+                    navController.navigate(R.id.home)
                     true
                 }
                 else -> false
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.homeFragment -> {
+                R.id.home -> {
                     val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
                     navHostFragment.findNavController().navigate(R.id.homeFragment)
                     true

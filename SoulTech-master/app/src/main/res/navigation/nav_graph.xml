@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/home">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/home"
         android:label=""
         android:name="com.example.myfaith.fragment.HomeFragment"
         tools:layout="@layout/home_page_fragment">
