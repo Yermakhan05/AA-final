@@ -82,6 +82,13 @@
         android:label=""
         android:name="com.example.myfaith.fragment.MapsFragment"
         tools:layout="@layout/fragment_maps" />
+
+    <fragment
+        android:id="@+id/LessonsListFragment"
+        android:label=""
+        android:name="com.example.myfaith.fragment.LessonListFragment"
+        tools:layout="@layout/books_fragment" />
+
     <fragment
         android:id="@+id/profileFragment"
         android:label=""
