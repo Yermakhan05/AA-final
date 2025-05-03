@@ -13,7 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.example.myfaith.R
 import com.example.myfaith.R.layout.azan_widget
-import com.example.myfaith.utils.NamazTimeStorage
+import com.example.myfaith.model.utils.NamazTimeStorage
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalTime

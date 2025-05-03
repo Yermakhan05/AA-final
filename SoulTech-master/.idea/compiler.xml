@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-<<<<<<< HEAD
-    <bytecodeTargetLevel target="21">
-=======
-    <bytecodeTargetLevel target="17">
-<<<<<<< Updated upstream
-      <module name="My_Faith.app" target="21" />
->>>>>>> 48d230749ce3632ea4f3e46cdd04bb49f4232959
-=======
->>>>>>> Stashed changes
-      <module name="My_Faith.chatlibrary" target="21" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="17" />
   </component>
 </project>

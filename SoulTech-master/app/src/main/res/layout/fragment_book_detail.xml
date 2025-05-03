@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
+    android:paddingTop="60dp"
     android:padding="16dp">
 
     <LinearLayout
@@ -31,7 +32,7 @@
             android:id="@+id/downloadButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Прочитать Книгу"
+            android:text="Скачать Книгу"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/purple_500"
             android:textColor="@color/white" />

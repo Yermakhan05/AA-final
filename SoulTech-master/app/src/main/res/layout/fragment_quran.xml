@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.QuranFragment">
+    tools:context=".view.fragment.QuranFragment">
 
     <!-- Основной экран с сурами и аятами -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="70dp"
             android:background="#2D2D2D"
             app:layout_constraintBottom_toTopOf="@+id/menu_quran" />
 

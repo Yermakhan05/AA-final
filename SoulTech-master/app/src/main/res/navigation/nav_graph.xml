@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:label=""
-        android:name="com.example.myfaith.fragment.HomeFragment"
+        android:name="com.example.myfaith.view.fragment.HomeFragment"
         tools:layout="@layout/home_page_fragment">
         <action
             android:id="@+id/action_homeFragment_to_quranFragment"
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.example.myfaith.fragment.FavoritesFragment"
+        android:name="com.example.myfaith.view.fragment.FavoritesFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorites">
 
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/bookDetailFragment"
-        android:name="com.example.myfaith.fragment.BookDetailFragment"
+        android:name="com.example.myfaith.view.fragment.BookDetailFragment"
         android:label="BookDetail"
         tools:layout="@layout/fragment_book_detail">
 
@@ -45,10 +45,14 @@
         <argument
             android:name="bookId"
             app:argType="integer" />
+
+        <deepLink
+            app:uri="https://myfaith.kz/book/{bookId}" />
+
     </fragment>
     <fragment
         android:id="@+id/booksFragment"
-        android:name="com.example.myfaith.fragment.BooksFragment"
+        android:name="com.example.myfaith.view.fragment.BooksFragment"
         android:label="Books">
 
         <action
@@ -58,14 +62,14 @@
 
     <fragment
         android:id="@+id/compassFragment"
-        android:name="com.example.myfaith.fragment.CompassFragment"
+        android:name="com.example.myfaith.view.fragment.CompassFragment"
         android:label=""
         tools:layout="@layout/fragment_compass" />
 
     <fragment
         android:id="@+id/quranFragment"
         android:label=""
-        android:name="com.example.myfaith.fragment.QuranFragment"
+        android:name="com.example.myfaith.view.fragment.QuranFragment"
         tools:layout="@layout/fragment_quran" >
 
         <argument
@@ -80,31 +84,31 @@
     <fragment
         android:id="@+id/mapsFragment"
         android:label=""
-        android:name="com.example.myfaith.fragment.MapsFragment"
+        android:name="com.example.myfaith.view.fragment.MapsFragment"
         tools:layout="@layout/fragment_maps" />
 
     <fragment
         android:id="@+id/LessonsListFragment"
         android:label=""
-        android:name="com.example.myfaith.fragment.LessonListFragment"
+        android:name="com.example.myfaith.view.fragment.LessonListFragment"
         tools:layout="@layout/books_fragment" />
 
     <fragment
         android:id="@+id/profileFragment"
         android:label=""
-        android:name="com.example.myfaith.fragment.ProfileFragment"
+        android:name="com.example.myfaith.view.fragment.ProfileFragment"
         tools:layout="@layout/profile_fragment" />
 
     <fragment
         android:id="@+id/notificationFragment"
         android:label=""
-        android:name="com.example.myfaith.fragment.NotificationFragment"
+        android:name="com.example.myfaith.view.fragment.NotificationFragment"
         tools:layout="@layout/notification_fragment" />
 
     <fragment
         android:id="@+id/settingsFragment"
         android:label=""
-        android:name="com.example.myfaith.fragment.SettingsFragment"
+        android:name="com.example.myfaith.view.fragment.SettingsFragment"
         tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/action_settingsFragment_to_app_settings"
@@ -114,21 +118,21 @@
     <fragment
         android:id="@+id/app_settings"
         android:label=""
-        android:name="com.example.myfaith.fragment.AppSettingsFragment"
+        android:name="com.example.myfaith.view.fragment.AppSettingsFragment"
         tools:layout="@layout/fragment_app_settings" />
 
     <fragment
         android:id="@+id/eventsFragment"
-        android:name="com.example.myfaith.fragment.EventsFragment"
+        android:name="com.example.myfaith.view.fragment.EventsFragment"
         tools:layout="@layout/fragment_events" />
     <fragment
         android:id="@+id/zikrFragment"
-        android:name="com.example.myfaith.fragment.ZikrFragment"
+        android:name="com.example.myfaith.view.fragment.ZikrFragment"
         tools:layout="@layout/activity_zikr" />
 
     <fragment
         android:id="@+id/quoteFragment"
-        android:name="com.example.myfaith.fragment.QuoteFragment"
+        android:name="com.example.myfaith.view.fragment.QuoteFragment"
         android:label="Quote"
         tools:layout="@layout/fragment_quote">
 

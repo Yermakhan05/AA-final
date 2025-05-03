@@ -15,8 +15,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.example.myfaith.entity.Book
-import com.example.myfaith.entity.sampleBooks
+import com.example.myfaith.model.entity.Book
+import com.example.myfaith.model.entity.sampleBooks
 import org.w3c.dom.Text
 
 @OptIn(ExperimentalMaterial3Api::class)

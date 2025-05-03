@@ -5,10 +5,12 @@ import android.content.Context
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
-import com.example.myfaith.datasource.ApiSource
-import com.example.myfaith.utils.LocaleHelper
+import com.example.myfaith.model.datasource.ApiSource
+import com.example.myfaith.model.utils.LocaleHelper
+import dagger.hilt.android.HiltAndroidApp
 import java.util.concurrent.TimeUnit
 
+@HiltAndroidApp
 class App : Application() {
 
     override fun onCreate() {

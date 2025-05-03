@@ -2,8 +2,11 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.services)
-//    alias(libs.plugins.ksp)
+    alias(libs.plugins.ksp)
     id("androidx.navigation.safeargs.kotlin")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
+//    id("com.google.devtools.ksp")
 }
 
 android {
@@ -58,6 +61,21 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+    implementation(project(":data"))
+
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+
+//    implementation("com.github.Yermakhan05.alarmlibrary:1.1.3")
+    implementation(libs.chatlib)
+
+
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    implementation(libs.androidx.junit.ktx)
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
     implementation(libs.androidx.core.ktx)
@@ -136,5 +154,11 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.compose.tooling)
     implementation(libs.coil.compose)
+
+
+    debugImplementation ("androidx.fragment:fragment-testing:1.6.2")
+    androidTestImplementation ("androidx.navigation:navigation-testing:2.7.7")
+    androidTestImplementation ("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
 //    ksp(libs.room.compiler)
 }

@@ -8,7 +8,7 @@
     android:background="@color/dark_blue"
     android:paddingTop="35dp"
     android:paddingBottom="80dp"
-    tools:context=".fragment.QuoteFragment">
+    tools:context=".view.fragment.QuoteFragment">
 
     <TextView
     android:id="@+id/titleTextView"

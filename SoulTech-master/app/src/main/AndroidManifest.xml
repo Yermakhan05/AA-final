@@ -31,8 +31,13 @@
         android:theme="@style/Theme.MyFaith"
         tools:targetApi="31">
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
@@ -46,24 +51,18 @@
 
             </intent-filter>
 
-
         </activity>
 <!--        <activity-->
 <!--            android:name="com.example.myfaith.activity.ZikrActivity"-->
 <!--            android:exported="false">-->
 <!--        </activity>-->
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".view.activity.LoginActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
-            android:name=".activity.RegistrationActivity"
+            android:name=".view.activity.RegistrationActivity"
             android:exported="false">
         </activity>
         <service
@@ -84,7 +83,7 @@
         </receiver>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBU-hVdtGr6qD3220iOhHOMH1VYvj8cnb8" />
+            android:value="AIzaSyDoNwaGXLMeQ1BAYhtefbYV6bFC4IwZ2lA" />
 
     </application>
 

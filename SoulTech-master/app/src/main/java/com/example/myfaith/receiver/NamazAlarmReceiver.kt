@@ -10,7 +10,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.example.myfaith.AzanService
 import com.example.myfaith.R
-import com.example.myfaith.utils.NotificationHelper
+import com.example.myfaith.model.utils.NotificationHelper
 
 class NamazAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {

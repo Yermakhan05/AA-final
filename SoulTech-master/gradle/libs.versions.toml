@@ -1,6 +1,6 @@
 [versions]
 kotlin = "1.9.24"
-agp = "8.5.0"
+agp = "8.6.0"
 
 coreKtx = "1.13.1"
 appcompat = "1.7.0"
@@ -25,6 +25,13 @@ work = "2.9.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+jetbrainsKotlinJvm = "1.9.24"
+
+chatlib = "1.2.4"
+junitKtx = "1.2.1"
+
+ksp = "1.9.24-1.0.20"
+
 
 
 
@@ -49,9 +56,15 @@ compose-material = { group = "androidx.compose.material", name = "material", ver
 compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+chatlib = { group = "com.github.Yermakhan05", name = "chatlib", version.ref = "chatlib" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 google-services = { id = "com.google.gms.google-services", version = "4.4.2" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
